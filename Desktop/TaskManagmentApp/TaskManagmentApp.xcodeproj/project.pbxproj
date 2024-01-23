@@ -12,6 +12,8 @@
 		3E5F2C122B606F3E0072006F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5F2C112B606F3E0072006F /* ViewController.swift */; };
 		3E5F2C172B606F470072006F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E5F2C162B606F470072006F /* Assets.xcassets */; };
 		3E5F2C1A2B606F470072006F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E5F2C182B606F470072006F /* LaunchScreen.storyboard */; };
+		3E5F2C2B2B6073C00072006F /* OnboardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5F2C2A2B6073C00072006F /* OnboardingModel.swift */; };
+		3E5F2C2F2B6073D50072006F /* ProjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5F2C2E2B6073D50072006F /* ProjectModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		3E5F2C162B606F470072006F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3E5F2C192B606F470072006F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3E5F2C1B2B606F470072006F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3E5F2C2A2B6073C00072006F /* OnboardingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingModel.swift; sourceTree = "<group>"; };
+		3E5F2C2E2B6073D50072006F /* ProjectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +112,8 @@
 		3E5F2C282B6071C70072006F /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				3E5F2C2A2B6073C00072006F /* OnboardingModel.swift */,
+				3E5F2C2E2B6073D50072006F /* ProjectModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -189,6 +195,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E5F2C2F2B6073D50072006F /* ProjectModel.swift in Sources */,
+				3E5F2C2B2B6073C00072006F /* OnboardingModel.swift in Sources */,
 				3E5F2C122B606F3E0072006F /* ViewController.swift in Sources */,
 				3E5F2C0E2B606F3E0072006F /* AppDelegate.swift in Sources */,
 				3E5F2C102B606F3E0072006F /* SceneDelegate.swift in Sources */,
