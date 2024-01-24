@@ -15,6 +15,5 @@ struct PageModel: Identifiable, Equatable {
     var description: [String]
     var tag: Int
     
-    static var samplePage = PageModel(name: "Title", image: Image(systemName: "sun.max.circle.fill"), description: ["Hiiiiiiii", "whatup"], tag: 0)
-    
+    static var samplePage = [PageModel(name: "Title", image: Image(systemName: "pencil"), description: ["Hiiiiiiii", "whatup"], tag: 0)]
 }
