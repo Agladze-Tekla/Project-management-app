@@ -25,7 +25,6 @@ final class LoginViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = true
-        didTapNewUser()
     }
     
     //MARK: - UI Setup
@@ -89,9 +88,30 @@ final class LoginViewController: UIViewController {
     }
     
     @objc private func didTapSignIn() {
-        let vc = HomeViewController()
-        vc.modalPresentationStyle = .fullScreen
-        self.present(vc, animated: false, completion: nil)
+        let loginRequest = LoginUserRequest(email: self.emailField.text ?? "", password: self.passwordField.text ?? "")
+        
+        if Validator.isValidEmail(email: loginRequest.email) {
+            AlertManager.showInvaliEmaildAlert(on: self)
+            return
+        }
+        
+        if Validator.isPasswordValid(password: loginRequest.password) {
+            AlertManager.showInvaliPasswordAlert(on: self)
+            return
+        }
+        
+        SignupViewModel.shared.signIn(userRequest: loginRequest) { [weak self] error in
+            guard let self = self else { return }
+            if let error = error {
+                AlertManager.showSignInErrorAlert(on: self, error: error)
+                return
+            }
+            if let sceneDelegate = self.view.window?.windowScene?.delegate as? SceneDelegate {
+                sceneDelegate.checkAuthentication()
+            } else {
+                   AlertManager.showSignInErrorAlert(on: self)
+               }
+        }
     }
 
     @objc private func didTapNewUser() {

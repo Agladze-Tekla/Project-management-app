@@ -109,7 +109,6 @@ class SignupViewController: UIViewController {
             SignupViewModel.shared.registerUser(userRequest: registerUserRequest) { [weak self ]
                 wasRegistered, error in
                 guard let self = self else { return }
-                
                 if let error = error {
                     AlertManager.showRegistrationAlert(on: self, error: error)
                 }
@@ -124,5 +123,4 @@ class SignupViewController: UIViewController {
                 
             }
         }
-
 }
