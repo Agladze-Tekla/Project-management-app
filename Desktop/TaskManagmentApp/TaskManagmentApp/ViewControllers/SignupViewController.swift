@@ -18,7 +18,7 @@ class SignupViewController: UIViewController {
         //MARK: - ViewLifeCycle
         override func viewDidLoad() {
             super.viewDidLoad()
-    setupUI()
+            setupUI()
         }
         
         override func viewWillAppear(_ animated: Bool) {
