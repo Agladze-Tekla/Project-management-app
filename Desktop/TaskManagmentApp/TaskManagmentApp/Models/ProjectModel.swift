@@ -24,7 +24,7 @@ struct ProjectModel: Identifiable {
         var startTime: Date
         var endTime: Date
     }
-
+    
     static var sampleProject = ProjectModel(title: "Sample Project", description: "Helps make view and functions", label: .magenta, tasks: [sampleTask])
     static var sampleTask = TaskModel(title: "Sample Task", description: "Helper just like sampleProject", isCompleted: false, date: Date(), startTime: Date(), endTime: Date())
 }

@@ -13,10 +13,10 @@ struct OnboardingView: View {
     @State private var pageIndex = 0
     
     private let pages: [PageModel] = PageModel.samplePage
-
+    
     //MARK: - Body
     var body: some View {
-            onboarding
+        onboarding
     }
 }
 
@@ -73,7 +73,8 @@ extension OnboardingView {
     
     private var getStartedButton: some View {
         Button(action: {
-            UserDefaults.standard.set(true, forKey: "onboarding_viewed");                           print("Get Started tapped")
+            UserDefaults.standard.set(true, forKey: "onboarding_viewed");
+            print("Get Started tapped")
         }) {
             Text("Get Started")
                 .foregroundColor(.white)

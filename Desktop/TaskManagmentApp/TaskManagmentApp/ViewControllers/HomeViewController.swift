@@ -1,5 +1,5 @@
 //
-//  LoginViewController.swift
+//  HomeViewController.swift
 //  TaskManagmentApp
 //
 //  Created by Tekla on 1/30/24.
@@ -7,11 +7,11 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        view.backgroundColor = .blue
         // Do any additional setup after loading the view.
     }
     
