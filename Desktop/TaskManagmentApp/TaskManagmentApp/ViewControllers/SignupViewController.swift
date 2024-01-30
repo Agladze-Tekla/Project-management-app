@@ -82,14 +82,47 @@ class SignupViewController: UIViewController {
         }
         
         private func setupButtons() {
-            signUpButton.addTarget(self, action: #selector(didTapSignIn), for: .touchUpInside)
+            signUpButton.addTarget(self, action: #selector(didTapSignUp), for: .touchUpInside)
         }
         
-        @objc private func didTapSignIn() {
-            let vc = LoginViewController()
-            vc.modalPresentationStyle = .fullScreen
-            self.present(vc, animated: false, completion: nil)
+        @objc private func didTapSignUp() {
+            let registerUserRequest = RegisterUserRequest(
+                username: self.usernameField.text ?? "",
+                email: self.emailField.text ?? "",
+                password: self.passwordField.text ?? ""
+            )
+            
+            if !Validator.isValidUsername(username: registerUserRequest.username) {
+                AlertManager.showInvaliUsernameAlert(on: self)
+                return
+            }
+            
+            if !Validator.isValidEmail(email: registerUserRequest.email) {
+                AlertManager.showInvaliEmaildAlert(on: self)
+                return
+            }
+            
+            if !Validator.isPasswordValid(password: registerUserRequest.password) {
+                AlertManager.showInvaliPasswordAlert(on: self)
+                return
+            }
+            SignupViewModel.shared.registerUser(userRequest: registerUserRequest) { [weak self ]
+                wasRegistered, error in
+                guard let self = self else { return }
+                
+                if let error = error {
+                    AlertManager.showRegistrationAlert(on: self, error: error)
+                }
+                
+                if wasRegistered {
+                    if let sceneDelegate = self.view.window?.windowScene?.delegate as? SceneDelegate {
+                        sceneDelegate.checkAuthentication()
+                    } else {
+                        AlertManager.showRegistrationAlert(on: self)
+                    }
+                }
+                
+            }
         }
-
 
 }

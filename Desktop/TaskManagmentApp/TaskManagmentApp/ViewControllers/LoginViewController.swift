@@ -18,13 +18,14 @@ final class LoginViewController: UIViewController {
     //MARK: - ViewLifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-setupUI()
+        setupUI()
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = true
+        didTapNewUser()
     }
     
     //MARK: - UI Setup
