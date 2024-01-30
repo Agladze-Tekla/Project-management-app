@@ -29,7 +29,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if Auth.auth().currentUser == nil {
             self.goToController(viewController: LoginViewController())
         } else {
-            self.goToController(viewController: HomeViewController())
+            self.goToController(viewController: TabBarViewController())
         }
     }
     
