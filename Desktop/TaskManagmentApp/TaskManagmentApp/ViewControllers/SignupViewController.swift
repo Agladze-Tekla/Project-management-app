@@ -8,22 +8,88 @@
 import UIKit
 
 class SignupViewController: UIViewController {
+        //MARK: - UI Components
+        private let headerView = AuthHeaderView(title: "Sign Up", subTitle: "Create an account")
+    private let usernameField = CustomTextField(fieldType: .username)
+        private let emailField = CustomTextField(fieldType: .email)
+        private let passwordField = CustomTextField(fieldType: .password)
+        private let signUpButton = CustomButton(title: "Sign Up", hasBackground: true, fontSize: .big)
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+        //MARK: - ViewLifeCycle
+        override func viewDidLoad() {
+            super.viewDidLoad()
+    setupUI()
+        }
+        
+        override func viewWillAppear(_ animated: Bool) {
+            super.viewWillAppear(animated)
+            self.navigationController?.navigationBar.isHidden = true
+        }
+        
+        //MARK: - UI Setup
+        private func setupUI() {
+            setupBackground()
+            addSubviews()
+            setupConstraints()
+            setupButtons()
+        }
+        
+        private func setupBackground() {
+            view.backgroundColor = .systemBackground
+        }
+        
+        private func addSubviews() {
+            view.addSubview(headerView)
+            view.addSubview(usernameField)
+            view.addSubview(emailField)
+            view.addSubview(passwordField)
+            view.addSubview(signUpButton)
+        }
+        
+        private func setupConstraints() {
+            headerView.translatesAutoresizingMaskIntoConstraints = false
+            emailField.translatesAutoresizingMaskIntoConstraints = false
+            passwordField.translatesAutoresizingMaskIntoConstraints = false
+            signUpButton.translatesAutoresizingMaskIntoConstraints = false
+            usernameField.translatesAutoresizingMaskIntoConstraints = false
+            
+            NSLayoutConstraint.activate([
+                headerView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor),
+                headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+                headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+                headerView.heightAnchor.constraint(equalToConstant: 222),
+                
+                emailField.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 12),
+                emailField.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
+                emailField.heightAnchor.constraint(equalToConstant: 55),
+                emailField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
+                
+                passwordField.topAnchor.constraint(equalTo: emailField.bottomAnchor, constant: 22),
+                passwordField.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
+                passwordField.heightAnchor.constraint(equalToConstant: 55),
+                passwordField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
+                
+                signUpButton.topAnchor.constraint(equalTo: usernameField.bottomAnchor, constant: 22),
+                signUpButton.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
+                signUpButton.heightAnchor.constraint(equalToConstant: 55),
+                signUpButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
+                
+                usernameField.topAnchor.constraint(equalTo: passwordField.bottomAnchor, constant: 22),
+                usernameField.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
+                usernameField.heightAnchor.constraint(equalToConstant: 55),
+                usernameField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
+            ])
+        }
+        
+        private func setupButtons() {
+            signUpButton.addTarget(self, action: #selector(didTapSignIn), for: .touchUpInside)
+        }
+        
+        @objc private func didTapSignIn() {
+            let vc = LoginViewController()
+            vc.modalPresentationStyle = .fullScreen
+            self.present(vc, animated: false, completion: nil)
+        }
 
-        // Do any additional setup after loading the view.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
