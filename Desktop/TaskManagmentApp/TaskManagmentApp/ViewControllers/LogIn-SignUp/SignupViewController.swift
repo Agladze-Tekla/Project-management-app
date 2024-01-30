@@ -14,6 +14,7 @@ class SignupViewController: UIViewController {
         private let emailField = CustomTextField(fieldType: .email)
         private let passwordField = CustomTextField(fieldType: .password)
         private let signUpButton = CustomButton(title: "Sign Up", hasBackground: true, fontSize: .big)
+    private let haveAnAccountButton = CustomButton(title: "Already have an account? Sign in.", hasBackground: false, fontSize: .small)
 
         //MARK: - ViewLifeCycle
         override func viewDidLoad() {
@@ -44,6 +45,7 @@ class SignupViewController: UIViewController {
             view.addSubview(emailField)
             view.addSubview(passwordField)
             view.addSubview(signUpButton)
+            view.addSubview(haveAnAccountButton)
         }
         
         private func setupConstraints() {
@@ -52,6 +54,7 @@ class SignupViewController: UIViewController {
             passwordField.translatesAutoresizingMaskIntoConstraints = false
             signUpButton.translatesAutoresizingMaskIntoConstraints = false
             usernameField.translatesAutoresizingMaskIntoConstraints = false
+            haveAnAccountButton.translatesAutoresizingMaskIntoConstraints = false
             
             NSLayoutConstraint.activate([
                 headerView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor),
@@ -59,7 +62,12 @@ class SignupViewController: UIViewController {
                 headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
                 headerView.heightAnchor.constraint(equalToConstant: 222),
                 
-                emailField.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 12),
+                usernameField.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 12),
+                usernameField.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
+                usernameField.heightAnchor.constraint(equalToConstant: 55),
+                usernameField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
+                
+                emailField.topAnchor.constraint(equalTo: usernameField.bottomAnchor, constant: 22),
                 emailField.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
                 emailField.heightAnchor.constraint(equalToConstant: 55),
                 emailField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
@@ -69,21 +77,27 @@ class SignupViewController: UIViewController {
                 passwordField.heightAnchor.constraint(equalToConstant: 55),
                 passwordField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
                 
-                signUpButton.topAnchor.constraint(equalTo: usernameField.bottomAnchor, constant: 22),
+                signUpButton.topAnchor.constraint(equalTo: passwordField.bottomAnchor, constant: 22),
                 signUpButton.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
                 signUpButton.heightAnchor.constraint(equalToConstant: 55),
                 signUpButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
                 
-                usernameField.topAnchor.constraint(equalTo: passwordField.bottomAnchor, constant: 22),
-                usernameField.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
-                usernameField.heightAnchor.constraint(equalToConstant: 55),
-                usernameField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
+                haveAnAccountButton.topAnchor.constraint(equalTo: signUpButton.bottomAnchor, constant: 11),
+                haveAnAccountButton.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
+                haveAnAccountButton.heightAnchor.constraint(equalToConstant: 44),
+                haveAnAccountButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85)
             ])
         }
         
         private func setupButtons() {
             signUpButton.addTarget(self, action: #selector(didTapSignUp), for: .touchUpInside)
+            haveAnAccountButton.addTarget(self, action: #selector(didTapHaveAnAccount), for: .touchUpInside)
         }
+    
+    @objc private func didTapHaveAnAccount() {
+        let vc = LoginViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
         
         @objc private func didTapSignUp() {
             let registerUserRequest = RegisterUserRequest(
@@ -98,7 +112,7 @@ class SignupViewController: UIViewController {
             }
             
             if !Validator.isValidEmail(email: registerUserRequest.email) {
-                AlertManager.showInvaliEmaildAlert(on: self)
+                AlertManager.showInvaliEmailAlert(on: self)
                 return
             }
             

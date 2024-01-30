@@ -19,7 +19,7 @@ final class AlertManager {
 
 //MARK: - SignIn Alerts
 extension AlertManager {
-    public static func showInvaliEmaildAlert(on vc: UIViewController) {
+    public static func showInvaliEmailAlert(on vc: UIViewController) {
         self.showBasicAlert(vc: vc, title: "Invalid Email", message: "Please write a valid email.")
     }
     

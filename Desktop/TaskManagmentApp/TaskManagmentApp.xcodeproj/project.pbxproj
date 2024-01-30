@@ -90,8 +90,8 @@
 		3E5778C82B698C50009C5C1F /* TabBarViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				3E5778B02B692143009C5C1F /* HomeViewController.swift */,
-				3E5778C92B698C7B009C5C1F /* TaskViewController.swift */,
+				3E5778CF2B6990BD009C5C1F /* TasksPage */,
+				3E5778CE2B6990AE009C5C1F /* HomePage */,
 			);
 			path = TabBarViewControllers;
 			sourceTree = "<group>";
@@ -103,6 +103,22 @@
 				3E5778AB2B692115009C5C1F /* LoginViewController.swift */,
 			);
 			path = "LogIn-SignUp";
+			sourceTree = "<group>";
+		};
+		3E5778CE2B6990AE009C5C1F /* HomePage */ = {
+			isa = PBXGroup;
+			children = (
+				3E5778B02B692143009C5C1F /* HomeViewController.swift */,
+			);
+			path = HomePage;
+			sourceTree = "<group>";
+		};
+		3E5778CF2B6990BD009C5C1F /* TasksPage */ = {
+			isa = PBXGroup;
+			children = (
+				3E5778C92B698C7B009C5C1F /* TaskViewController.swift */,
+			);
+			path = TasksPage;
 			sourceTree = "<group>";
 		};
 		3E5F2C012B606F3E0072006F = {
