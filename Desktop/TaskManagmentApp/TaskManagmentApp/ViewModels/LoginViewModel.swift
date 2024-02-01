@@ -8,3 +8,6 @@
 import FirebaseAuth
 import UIKit
 
+final class LoginViewModel {
+   
+}

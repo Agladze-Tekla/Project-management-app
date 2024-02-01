@@ -19,6 +19,10 @@
 		3E5778C12B695711009C5C1F /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5778C02B695711009C5C1F /* Validator.swift */; };
 		3E5778C62B698BDB009C5C1F /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5778C52B698BDB009C5C1F /* TabBarViewController.swift */; };
 		3E5778CA2B698C7B009C5C1F /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5778C92B698C7B009C5C1F /* TaskViewController.swift */; };
+		3E5778D32B6C3A0F009C5C1F /* SignupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5778D22B6C3A0F009C5C1F /* SignupViewModel.swift */; };
+		3E5778D62B6C3A56009C5C1F /* ProjectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5778D52B6C3A55009C5C1F /* ProjectViewModel.swift */; };
+		3E5778DA2B6C3A6F009C5C1F /* TaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5778D92B6C3A6F009C5C1F /* TaskViewModel.swift */; };
+		3E5778DD2B6C4A9D009C5C1F /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5778DC2B6C4A9D009C5C1F /* HomeViewModel.swift */; };
 		3E5F2C0E2B606F3E0072006F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5F2C0D2B606F3E0072006F /* AppDelegate.swift */; };
 		3E5F2C102B606F3E0072006F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5F2C0F2B606F3E0072006F /* SceneDelegate.swift */; };
 		3E5F2C172B606F470072006F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E5F2C162B606F470072006F /* Assets.xcassets */; };
@@ -28,7 +32,7 @@
 		3E5F2C322B607F0C0072006F /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5F2C312B607F0C0072006F /* OnboardingView.swift */; };
 		3E5F2C362B6080700072006F /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5F2C352B6080700072006F /* PageView.swift */; };
 		3E5F2C3B2B60859F0072006F /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5F2C3A2B60859F0072006F /* OnboardingViewController.swift */; };
-		3E61B4F72B61B60300DB760D /* SignupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E61B4F62B61B60300DB760D /* SignupViewModel.swift */; };
+		3E61B4F72B61B60300DB760D /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E61B4F62B61B60300DB760D /* Authentication.swift */; };
 		3E635A122B613F16007D0FBE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3E635A112B613F15007D0FBE /* GoogleService-Info.plist */; };
 		3E635A162B6157CE007D0FBE /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 3E635A152B6157CE007D0FBE /* FirebaseAuth */; };
 		3E635A182B6157CE007D0FBE /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 3E635A172B6157CE007D0FBE /* FirebaseFirestore */; };
@@ -49,6 +53,10 @@
 		3E5778C02B695711009C5C1F /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		3E5778C52B698BDB009C5C1F /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		3E5778C92B698C7B009C5C1F /* TaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewController.swift; sourceTree = "<group>"; };
+		3E5778D22B6C3A0F009C5C1F /* SignupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewModel.swift; sourceTree = "<group>"; };
+		3E5778D52B6C3A55009C5C1F /* ProjectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectViewModel.swift; sourceTree = "<group>"; };
+		3E5778D92B6C3A6F009C5C1F /* TaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewModel.swift; sourceTree = "<group>"; };
+		3E5778DC2B6C4A9D009C5C1F /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		3E5F2C0A2B606F3E0072006F /* TaskManagmentApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaskManagmentApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E5F2C0D2B606F3E0072006F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3E5F2C0F2B606F3E0072006F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -60,7 +68,7 @@
 		3E5F2C312B607F0C0072006F /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		3E5F2C352B6080700072006F /* PageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
 		3E5F2C3A2B60859F0072006F /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
-		3E61B4F62B61B60300DB760D /* SignupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewModel.swift; sourceTree = "<group>"; };
+		3E61B4F62B61B60300DB760D /* Authentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
 		3E635A112B613F15007D0FBE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3E635A1E2B615E76007D0FBE /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -194,8 +202,12 @@
 		3E5F2C272B6071B70072006F /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				3E61B4F62B61B60300DB760D /* Authentication.swift */,
 				3E635A1E2B615E76007D0FBE /* LoginViewModel.swift */,
-				3E61B4F62B61B60300DB760D /* SignupViewModel.swift */,
+				3E5778D22B6C3A0F009C5C1F /* SignupViewModel.swift */,
+				3E5778D52B6C3A55009C5C1F /* ProjectViewModel.swift */,
+				3E5778D92B6C3A6F009C5C1F /* TaskViewModel.swift */,
+				3E5778DC2B6C4A9D009C5C1F /* HomeViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -312,9 +324,10 @@
 				3E5F2C2F2B6073D50072006F /* ProjectModel.swift in Sources */,
 				3E5F2C2B2B6073C00072006F /* OnboardingModel.swift in Sources */,
 				3E57787D2B65691F009C5C1F /* Encodable.swift in Sources */,
+				3E5778DD2B6C4A9D009C5C1F /* HomeViewModel.swift in Sources */,
 				3E5F2C3B2B60859F0072006F /* OnboardingViewController.swift in Sources */,
 				3E5778B82B692D2C009C5C1F /* CustomTextField.swift in Sources */,
-				3E61B4F72B61B60300DB760D /* SignupViewModel.swift in Sources */,
+				3E61B4F72B61B60300DB760D /* Authentication.swift in Sources */,
 				3E5778B12B692143009C5C1F /* HomeViewController.swift in Sources */,
 				3E5F2C322B607F0C0072006F /* OnboardingView.swift in Sources */,
 				3E5778CA2B698C7B009C5C1F /* TaskViewController.swift in Sources */,
@@ -322,9 +335,12 @@
 				3E5778BE2B693E3D009C5C1F /* AlertManager.swift in Sources */,
 				3E5F2C0E2B606F3E0072006F /* AppDelegate.swift in Sources */,
 				3E5F2C102B606F3E0072006F /* SceneDelegate.swift in Sources */,
+				3E5778DA2B6C3A6F009C5C1F /* TaskViewModel.swift in Sources */,
 				3E5778AE2B69212C009C5C1F /* SignupViewController.swift in Sources */,
 				3E5778C12B695711009C5C1F /* Validator.swift in Sources */,
 				3E5F2C362B6080700072006F /* PageView.swift in Sources */,
+				3E5778D62B6C3A56009C5C1F /* ProjectViewModel.swift in Sources */,
+				3E5778D32B6C3A0F009C5C1F /* SignupViewModel.swift in Sources */,
 				3E5778762B651317009C5C1F /* UserModel.swift in Sources */,
 				3E5778BB2B6934E9009C5C1F /* CustomButton.swift in Sources */,
 				3E5778AC2B692115009C5C1F /* LoginViewController.swift in Sources */,

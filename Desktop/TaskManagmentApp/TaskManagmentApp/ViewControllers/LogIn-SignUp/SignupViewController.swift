@@ -120,7 +120,7 @@ class SignupViewController: UIViewController {
                 AlertManager.showInvaliPasswordAlert(on: self)
                 return
             }
-            SignupViewModel.shared.registerUser(userRequest: registerUserRequest) { [weak self ]
+            Authentication.shared.registerUser(userRequest: registerUserRequest) { [weak self ]
                 wasRegistered, error in
                 guard let self = self else { return }
                 if let error = error {

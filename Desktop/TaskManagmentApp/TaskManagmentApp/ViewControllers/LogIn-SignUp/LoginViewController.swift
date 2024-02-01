@@ -99,7 +99,7 @@ final class LoginViewController: UIViewController {
             return
         }
         
-        SignupViewModel.shared.signIn(userRequest: loginRequest) { [weak self] error in
+        Authentication.shared.signIn(userRequest: loginRequest) { [weak self] error in
             guard let self = self else { return }
             if let error = error {
                 AlertManager.showSignInErrorAlert(on: self, error: error)
