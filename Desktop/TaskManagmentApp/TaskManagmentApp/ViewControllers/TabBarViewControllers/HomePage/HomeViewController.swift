@@ -94,6 +94,7 @@ final class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        setupDelegates()
     }
     
     //MARK: - Private Methods
@@ -157,7 +158,14 @@ final class HomeViewController: UIViewController {
         }
     }
     
+    private func setupDelegates() {
+        viewModel.delegate = self
+    }
+    
     @objc private func didTapLogout() {
+        viewModel.logout()
+        //TODO: - REMOVE COMMENT
+        /*
         Authentication.shared.signOut { [weak self] error in
             guard let self = self else { return }
             if let error = error {
@@ -168,6 +176,28 @@ final class HomeViewController: UIViewController {
             SceneDelegate {
                 sceneDelegate.checkAuthentication()
             }
+        }
+ */
+    }
+}
+
+//MARK: - Extension
+extension HomeViewController: LoginViewModelDelegate {
+    func didLogoutSuccessfully() {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+
+            if let sceneDelegate = self.view.window?.windowScene?.delegate as? SceneDelegate {
+                sceneDelegate.checkAuthentication()
+            }
+        }
+    }
+
+    func didFailLogout(error: Error) {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            AlertManager.showLogOutError(on: self, error: error)
+            return
         }
     }
 }
