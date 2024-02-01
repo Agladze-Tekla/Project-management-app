@@ -27,14 +27,15 @@ final class HomeViewController: UIViewController {
         stack.isLayoutMarginsRelativeArrangement = true
         stack.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 20, leading: 20, bottom: 20, trailing: 20)
         stack.translatesAutoresizingMaskIntoConstraints = false
-        return stack    }()
+        return stack
+    }()
     
     private let accountStackView: UIStackView = {
         let stack = UIStackView()
         stack.axis = .vertical
         stack.alignment = .leading
         stack.layer.cornerRadius = 13
-        stack.spacing = 10
+        stack.spacing = 20
         stack.distribution = .equalSpacing
         stack.isLayoutMarginsRelativeArrangement = true
         stack.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 20, leading: 20, bottom: 20, trailing: 20)
@@ -44,7 +45,7 @@ final class HomeViewController: UIViewController {
     
     private let todaysTaskLabel: UILabel = {
         let label = UILabel()
-        label.text = "You have 9 tasks left for today."
+        label.text = "Your tasks are loading..."
         label.font = .systemFont(ofSize: 18)
         label.textColor = .black
         return label
@@ -56,8 +57,6 @@ final class HomeViewController: UIViewController {
         stack.layer.cornerRadius = 13
         stack.distribution = .equalSpacing
         stack.isLayoutMarginsRelativeArrangement = true
-        //stack.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 20, leading: 20, bottom: 20, trailing: 20)
-        stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
     
@@ -69,7 +68,6 @@ final class HomeViewController: UIViewController {
         stack.distribution = .equalSpacing
         stack.isLayoutMarginsRelativeArrangement = true
         stack.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 20, leading: 20, bottom: 20, trailing: 20)
-        stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
     
