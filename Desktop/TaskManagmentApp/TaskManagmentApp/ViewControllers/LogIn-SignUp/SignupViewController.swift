@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SignupViewController: UIViewController {
+final class SignupViewController: UIViewController {
         //MARK: - UI Components
         private let headerView = AuthHeaderView(title: "Sign Up", subTitle: "Create an account")
     private let usernameField = CustomTextField(fieldType: .username)
@@ -15,11 +15,14 @@ class SignupViewController: UIViewController {
         private let passwordField = CustomTextField(fieldType: .password)
         private let signUpButton = CustomButton(title: "Sign Up", hasBackground: true, fontSize: .big)
     private let haveAnAccountButton = CustomButton(title: "Already have an account? Sign in.", hasBackground: false, fontSize: .small)
+    
+    private let viewModel = SignupViewModel();
 
         //MARK: - ViewLifeCycle
         override func viewDidLoad() {
             super.viewDidLoad()
             setupUI()
+            setupDelegate()
         }
         
         override func viewWillAppear(_ animated: Bool) {
@@ -94,47 +97,44 @@ class SignupViewController: UIViewController {
             haveAnAccountButton.addTarget(self, action: #selector(didTapHaveAnAccount), for: .touchUpInside)
         }
     
+    private func setupDelegate() {
+    viewModel.delegate = self
+    }
+    
     @objc private func didTapHaveAnAccount() {
         let vc = LoginViewController()
         self.navigationController?.pushViewController(vc, animated: true)
     }
         
         @objc private func didTapSignUp() {
-            let registerUserRequest = RegisterUserRequest(
-                username: self.usernameField.text ?? "",
-                email: self.emailField.text ?? "",
-                password: self.passwordField.text ?? ""
-            )
-            
-            if !Validator.isValidUsername(username: registerUserRequest.username) {
-                AlertManager.showInvaliUsernameAlert(on: self)
-                return
-            }
-            
-            if !Validator.isValidEmail(email: registerUserRequest.email) {
-                AlertManager.showInvaliEmailAlert(on: self)
-                return
-            }
-            
-            if !Validator.isPasswordValid(password: registerUserRequest.password) {
-                AlertManager.showInvaliPasswordAlert(on: self)
-                return
-            }
-            Authentication.shared.registerUser(userRequest: registerUserRequest) { [weak self ]
-                wasRegistered, error in
-                guard let self = self else { return }
-                if let error = error {
-                    AlertManager.showRegistrationAlert(on: self, error: error)
-                }
-                
-                if wasRegistered {
-                    if let sceneDelegate = self.view.window?.windowScene?.delegate as? SceneDelegate {
-                        sceneDelegate.checkAuthentication()
-                    } else {
-                        AlertManager.showRegistrationAlert(on: self)
-                    }
-                }
-                
-            }
+            viewModel.signupUser(
+                        username: usernameField.text ?? "",
+                        email: emailField.text ?? "",
+                        password: passwordField.text ?? ""
+                    )
         }
+}
+
+//MARK: - Extension
+extension SignupViewController: SignupViewModelDelegate {
+    func signupSuccess() {
+        if let sceneDelegate = self.view.window?.windowScene?.delegate as? SceneDelegate {
+            sceneDelegate.checkAuthentication()
+        }
+    }
+
+    func signupError(_ error: SignupError) {
+        switch error {
+        case .invalidUsername:
+            AlertManager.showInvaliUsernameAlert(on: self)
+        case .invalidEmail:
+            AlertManager.showInvaliEmailAlert(on: self)
+        case .invalidPassword:
+            AlertManager.showInvaliPasswordAlert(on: self)
+        case .registrationError(let registrationError):
+            AlertManager.showRegistrationAlert(on: self, error: registrationError)
+        case .unknownError:
+            AlertManager.showRegistrationAlert(on: self)
+        }
+    }
 }

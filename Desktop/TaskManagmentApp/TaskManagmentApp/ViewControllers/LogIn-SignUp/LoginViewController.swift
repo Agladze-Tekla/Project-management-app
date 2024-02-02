@@ -94,34 +94,6 @@ final class LoginViewController: UIViewController {
     
     @objc private func didTapSignIn() {
         viewModel.loginUser(email: emailField.text ?? "", password: passwordField.text ?? "")
-        //TODO: - REMOVE COMMENT
-        /*
-        let loginRequest = LoginUserRequest(email: self.emailField.text ?? "", password: self.passwordField.text ?? "")
-        
-        if !Validator.isValidEmail(email: loginRequest.email) {
-            AlertManager.showInvaliEmailAlert(on: self)
-            return
-        }
-        
-        if !Validator.isPasswordValid(password: loginRequest.password) {
-            AlertManager.showInvaliPasswordAlert(on: self)
-            return
-        }
-        
-        Authentication.shared.signIn(userRequest: loginRequest) { [weak self] error in
-            guard let self = self else { return }
-            if let error = error {
-                AlertManager.showSignInErrorAlert(on: self, error: error)
-                return
-            }
-            if let sceneDelegate = self.view.window?.windowScene?.delegate as? SceneDelegate {
-                sceneDelegate.checkAuthentication()
-            } else {
-                   AlertManager.showSignInErrorAlert(on: self)
-               }
- 
-        }
- */
     }
 
     @objc private func didTapNewUser() {

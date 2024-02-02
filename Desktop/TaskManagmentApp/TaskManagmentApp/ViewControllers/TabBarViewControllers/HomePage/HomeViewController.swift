@@ -164,20 +164,6 @@ final class HomeViewController: UIViewController {
     
     @objc private func didTapLogout() {
         viewModel.logout()
-        //TODO: - REMOVE COMMENT
-        /*
-        Authentication.shared.signOut { [weak self] error in
-            guard let self = self else { return }
-            if let error = error {
-                AlertManager.showLogOutError(on: self, error: error)
-                return
-            }
-            if let sceneDelegate = self.view.window?.windowScene?.delegate as?
-            SceneDelegate {
-                sceneDelegate.checkAuthentication()
-            }
-        }
- */
     }
 }
 
