@@ -14,11 +14,13 @@ final class LoginViewController: UIViewController {
     private let passwordField = CustomTextField(fieldType: .password)
     private let signInButton = CustomButton(title: "Log In", hasBackground: true, fontSize: .big)
     private let newUserButton = CustomButton(title: "Don't have an account? Sign up.", hasBackground: false, fontSize: .small)
+    private let viewModel = LoginViewModel()
 
     //MARK: - ViewLifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        setupDelegate()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -86,7 +88,14 @@ final class LoginViewController: UIViewController {
         newUserButton.addTarget(self, action: #selector(didTapNewUser), for: .touchUpInside)
     }
     
+    private func setupDelegate() {
+        viewModel.delegate = self
+    }
+    
     @objc private func didTapSignIn() {
+        viewModel.loginUser(email: emailField.text ?? "", password: passwordField.text ?? "")
+        //TODO: - REMOVE COMMENT
+        /*
         let loginRequest = LoginUserRequest(email: self.emailField.text ?? "", password: self.passwordField.text ?? "")
         
         if !Validator.isValidEmail(email: loginRequest.email) {
@@ -110,11 +119,33 @@ final class LoginViewController: UIViewController {
             } else {
                    AlertManager.showSignInErrorAlert(on: self)
                }
+ 
         }
+ */
     }
 
     @objc private func didTapNewUser() {
         let vc = SignupViewController()
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+//MARK: - Extensions
+extension LoginViewController: LoginViewModelDelegate {
+    func loginSuccess() {
+        if let sceneDelegate = self.view.window?.windowScene?.delegate as? SceneDelegate {
+                   sceneDelegate.checkAuthentication()
+               }
+    }
+    
+    func loginError(_ error: LoginError) {
+        switch error {
+                case .invalidEmail:
+                    AlertManager.showInvaliEmailAlert(on: self)
+                case .invalidPassword:
+                    AlertManager.showInvaliPasswordAlert(on: self)
+                case .authenticationError:
+                    AlertManager.showSignInErrorAlert(on: self)
+                }
     }
 }

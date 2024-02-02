@@ -7,24 +7,42 @@
 
 import Foundation
 
-protocol LoginViewModelDelegate: AnyObject {
-    func didLogoutSuccessfully()
-    func didFailLogout(error: Error)
+enum LoginError: Error {
+    case invalidEmail
+    case invalidPassword
+    case authenticationError
 }
 
-final class LoginViewModel {
+protocol LoginViewModelDelegate: AnyObject {
+    func loginSuccess()
+    func loginError(_ error: LoginError)
+}
+
+class LoginViewModel {
     weak var delegate: LoginViewModelDelegate?
 
-    func logout() {
-        Authentication.shared.signOut { [weak self] error in
+    func loginUser(email: String, password: String) {
+        let loginRequest = LoginUserRequest(email: email, password: password)
+
+        if !Validator.isValidEmail(email: loginRequest.email) {
+            delegate?.loginError(.invalidEmail)
+            return
+        }
+
+        if !Validator.isPasswordValid(password: loginRequest.password) {
+            delegate?.loginError(.invalidPassword)
+            return
+        }
+
+        Authentication.shared.signIn(userRequest: loginRequest) { [weak self] error in
             guard let self = self else { return }
 
             if let error = error {
-                self.delegate?.didFailLogout(error: error)
+                self.delegate?.loginError(.authenticationError)
                 return
             }
-            self.delegate?.didLogoutSuccessfully()
+
+            self.delegate?.loginSuccess()
         }
     }
 }
-

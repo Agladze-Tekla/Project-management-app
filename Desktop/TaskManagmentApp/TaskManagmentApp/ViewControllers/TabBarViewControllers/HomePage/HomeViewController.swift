@@ -88,7 +88,7 @@ final class HomeViewController: UIViewController {
         return imageView
     }()
 
-    private let viewModel = LoginViewModel();
+    private let viewModel = HomeViewModel();
     
     //MARK: - ViewLifeCycle
     override func viewDidLoad() {
@@ -181,8 +181,8 @@ final class HomeViewController: UIViewController {
     }
 }
 
-//MARK: - Extension
-extension HomeViewController: LoginViewModelDelegate {
+//MARK: - Extensions
+extension HomeViewController: HomeViewModelDelegate {
     func didLogoutSuccessfully() {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
