@@ -12,7 +12,7 @@ final class AuthHeaderView: UIView {
     private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
-        imageView.image = UIImage(systemName: "person")
+        imageView.image = UIImage(systemName: "pencil.circle.fill")
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()

@@ -9,10 +9,20 @@ import UIKit
 
 final class HomeViewController: UIViewController {
     //MARK: - UI Components
+    private let addProjectButton = CustomButton(title: "+ Add Project", hasBackground: false, fontSize: .small)
+    
+    private let projectLabelButtonStackView: UIStackView = {
+        let stack = UIStackView()
+        stack.layer.cornerRadius = 13
+        stack.spacing = 30
+        stack.distribution = .equalCentering
+        return stack
+    }()
+    
     private let projectLabel: UILabel = {
         let label = UILabel()
         label.text = "Projects"
-        label.font = .systemFont(ofSize: 20)
+        label.font = .systemFont(ofSize: 18)
         label.textColor = .black
         return label
     }()
@@ -46,7 +56,7 @@ final class HomeViewController: UIViewController {
     private let todaysTaskLabel: UILabel = {
         let label = UILabel()
         label.text = "Your tasks are loading..."
-        label.font = .systemFont(ofSize: 18)
+        label.font = .systemFont(ofSize: 16)
         label.textColor = .black
         return label
     }()
@@ -81,10 +91,14 @@ final class HomeViewController: UIViewController {
     }()
     
     private let image: UIImageView = {
-        var image = UIImage()
-        image = UIImage(systemName: "sun.min")!
-        let imageView = UIImageView(image: image)
-        imageView.frame = CGRect(x: 0, y: 0, width: 25, height: 25)
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = UIImage(systemName: "pencil.circle.fill")
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            imageView.widthAnchor.constraint(equalToConstant: 50),
+            imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor)
+        ])
         return imageView
     }()
 
@@ -104,6 +118,7 @@ final class HomeViewController: UIViewController {
         setupConstraints()
         setupNavigationButton()
         setupWelcomeLabel()
+        setupButtons()
     }
     
     private func setupBackground() {
@@ -116,7 +131,10 @@ final class HomeViewController: UIViewController {
         progressStackView.addArrangedSubview(todaysTaskLabel)
         accountStackView.addArrangedSubview(welcomeStackView)
         accountStackView.addArrangedSubview(progressStackView)
-        projectStackView.addArrangedSubview(projectLabel)
+        projectLabelButtonStackView.addArrangedSubview(projectLabel)
+        projectLabelButtonStackView.addArrangedSubview(addProjectButton)
+        projectStackView.addArrangedSubview(projectLabelButtonStackView)
+        
         view.addSubview(accountStackView)
         view.addSubview(projectStackView)
     }
@@ -142,7 +160,7 @@ final class HomeViewController: UIViewController {
     }
     
     private func setupNavigationButton() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(didTapLogout))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log Out", style: .plain, target: self, action: #selector(didTapLogout))
     }
     
     private func setupWelcomeLabel() {
@@ -160,6 +178,19 @@ final class HomeViewController: UIViewController {
     
     private func setupDelegates() {
         viewModel.delegate = self
+    }
+    
+    private func setupButtons() {
+        addProjectButton.addTarget(self, action: #selector(didTapNewProject), for: .touchUpInside)
+    }
+    
+    private func setupDelegate() {
+        viewModel.delegate = self
+    }
+    
+    @objc private func didTapNewProject() {
+        let vc = ProjectViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc private func didTapLogout() {

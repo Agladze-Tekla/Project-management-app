@@ -8,15 +8,15 @@
 import Foundation
 import UIKit
 
-struct ProjectModel: Identifiable {
-    let id = UUID()
+struct ProjectModel: Codable {
+    let id: String
     var title: String
     var description: String?
-    var label: UIColor
+    //var label: UIColor
     var tasks: [TaskModel]?
-    
-    struct TaskModel: Identifiable {
-        let id = UUID()
+}
+    struct TaskModel: Codable {
+        let id: String
         var title: String
         var description: String?
         var isCompleted: Bool
@@ -25,6 +25,7 @@ struct ProjectModel: Identifiable {
         var endTime: Date
     }
     
+    /*
     static var sampleProject = ProjectModel(title: "Sample Project", description: "Helps make view and functions", label: .magenta, tasks: [sampleTask])
     static var sampleTask = TaskModel(title: "Sample Task", description: "Helper just like sampleProject", isCompleted: false, date: Date(), startTime: Date(), endTime: Date())
-}
+ */

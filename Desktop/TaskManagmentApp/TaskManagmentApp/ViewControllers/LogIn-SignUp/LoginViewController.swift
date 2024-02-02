@@ -10,10 +10,15 @@ import UIKit
 final class LoginViewController: UIViewController {
     //MARK: - UI Components
     private let headerView = AuthHeaderView(title: "Log In", subTitle: "Sign in to your account")
-    private let emailField = CustomTextField(fieldType: .email)
-    private let passwordField = CustomTextField(fieldType: .password)
+    
+    private let emailField = CustomAuthTextField(fieldType: .email)
+    
+    private let passwordField = CustomAuthTextField(fieldType: .password)
+    
     private let signInButton = CustomButton(title: "Log In", hasBackground: true, fontSize: .big)
+    
     private let newUserButton = CustomButton(title: "Don't have an account? Sign up.", hasBackground: false, fontSize: .small)
+    
     private let viewModel = LoginViewModel()
 
     //MARK: - ViewLifeCycle

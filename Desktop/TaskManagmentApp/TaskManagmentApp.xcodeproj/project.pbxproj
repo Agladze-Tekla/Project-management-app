@@ -13,7 +13,7 @@
 		3E5778AE2B69212C009C5C1F /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5778AD2B69212C009C5C1F /* SignupViewController.swift */; };
 		3E5778B12B692143009C5C1F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5778B02B692143009C5C1F /* HomeViewController.swift */; };
 		3E5778B52B69229F009C5C1F /* AuthHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5778B42B69229F009C5C1F /* AuthHeaderView.swift */; };
-		3E5778B82B692D2C009C5C1F /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5778B72B692D2C009C5C1F /* CustomTextField.swift */; };
+		3E5778B82B692D2C009C5C1F /* CustomAuthTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5778B72B692D2C009C5C1F /* CustomAuthTextField.swift */; };
 		3E5778BB2B6934E9009C5C1F /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5778BA2B6934E9009C5C1F /* CustomButton.swift */; };
 		3E5778BE2B693E3D009C5C1F /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5778BD2B693E3D009C5C1F /* AlertManager.swift */; };
 		3E5778C12B695711009C5C1F /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5778C02B695711009C5C1F /* Validator.swift */; };
@@ -23,6 +23,8 @@
 		3E5778D62B6C3A56009C5C1F /* ProjectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5778D52B6C3A55009C5C1F /* ProjectViewModel.swift */; };
 		3E5778DA2B6C3A6F009C5C1F /* TaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5778D92B6C3A6F009C5C1F /* TaskViewModel.swift */; };
 		3E5778DD2B6C4A9D009C5C1F /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5778DC2B6C4A9D009C5C1F /* HomeViewModel.swift */; };
+		3E5778E12B6C7746009C5C1F /* ProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5778E02B6C7746009C5C1F /* ProjectViewController.swift */; };
+		3E5778ED2B6C882F009C5C1F /* UnderlinedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5778EC2B6C882F009C5C1F /* UnderlinedTextField.swift */; };
 		3E5F2C0E2B606F3E0072006F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5F2C0D2B606F3E0072006F /* AppDelegate.swift */; };
 		3E5F2C102B606F3E0072006F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5F2C0F2B606F3E0072006F /* SceneDelegate.swift */; };
 		3E5F2C172B606F470072006F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E5F2C162B606F470072006F /* Assets.xcassets */; };
@@ -47,7 +49,7 @@
 		3E5778AD2B69212C009C5C1F /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		3E5778B02B692143009C5C1F /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		3E5778B42B69229F009C5C1F /* AuthHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthHeaderView.swift; sourceTree = "<group>"; };
-		3E5778B72B692D2C009C5C1F /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		3E5778B72B692D2C009C5C1F /* CustomAuthTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAuthTextField.swift; sourceTree = "<group>"; };
 		3E5778BA2B6934E9009C5C1F /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		3E5778BD2B693E3D009C5C1F /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		3E5778C02B695711009C5C1F /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
@@ -57,6 +59,8 @@
 		3E5778D52B6C3A55009C5C1F /* ProjectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectViewModel.swift; sourceTree = "<group>"; };
 		3E5778D92B6C3A6F009C5C1F /* TaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewModel.swift; sourceTree = "<group>"; };
 		3E5778DC2B6C4A9D009C5C1F /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		3E5778E02B6C7746009C5C1F /* ProjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectViewController.swift; sourceTree = "<group>"; };
+		3E5778EC2B6C882F009C5C1F /* UnderlinedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlinedTextField.swift; sourceTree = "<group>"; };
 		3E5F2C0A2B606F3E0072006F /* TaskManagmentApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaskManagmentApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E5F2C0D2B606F3E0072006F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3E5F2C0F2B606F3E0072006F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -104,13 +108,13 @@
 			path = TabBarViewControllers;
 			sourceTree = "<group>";
 		};
-		3E5778CD2B698F08009C5C1F /* LogIn-SignUp */ = {
+		3E5778CD2B698F08009C5C1F /* Login-Signup */ = {
 			isa = PBXGroup;
 			children = (
 				3E5778AD2B69212C009C5C1F /* SignupViewController.swift */,
 				3E5778AB2B692115009C5C1F /* LoginViewController.swift */,
 			);
-			path = "LogIn-SignUp";
+			path = "Login-Signup";
 			sourceTree = "<group>";
 		};
 		3E5778CE2B6990AE009C5C1F /* HomePage */ = {
@@ -127,6 +131,14 @@
 				3E5778C92B698C7B009C5C1F /* TaskViewController.swift */,
 			);
 			path = TasksPage;
+			sourceTree = "<group>";
+		};
+		3E5778DF2B6C7726009C5C1F /* AddItemViews */ = {
+			isa = PBXGroup;
+			children = (
+				3E5778E02B6C7746009C5C1F /* ProjectViewController.swift */,
+			);
+			path = AddItemViews;
 			sourceTree = "<group>";
 		};
 		3E5F2C012B606F3E0072006F = {
@@ -183,10 +195,11 @@
 			isa = PBXGroup;
 			children = (
 				3E5778B42B69229F009C5C1F /* AuthHeaderView.swift */,
-				3E5778B72B692D2C009C5C1F /* CustomTextField.swift */,
+				3E5778B72B692D2C009C5C1F /* CustomAuthTextField.swift */,
 				3E5778BA2B6934E9009C5C1F /* CustomButton.swift */,
 				3E5778BD2B693E3D009C5C1F /* AlertManager.swift */,
 				3E5778C02B695711009C5C1F /* Validator.swift */,
+				3E5778EC2B6C882F009C5C1F /* UnderlinedTextField.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -225,7 +238,8 @@
 		3E5F2C292B6071D80072006F /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				3E5778CD2B698F08009C5C1F /* LogIn-SignUp */,
+				3E5778DF2B6C7726009C5C1F /* AddItemViews */,
+				3E5778CD2B698F08009C5C1F /* Login-Signup */,
 				3E5778C82B698C50009C5C1F /* TabBarViewControllers */,
 				3E5778C42B698B9F009C5C1F /* TabBar */,
 				3E5F2C342B60804F0072006F /* Onboarding */,
@@ -325,8 +339,9 @@
 				3E5F2C2B2B6073C00072006F /* OnboardingModel.swift in Sources */,
 				3E57787D2B65691F009C5C1F /* Encodable.swift in Sources */,
 				3E5778DD2B6C4A9D009C5C1F /* HomeViewModel.swift in Sources */,
+				3E5778ED2B6C882F009C5C1F /* UnderlinedTextField.swift in Sources */,
 				3E5F2C3B2B60859F0072006F /* OnboardingViewController.swift in Sources */,
-				3E5778B82B692D2C009C5C1F /* CustomTextField.swift in Sources */,
+				3E5778B82B692D2C009C5C1F /* CustomAuthTextField.swift in Sources */,
 				3E61B4F72B61B60300DB760D /* Authentication.swift in Sources */,
 				3E5778B12B692143009C5C1F /* HomeViewController.swift in Sources */,
 				3E5F2C322B607F0C0072006F /* OnboardingView.swift in Sources */,
@@ -337,6 +352,7 @@
 				3E5F2C102B606F3E0072006F /* SceneDelegate.swift in Sources */,
 				3E5778DA2B6C3A6F009C5C1F /* TaskViewModel.swift in Sources */,
 				3E5778AE2B69212C009C5C1F /* SignupViewController.swift in Sources */,
+				3E5778E12B6C7746009C5C1F /* ProjectViewController.swift in Sources */,
 				3E5778C12B695711009C5C1F /* Validator.swift in Sources */,
 				3E5F2C362B6080700072006F /* PageView.swift in Sources */,
 				3E5778D62B6C3A56009C5C1F /* ProjectViewModel.swift in Sources */,

@@ -1,5 +1,5 @@
 //
-//  CustomTextField.swift
+//  CustomAuthTextField.swift
 //  TaskManagmentApp
 //
 //  Created by Tekla on 1/30/24.
@@ -7,16 +7,16 @@
 
 import UIKit
 
-final class CustomTextField: UITextField {
-    enum CustomTextFieldType {
+final class CustomAuthTextField: UITextField {
+    enum CustomAuthTextFieldType {
         case username
         case email
         case password
     }
     
-    private let authFieldType: CustomTextFieldType
+    private let authFieldType: CustomAuthTextFieldType
     
-    init(fieldType: CustomTextFieldType) {
+    init(fieldType: CustomAuthTextFieldType) {
         self.authFieldType = fieldType
         super.init(frame: .zero)
         

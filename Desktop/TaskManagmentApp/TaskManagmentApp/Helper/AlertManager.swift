@@ -70,3 +70,13 @@ extension AlertManager {
         self.showBasicAlert(vc: vc, title: "Unknown Error Fetching User", message: nil)
     }
 }
+
+//MARK: - Add New Project Alerts
+extension AlertManager {
+    public static func showNoTitleAlert(on vc: UIViewController) {
+        self.showBasicAlert(vc: vc, title: "No Title", message: "Please write a valid title.")
+    }
+    public static func showAddProjectError(on vc: UIViewController, error: Error) {
+        self.showBasicAlert(vc: vc, title: "Error Saving Project", message: "\(error.localizedDescription)")
+    }
+}
