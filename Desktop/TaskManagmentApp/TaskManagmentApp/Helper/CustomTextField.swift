@@ -1,5 +1,5 @@
 //
-//  CustomAuthTextField.swift
+//  CustomTextField.swift
 //  TaskManagmentApp
 //
 //  Created by Tekla on 1/30/24.
@@ -7,16 +7,18 @@
 
 import UIKit
 
-final class CustomAuthTextField: UITextField {
-    enum CustomAuthTextFieldType {
+final class CustomTextField: UITextField {
+    enum CustomTextFieldType {
         case username
         case email
         case password
+        case title
+        case description
     }
     
-    private let authFieldType: CustomAuthTextFieldType
+    private let authFieldType: CustomTextFieldType
     
-    init(fieldType: CustomAuthTextFieldType) {
+    init(fieldType: CustomTextFieldType) {
         self.authFieldType = fieldType
         super.init(frame: .zero)
         
@@ -25,6 +27,7 @@ final class CustomAuthTextField: UITextField {
         self.returnKeyType = .done
         self.autocorrectionType = .no
         self.autocapitalizationType = .none
+        self.textColor = .systemIndigo
         self.leftViewMode = .always
        self.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 12, height: self.frame.size.height))
         
@@ -39,6 +42,10 @@ final class CustomAuthTextField: UITextField {
             self.placeholder = "Password"
             self.textContentType = .oneTimeCode
             self.isSecureTextEntry = true
+        case .title:
+        self.placeholder = "Title"
+        case .description:
+            self.placeholder = "Description"
         default:
             self.placeholder = ""
         }

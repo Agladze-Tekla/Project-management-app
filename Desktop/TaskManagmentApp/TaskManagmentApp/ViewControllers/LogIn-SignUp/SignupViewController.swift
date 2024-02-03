@@ -9,11 +9,16 @@ import UIKit
 
 final class SignupViewController: UIViewController {
         //MARK: - UI Components
-        private let headerView = AuthHeaderView(title: "Sign Up", subTitle: "Create an account")
-    private let usernameField = CustomAuthTextField(fieldType: .username)
-        private let emailField = CustomAuthTextField(fieldType: .email)
-        private let passwordField = CustomAuthTextField(fieldType: .password)
-        private let signUpButton = CustomButton(title: "Sign Up", hasBackground: true, fontSize: .big)
+    private let headerView = AuthHeaderView(title: "Sign Up", subTitle: "Create an account")
+    
+    private let usernameField = CustomTextField(fieldType: .username)
+       
+    private let emailField = CustomTextField(fieldType: .email)
+    
+    private let passwordField = CustomTextField(fieldType: .password)
+
+    private let signUpButton = CustomButton(title: "Sign Up", hasBackground: true, fontSize: .big)
+    
     private let haveAnAccountButton = CustomButton(title: "Already have an account? Sign in.", hasBackground: false, fontSize: .small)
     
     private let viewModel = SignupViewModel();

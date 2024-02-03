@@ -11,6 +11,8 @@ final class HomeViewController: UIViewController {
     //MARK: - UI Components
     private let addProjectButton = CustomButton(title: "+ Add Project", hasBackground: false, fontSize: .small)
     
+    private let addTaskButton = CustomButton(title: "+ Add Task", hasBackground: false, fontSize: .small)
+    
     private let projectLabelButtonStackView: UIStackView = {
         let stack = UIStackView()
         stack.layer.cornerRadius = 13
@@ -19,13 +21,7 @@ final class HomeViewController: UIViewController {
         return stack
     }()
     
-    private let projectLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Projects"
-        label.font = .systemFont(ofSize: 18)
-        label.textColor = .black
-        return label
-    }()
+    private let projectLabel = CustomLabel(title: "Projects", fontSize: .med)
     
     private let projectStackView: UIStackView = {
         let stack = UIStackView()
@@ -53,13 +49,7 @@ final class HomeViewController: UIViewController {
         return stack
     }()
     
-    private let todaysTaskLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Your tasks are loading..."
-        label.font = .systemFont(ofSize: 16)
-        label.textColor = .black
-        return label
-    }()
+    private let todaysTaskLabel = CustomLabel(title: "Loading today's tasks...", fontSize: .small)
     
     private let progressStackView: UIStackView = {
         let stack = UIStackView()
@@ -81,14 +71,7 @@ final class HomeViewController: UIViewController {
         return stack
     }()
     
-    private var welcomeLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Loading..."
-        label.font = .systemFont(ofSize: 18)
-        label.textColor = .black
-        label.numberOfLines = 2
-        return label
-    }()
+    private var welcomeLabel = CustomLabel(title: "Loading...", fontSize: .big)
     
     private let image: UIImageView = {
         let imageView = UIImageView()
@@ -133,6 +116,7 @@ final class HomeViewController: UIViewController {
         accountStackView.addArrangedSubview(progressStackView)
         projectLabelButtonStackView.addArrangedSubview(projectLabel)
         projectLabelButtonStackView.addArrangedSubview(addProjectButton)
+        projectLabelButtonStackView.addArrangedSubview(addTaskButton)
         projectStackView.addArrangedSubview(projectLabelButtonStackView)
         
         view.addSubview(accountStackView)
@@ -152,8 +136,8 @@ final class HomeViewController: UIViewController {
     
     private func setProjectStackViewConstraints() {
         NSLayoutConstraint.activate([
-            projectStackView.topAnchor.constraint(equalTo: accountStackView.bottomAnchor),
-           // projectStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            //projectStackView.topAnchor.constraint(equalTo: accountStackView.bottomAnchor),
+            projectStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             projectStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             projectStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
         ])
@@ -182,6 +166,7 @@ final class HomeViewController: UIViewController {
     
     private func setupButtons() {
         addProjectButton.addTarget(self, action: #selector(didTapNewProject), for: .touchUpInside)
+        addTaskButton.addTarget(self, action: #selector(didTapNewTask), for: .touchUpInside)
     }
     
     private func setupDelegate() {
@@ -190,6 +175,13 @@ final class HomeViewController: UIViewController {
     
     @objc private func didTapNewProject() {
         let vc = ProjectViewController()
+        vc.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc private func didTapNewTask() {
+        let vc = TaskDetailViewController()
+        vc.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -203,7 +195,6 @@ extension HomeViewController: HomeViewModelDelegate {
     func didLogoutSuccessfully() {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
-
             if let sceneDelegate = self.view.window?.windowScene?.delegate as? SceneDelegate {
                 sceneDelegate.checkAuthentication()
             }

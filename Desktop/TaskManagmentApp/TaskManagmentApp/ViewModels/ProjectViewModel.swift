@@ -31,7 +31,6 @@ class ProjectViewModel {
     guard let uId = Auth.auth().currentUser?.uid else {
         return
     }
-    //let projectTasks
     let newId = UUID().uuidString
        let newProject = ProjectModel(
         id: newId,
@@ -42,16 +41,14 @@ class ProjectViewModel {
         .document(uId)
         .collection("projects")
         .document(newId)
-        .setData(newProject.asDictionary())
-       /*
-       { [weak self] error in
+        .setData(newProject.asDictionary()) { [weak self] error in
            guard let self = self else { return }
            if let error = error {
                self.delegate?.projectAddingFailed(.addingFailed(error))
                return
            }
- */
+   }
            self.delegate?.projectAddedSuccessfully()
-       //}
+
    }
 }

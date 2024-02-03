@@ -17,12 +17,15 @@ struct ProjectModel: Codable {
 }
     struct TaskModel: Codable {
         let id: String
+        var project: String
         var title: String
         var description: String?
         var isCompleted: Bool
-        var date: Date
-        var startTime: Date
-        var endTime: Date
+        var date: TimeInterval
+        
+        mutating func setDone(_ state: Bool) {
+            isCompleted = state
+        }
     }
     
     /*

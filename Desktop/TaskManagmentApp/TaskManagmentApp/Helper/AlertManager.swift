@@ -73,10 +73,23 @@ extension AlertManager {
 
 //MARK: - Add New Project Alerts
 extension AlertManager {
-    public static func showNoTitleAlert(on vc: UIViewController) {
-        self.showBasicAlert(vc: vc, title: "No Title", message: "Please write a valid title.")
+    public static func showNoProjectTitleAlert(on vc: UIViewController) {
+        self.showBasicAlert(vc: vc, title: "Project has no title", message: "Please write a valid title.")
     }
     public static func showAddProjectError(on vc: UIViewController, error: Error) {
         self.showBasicAlert(vc: vc, title: "Error Saving Project", message: "\(error.localizedDescription)")
+    }
+}
+
+//MARK: - Add New Task Alerts
+extension AlertManager {
+    public static func showNoTaskTitleAlert(on vc: UIViewController) {
+        self.showBasicAlert(vc: vc, title: "Task has no title", message: "Please write a valid title.")
+    }
+    public static func showAddTasktError(on vc: UIViewController, error: Error) {
+        self.showBasicAlert(vc: vc, title: "Error Saving Task", message: "\(error.localizedDescription)")
+    }
+    public static func showNoTaskDateAlert(on vc: UIViewController) {
+        self.showBasicAlert(vc: vc, title: "Task has no due date", message: "Please choose a valid date.")
     }
 }
