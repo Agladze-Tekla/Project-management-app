@@ -24,7 +24,7 @@ final class TabBarViewController: UITabBarController {
     
     private func setupTabs() {
         let home = self.createNav(with: "Home", and: UIImage(systemName: "house"), vc: HomeViewController())
-        let add = self.createNav(with: "", and: UIImage(systemName: "plus.circle"), vc: AddPopUpViewController())
+        let add = self.createNav(with: "", and: UIImage(systemName: "plus"), vc: AddPopUpViewController())
         let tasks = self.createNav(with: "Tasks", and: UIImage(systemName: "list.bullet"), vc: TaskViewController())
         self.setViewControllers([home, add, tasks], animated: true)
     }

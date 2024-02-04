@@ -21,13 +21,49 @@ final class HomeViewController: UIViewController {
         return stack
     }()
     
-    private let projectLabel = CustomLabel(title: "Projects", fontSize: .med)
+    private let allProjectStackView: UIStackView = {
+        let stack = UIStackView()
+        stack.axis = .vertical
+        stack.alignment = .center
+        stack.backgroundColor = .secondarySystemBackground
+        stack.layer.cornerRadius = 16
+        stack.distribution = .equalSpacing
+        
+        stack.isLayoutMarginsRelativeArrangement = true
+        stack.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 40, leading: 40, bottom: 40, trailing: 40)
+        return stack
+    }()
+    
+    private let noProjectImageView : UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = UIImage(systemName: "folder.badge.plus")?.withTintColor(.darkGray, renderingMode: .alwaysOriginal)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            imageView.widthAnchor.constraint(equalToConstant: 60),
+            imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor)
+        ])
+        return imageView
+    }()
+    
+    private let noProjectLabel: UILabel = {
+        let label = UILabel()
+        label.text = "You have no ongoing projects\nClick '+' to add a project"
+        label.numberOfLines = 2
+        label.textAlignment = .center
+        label.textColor = .lightGray
+        label.font = .systemFont(ofSize: 18)
+        return label
+    }()
+    
+    private let projectLabel = CustomLabel(title: "Projects", fontSize: .big)
     
     private let projectStackView: UIStackView = {
         let stack = UIStackView()
         stack.axis = .vertical
-        stack.alignment = .leading
+        stack.alignment = .center
         stack.backgroundColor = .systemBackground
+        stack.spacing = 15
         stack.layer.cornerRadius = 25
         stack.distribution = .equalSpacing
         stack.isLayoutMarginsRelativeArrangement = true
@@ -49,7 +85,7 @@ final class HomeViewController: UIViewController {
         return stack
     }()
     
-    private let todaysTaskLabel = CustomLabel(title: "Loading today's tasks...", fontSize: .small)
+    private let todaysTaskLabel = CustomLabel(title: "Loading today's tasks...", fontSize: .med)
     
     private let progressStackView: UIStackView = {
         let stack = UIStackView()
@@ -102,6 +138,7 @@ final class HomeViewController: UIViewController {
         setupNavigationButton()
         setupWelcomeLabel()
         setupButtons()
+        setupProjects()
     }
     
     private func setupBackground() {
@@ -118,6 +155,7 @@ final class HomeViewController: UIViewController {
         projectLabelButtonStackView.addArrangedSubview(addProjectButton)
         projectLabelButtonStackView.addArrangedSubview(addTaskButton)
         projectStackView.addArrangedSubview(projectLabelButtonStackView)
+        projectStackView.addArrangedSubview(allProjectStackView)
         
         view.addSubview(accountStackView)
         view.addSubview(projectStackView)
@@ -136,7 +174,6 @@ final class HomeViewController: UIViewController {
     
     private func setProjectStackViewConstraints() {
         NSLayoutConstraint.activate([
-            //projectStackView.topAnchor.constraint(equalTo: accountStackView.bottomAnchor),
             projectStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             projectStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             projectStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
@@ -160,6 +197,21 @@ final class HomeViewController: UIViewController {
         }
     }
     
+    private func setupProjects() {
+        viewModel.checkForProjects() { isEmpty, error in
+            if let error = error {
+                AlertManager.showProjectFetchingError(on: self, error: error)
+                return
+            }
+            if isEmpty {
+                self.allProjectStackView.addArrangedSubview(self.noProjectImageView)
+                self.allProjectStackView.addArrangedSubview(self.noProjectLabel)
+            } else {
+                print("The project collection is not empty.")
+            }
+        }
+    }
+    
     private func setupDelegates() {
         viewModel.delegate = self
     }
@@ -167,10 +219,6 @@ final class HomeViewController: UIViewController {
     private func setupButtons() {
         addProjectButton.addTarget(self, action: #selector(didTapNewProject), for: .touchUpInside)
         addTaskButton.addTarget(self, action: #selector(didTapNewTask), for: .touchUpInside)
-    }
-    
-    private func setupDelegate() {
-        viewModel.delegate = self
     }
     
     @objc private func didTapNewProject() {

@@ -6,10 +6,11 @@
 //
 
 import UIKit
+import Firebase
 
 protocol HomeViewModelDelegate: AnyObject {
     func didLogoutSuccessfully()
-    func didFailLogout(error: Error)
+    func didFailLogout(error: Error) 
 }
 
 final class HomeViewModel {
@@ -26,4 +27,23 @@ final class HomeViewModel {
             self.delegate?.didLogoutSuccessfully()
         }
     }
+    
+        func checkForProjects(completion: @escaping (Bool, Error?) -> Void) {
+            guard let uId = Auth.auth().currentUser?.uid else {
+                return
+            }
+            let db = Firestore.firestore()
+               
+            db.collection("users")
+             .document(uId)
+             .collection("projects")
+             .getDocuments { (snapshot, error) in
+                   if let error = error {
+                       completion(false, error)
+                       return
+                   }
+                   let isEmpty = snapshot?.documents.isEmpty ?? true
+                   completion(isEmpty, nil)
+        }
+        }
 }

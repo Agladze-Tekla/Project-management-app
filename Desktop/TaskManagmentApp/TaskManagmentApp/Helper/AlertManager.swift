@@ -93,3 +93,10 @@ extension AlertManager {
         self.showBasicAlert(vc: vc, title: "Task has no due date", message: "Please choose a valid date.")
     }
 }
+
+//MARK: - Fetch Project Fetching Alerts
+extension AlertManager {
+    public static func showProjectFetchingError(on vc: UIViewController, error: Error) {
+        self.showBasicAlert(vc: vc, title: "Error Fetching Projects", message: "\(error.localizedDescription)")
+    }
+}
