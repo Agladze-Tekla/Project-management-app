@@ -28,7 +28,6 @@ final class HomeViewController: UIViewController {
         stack.backgroundColor = .secondarySystemBackground
         stack.layer.cornerRadius = 16
         stack.distribution = .equalSpacing
-        
         stack.isLayoutMarginsRelativeArrangement = true
         stack.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 40, leading: 40, bottom: 40, trailing: 40)
         return stack
@@ -67,7 +66,7 @@ final class HomeViewController: UIViewController {
         stack.layer.cornerRadius = 25
         stack.distribution = .equalSpacing
         stack.isLayoutMarginsRelativeArrangement = true
-        stack.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 20, leading: 20, bottom: 20, trailing: 20)
+        stack.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 20, leading: 20, bottom: 60, trailing: 20)
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
@@ -120,12 +119,24 @@ final class HomeViewController: UIViewController {
         ])
         return imageView
     }()
+    
+    private let projectCollectionView: UICollectionView = {
+           let layout = UICollectionViewFlowLayout()
+           layout.scrollDirection = .horizontal
+           let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+           collectionView.backgroundColor = .systemIndigo
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+           return collectionView
+       }()
 
-    private let viewModel = HomeViewModel();
+    private var projects = [ProjectModel]()
+    
+    private let viewModel = HomeViewModel()
     
     //MARK: - ViewLifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel.fetchProjects()
         setupUI()
         setupDelegates()
     }
@@ -138,6 +149,7 @@ final class HomeViewController: UIViewController {
         setupNavigationButton()
         setupWelcomeLabel()
         setupButtons()
+        setupCollectionView()
         setupProjects()
     }
     
@@ -156,7 +168,6 @@ final class HomeViewController: UIViewController {
         projectLabelButtonStackView.addArrangedSubview(addTaskButton)
         projectStackView.addArrangedSubview(projectLabelButtonStackView)
         projectStackView.addArrangedSubview(allProjectStackView)
-        
         view.addSubview(accountStackView)
         view.addSubview(projectStackView)
     }
@@ -174,7 +185,7 @@ final class HomeViewController: UIViewController {
     
     private func setProjectStackViewConstraints() {
         NSLayoutConstraint.activate([
-            projectStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            projectStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 40),
             projectStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             projectStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
         ])
@@ -207,10 +218,18 @@ final class HomeViewController: UIViewController {
                 self.allProjectStackView.addArrangedSubview(self.noProjectImageView)
                 self.allProjectStackView.addArrangedSubview(self.noProjectLabel)
             } else {
-                print("The project collection is not empty.")
+                    self.projectStackView.addArrangedSubview(self.projectCollectionView)
+                self.projectCollectionView.reloadData()
+                self.allProjectStackView.layoutIfNeeded()
             }
         }
     }
+    
+    private func setupCollectionView() {
+          projectCollectionView.dataSource = self
+         projectCollectionView.delegate = self
+          projectCollectionView.register(ProjectViewCell.self, forCellWithReuseIdentifier: "ProjectCollectionCell")
+       }
     
     private func setupDelegates() {
         viewModel.delegate = self
@@ -237,9 +256,37 @@ final class HomeViewController: UIViewController {
         viewModel.logout()
     }
 }
+//MARK: - CollectionView Data Source
+extension  HomeViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProjectCollectionCell", for: indexPath) as? ProjectViewCell else {
+                        return UICollectionViewCell()
+                    }
+                    cell.configurate(project: projects[indexPath.row])
+                   return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return projects.count
+    }
+    
+}
+
+//MARK: - CollectionView Delegate
+extension HomeViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+          //let vc = ProjectDetailViewController()
+         //vc.configure(movies: projects[indexPath.row])
+          //navigationController?.pushViewController(vc, animated: true)
+      }
+}
 
 //MARK: - Extensions
 extension HomeViewController: HomeViewModelDelegate {
+    func projectsFetched(_ projects: [ProjectModel]) {
+        self.projects = projects
+    }
+    
     func didLogoutSuccessfully() {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
