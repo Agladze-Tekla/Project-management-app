@@ -30,7 +30,7 @@ final class ProjectViewCell: UICollectionViewCell {
        
        private let descriptionLabel: UILabel = {
            let label = UILabel()
-           label.textColor = .lightText
+           label.textColor = .white
            label.numberOfLines = 5
            return label
        }()
@@ -49,7 +49,7 @@ final class ProjectViewCell: UICollectionViewCell {
     
     //MARK: - Set Up UI
     private func setupBackground() {
-        contentView.backgroundColor = .systemIndigo
+        cellStackView.backgroundColor = .systemIndigo
     }
     
     private func addSubViews() {
@@ -60,16 +60,16 @@ final class ProjectViewCell: UICollectionViewCell {
     
     private func setUpConstraints() {
            NSLayoutConstraint.activate([
-            cellStackView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            cellStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            cellStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            cellStackView.heightAnchor.constraint(equalToConstant: 370)
+            contentView.heightAnchor.constraint(equalToConstant: 370),
+            contentView.widthAnchor.constraint(equalToConstant: 250)
            ])
        }
     
     func configurate(project: ProjectModel) {
         titleLabel.text = project.title
         descriptionLabel.text = project.description
+        print(project.title)
+        print(project.description)
         }
     
     // MARK: - CellLifeCycle

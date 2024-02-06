@@ -123,9 +123,11 @@ final class HomeViewController: UIViewController {
     private let projectCollectionView: UICollectionView = {
            let layout = UICollectionViewFlowLayout()
            layout.scrollDirection = .horizontal
+        //layout.minimumLineSpacing = 0
            let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-           collectionView.backgroundColor = .systemIndigo
+           collectionView.backgroundColor = .clear
         collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.isPagingEnabled = true
            return collectionView
        }()
 
@@ -218,9 +220,12 @@ final class HomeViewController: UIViewController {
                 self.allProjectStackView.addArrangedSubview(self.noProjectImageView)
                 self.allProjectStackView.addArrangedSubview(self.noProjectLabel)
             } else {
-                    self.projectStackView.addArrangedSubview(self.projectCollectionView)
+                self.projectStackView.addArrangedSubview(self.projectCollectionView)
+                NSLayoutConstraint.activate([
+                    self.projectCollectionView.heightAnchor.constraint(equalToConstant: 100),
+                    self.projectCollectionView.widthAnchor.constraint(equalTo: self.projectStackView.widthAnchor, constant: -20)
+                ])
                 self.projectCollectionView.reloadData()
-                self.allProjectStackView.layoutIfNeeded()
             }
         }
     }
@@ -260,7 +265,7 @@ final class HomeViewController: UIViewController {
 extension  HomeViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProjectCollectionCell", for: indexPath) as? ProjectViewCell else {
-                        return UICollectionViewCell()
+            return UICollectionViewCell()
                     }
                     cell.configurate(project: projects[indexPath.row])
                    return cell
@@ -269,7 +274,6 @@ extension  HomeViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return projects.count
     }
-    
 }
 
 //MARK: - CollectionView Delegate
@@ -278,13 +282,20 @@ extension HomeViewController: UICollectionViewDelegate {
           //let vc = ProjectDetailViewController()
          //vc.configure(movies: projects[indexPath.row])
           //navigationController?.pushViewController(vc, animated: true)
+        return
       }
+}
+
+// MARK: - CollectionView FlowLayoutDelegatew
+extension HomeViewController: UICollectionViewDelegateFlowLayout {
+
 }
 
 //MARK: - Extensions
 extension HomeViewController: HomeViewModelDelegate {
     func projectsFetched(_ projects: [ProjectModel]) {
         self.projects = projects
+        projectCollectionView.reloadData()
     }
     
     func didLogoutSuccessfully() {
