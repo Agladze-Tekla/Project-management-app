@@ -14,7 +14,7 @@ final class ProjectViewCell: UICollectionViewCell {
        private let cellStackView: UIStackView = {
            let stack = UIStackView()
            stack.axis = .vertical
-           stack.spacing = 2
+           stack.spacing = 3
            stack.translatesAutoresizingMaskIntoConstraints = false
            return stack
        }()
@@ -23,7 +23,6 @@ final class ProjectViewCell: UICollectionViewCell {
            let label = UILabel()
            label.font = .boldSystemFont(ofSize: 16)
            label.numberOfLines = 2
-           label.textAlignment = .center
            label.textColor = .white
            return label
        }()
@@ -60,16 +59,15 @@ final class ProjectViewCell: UICollectionViewCell {
     
     private func setUpConstraints() {
            NSLayoutConstraint.activate([
-            contentView.heightAnchor.constraint(equalToConstant: 370),
+            contentView.heightAnchor.constraint(equalToConstant: 270),
             contentView.widthAnchor.constraint(equalToConstant: 250)
            ])
        }
     
+    //MARK: - Configure
     func configurate(project: ProjectModel) {
         titleLabel.text = project.title
         descriptionLabel.text = project.description
-        print(project.title)
-        print(project.description)
         }
     
     // MARK: - CellLifeCycle

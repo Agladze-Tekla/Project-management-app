@@ -38,6 +38,7 @@
 		3E5F2C322B607F0C0072006F /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5F2C312B607F0C0072006F /* OnboardingView.swift */; };
 		3E5F2C362B6080700072006F /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5F2C352B6080700072006F /* PageView.swift */; };
 		3E5F2C3B2B60859F0072006F /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5F2C3A2B60859F0072006F /* OnboardingViewController.swift */; };
+		3E5FDB922B72DA8F0038C3BD /* OvalProjectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5FDB912B72DA8F0038C3BD /* OvalProjectCell.swift */; };
 		3E61B4F72B61B60300DB760D /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E61B4F62B61B60300DB760D /* Authentication.swift */; };
 		3E635A122B613F16007D0FBE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3E635A112B613F15007D0FBE /* GoogleService-Info.plist */; };
 		3E635A162B6157CE007D0FBE /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 3E635A152B6157CE007D0FBE /* FirebaseAuth */; };
@@ -80,6 +81,7 @@
 		3E5F2C312B607F0C0072006F /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		3E5F2C352B6080700072006F /* PageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
 		3E5F2C3A2B60859F0072006F /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		3E5FDB912B72DA8F0038C3BD /* OvalProjectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OvalProjectCell.swift; sourceTree = "<group>"; };
 		3E61B4F62B61B60300DB760D /* Authentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
 		3E635A112B613F15007D0FBE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3E635A1E2B615E76007D0FBE /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
@@ -147,7 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				3E5778E02B6C7746009C5C1F /* ProjectViewController.swift */,
-				3E5778F82B6DC35E009C5C1F /* TaskDetailViewController.swift */,
+				3E5FDB902B72DA5B0038C3BD /* AddTaskPage */,
 			);
 			path = AddItemViews;
 			sourceTree = "<group>";
@@ -269,6 +271,15 @@
 			path = Onboarding;
 			sourceTree = "<group>";
 		};
+		3E5FDB902B72DA5B0038C3BD /* AddTaskPage */ = {
+			isa = PBXGroup;
+			children = (
+				3E5778F82B6DC35E009C5C1F /* TaskDetailViewController.swift */,
+				3E5FDB912B72DA8F0038C3BD /* OvalProjectCell.swift */,
+			);
+			path = AddTaskPage;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -361,6 +372,7 @@
 				3E5778CA2B698C7B009C5C1F /* TaskViewController.swift in Sources */,
 				3E5778C62B698BDB009C5C1F /* TabBarViewController.swift in Sources */,
 				3E5778BE2B693E3D009C5C1F /* AlertManager.swift in Sources */,
+				3E5FDB922B72DA8F0038C3BD /* OvalProjectCell.swift in Sources */,
 				3E5F2C0E2B606F3E0072006F /* AppDelegate.swift in Sources */,
 				3E5F2C102B606F3E0072006F /* SceneDelegate.swift in Sources */,
 				3E5778DA2B6C3A6F009C5C1F /* TaskViewModel.swift in Sources */,

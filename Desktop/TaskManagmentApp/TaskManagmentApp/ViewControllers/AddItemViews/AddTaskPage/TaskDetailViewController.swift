@@ -68,20 +68,33 @@ final class TaskDetailViewController: UIViewController {
           return textField
       }()
     
+    private let projectLabel = CustomLabel(title: "To Project:", fontSize: .med)
+    
+    private let collectionView: UICollectionView = {
+            let layout = UICollectionViewFlowLayout()
+            layout.scrollDirection = .horizontal
+
+            let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+            collectionView.backgroundColor = .white
+            collectionView.showsHorizontalScrollIndicator = false
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+            return collectionView
+        }()
+
+        private let data: [String] = ["Short", "Medium Length", "Very Long String for Testing the Width"]
+
     //MARK: - ViewLifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI()
+        setupCollectionview()
         setupDelegates()
+        setupUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = true
     }
-    
-    // MARK: - Configure
-      
     
     //MARK: - Private Methods
     private func setupUI() {
@@ -103,6 +116,8 @@ final class TaskDetailViewController: UIViewController {
         taskInfoStackView.addArrangedSubview(descriptionTextField)
         taskInfoStackView.addArrangedSubview(dueDateLabel)
         taskInfoStackView.addArrangedSubview(dueDateTextField)
+        taskInfoStackView.addArrangedSubview(projectLabel)
+        taskInfoStackView.addArrangedSubview(collectionView)
         taskStackView.addArrangedSubview(taskInfoStackView)
         taskStackView.addArrangedSubview(saveTaskButton)
         view.addSubview(taskStackView)
@@ -118,7 +133,9 @@ final class TaskDetailViewController: UIViewController {
             saveTaskButton.heightAnchor.constraint(equalToConstant: 55),
             saveTaskButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
             descriptionTextField.heightAnchor.constraint(equalToConstant: 150),
-            descriptionTextField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85)
+            descriptionTextField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
+            collectionView.widthAnchor.constraint(equalTo: taskInfoStackView.widthAnchor),
+                  collectionView.heightAnchor.constraint(equalToConstant: 40)
         ])
     }
     
@@ -154,13 +171,18 @@ final class TaskDetailViewController: UIViewController {
 
         dueDateTextField.inputAccessoryView = toolbar
     }
+    
+    private func setupCollectionview() {
+        collectionView.dataSource = self
+               collectionView.delegate = self
+        collectionView.register(OvalProjectCell.self, forCellWithReuseIdentifier: OvalProjectCell.reuseIdentifier)
+    }
 
     @objc private func dismissDatePicker() {
         view.endEditing(true)
     }
     
     @objc private func didTapAddTask() {
-        print("Adding task...")
                 let vc = TabBarViewController()
                 let navigationController = UINavigationController(rootViewController: vc)
                 navigationController.modalPresentationStyle = .fullScreen
@@ -189,3 +211,36 @@ extension TaskDetailViewController: TaskViewModelDelegate {
         }
     }
     }
+
+// MARK: - UICollectionViewDataSource
+extension TaskDetailViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return data.count
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: OvalProjectCell.reuseIdentifier, for: indexPath) as? OvalProjectCell else {
+            return UICollectionViewCell()
+        }
+
+        let text = data[indexPath.item]
+        cell.configure(with: text)
+
+        return cell
+    }
+
+    // MARK: - UICollectionViewDelegateFlowLayout
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let text = data[indexPath.item]
+        let width = text.width(withConstrainedHeight: collectionView.frame.height, font: UIFont.systemFont(ofSize: 17))
+        return CGSize(width: width + 32, height: collectionView.frame.height)
+    }
+}
+
+extension String {
+    func width(withConstrainedHeight height: CGFloat, font: UIFont) -> CGFloat {
+        let constraintRect = CGSize(width: .greatestFiniteMagnitude, height: height)
+        let boundingBox = self.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: font], context: nil)
+        return boundingBox.width
+    }
+}
