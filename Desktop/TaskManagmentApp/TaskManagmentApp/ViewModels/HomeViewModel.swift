@@ -19,6 +19,8 @@ final class HomeViewModel {
     weak var delegate: HomeViewModelDelegate?
     private let db = Firestore.firestore()
     
+    
+    //logout()
     func logout() {
         Authentication.shared.signOut { [weak self] error in
             guard let self = self else { return }
@@ -31,6 +33,8 @@ final class HomeViewModel {
         }
     }
     
+    
+    //checkForProjects
     func checkForProjects(completion: @escaping (Bool, Error?) -> Void) {
         guard let uId = Auth.auth().currentUser?.uid else {
             return
@@ -49,12 +53,11 @@ final class HomeViewModel {
             }
     }
     
-    deinit {
-        print("HomeViewModel deinitialized")
-    }
+    
     
     private var projects = [ProjectModel]()
 
+    //fetchProjects
         func fetchProjects() {
             guard let currentUserID = Auth.auth().currentUser?.uid else {
                 return

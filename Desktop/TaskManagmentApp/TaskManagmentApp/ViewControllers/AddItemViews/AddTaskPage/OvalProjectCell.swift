@@ -27,7 +27,7 @@ final class OvalProjectCell: UICollectionViewCell {
        }
 
        private func setupUI() {
-           contentView.backgroundColor = UIColor.systemBlue.withAlphaComponent(0.7)
+           contentView.backgroundColor = UIColor.systemIndigo
            contentView.layer.cornerRadius = contentView.frame.height / 2
 
            contentView.addSubview(label)
@@ -39,7 +39,7 @@ final class OvalProjectCell: UICollectionViewCell {
            ])
        }
 
-       func configure(with text: String) {
-           label.text = text
+    func configure(project: ProjectModel) {
+        label.text = project.title
        }
 }

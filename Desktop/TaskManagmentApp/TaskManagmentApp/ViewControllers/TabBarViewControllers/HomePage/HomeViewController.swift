@@ -288,7 +288,7 @@ extension HomeViewController: UICollectionViewDelegate {
 
 // MARK: - CollectionView FlowLayoutDelegatew
 extension HomeViewController: UICollectionViewDelegateFlowLayout {
-
+//TODO: FIX COLLECTION VIEW CONFIGURATION
 }
 
 //MARK: - Extensions

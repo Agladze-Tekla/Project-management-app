@@ -81,11 +81,12 @@ final class TaskDetailViewController: UIViewController {
             return collectionView
         }()
 
-        private let data: [String] = ["Short", "Medium Length", "Very Long String for Testing the Width"]
+    private var projects = [ProjectModel]()
 
     //MARK: - ViewLifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupProjects()
         setupCollectionview()
         setupDelegates()
         setupUI()
@@ -177,6 +178,10 @@ final class TaskDetailViewController: UIViewController {
                collectionView.delegate = self
         collectionView.register(OvalProjectCell.self, forCellWithReuseIdentifier: OvalProjectCell.reuseIdentifier)
     }
+    
+    private func setupProjects() {
+        viewModel.fetchProjects()
+    }
 
     @objc private func dismissDatePicker() {
         view.endEditing(true)
@@ -187,12 +192,16 @@ final class TaskDetailViewController: UIViewController {
                 let navigationController = UINavigationController(rootViewController: vc)
                 navigationController.modalPresentationStyle = .fullScreen
                 present(navigationController, animated: true, completion: nil)
-       // viewModel.addTask(title: titleTextField.text ?? "", description: descriptionTextField.text, isCompleted: false, date: <#T##TimeInterval#>, projectID: <#T##String#>)
       }
 }
 
-//MARK: - Extension
+//MARK: - Extensions
 extension TaskDetailViewController: TaskViewModelDelegate {
+    func projectsFetched(_ projects: [ProjectModel]) {
+        self.projects = projects
+        collectionView.reloadData()
+    }
+    
     func taskAddedSuccessfully() {
             let vc = TabBarViewController()
             let navigationController = UINavigationController(rootViewController: vc)
@@ -215,7 +224,7 @@ extension TaskDetailViewController: TaskViewModelDelegate {
 // MARK: - UICollectionViewDataSource
 extension TaskDetailViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return data.count
+        return projects.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -223,15 +232,13 @@ extension TaskDetailViewController: UICollectionViewDataSource, UICollectionView
             return UICollectionViewCell()
         }
 
-        let text = data[indexPath.item]
-        cell.configure(with: text)
-
+        cell.configure(project: projects[indexPath.row])
         return cell
     }
 
     // MARK: - UICollectionViewDelegateFlowLayout
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let text = data[indexPath.item]
+        let text = projects[indexPath.item].title
         let width = text.width(withConstrainedHeight: collectionView.frame.height, font: UIFont.systemFont(ofSize: 17))
         return CGSize(width: width + 32, height: collectionView.frame.height)
     }
