@@ -82,6 +82,8 @@ final class TaskDetailViewController: UIViewController {
         }()
 
     private var projects = [ProjectModel]()
+    
+    private var projectId = ""
 
     //MARK: - ViewLifeCycle
     override func viewDidLoad() {
@@ -222,7 +224,7 @@ extension TaskDetailViewController: TaskViewModelDelegate {
     }
 
 // MARK: - UICollectionViewDataSource
-extension TaskDetailViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension TaskDetailViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return projects.count
     }
@@ -231,11 +233,23 @@ extension TaskDetailViewController: UICollectionViewDataSource, UICollectionView
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: OvalProjectCell.reuseIdentifier, for: indexPath) as? OvalProjectCell else {
             return UICollectionViewCell()
         }
-
-        cell.configure(project: projects[indexPath.row])
+        
+        var projectColor = UIColor.systemIndigo.withAlphaComponent(0.7)
+        if projects[indexPath.row].id == projectId {
+                    projectColor = .systemIndigo
+                }
+        cell.configure(project: projects[indexPath.row], color: projectColor)
+        
         return cell
     }
-
+    
+    //MARK: - CollectionView Delegate
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selectedProject = projects[indexPath.item].id
+               projectId = selectedProject
+               collectionView.reloadData()
+      }
+    
     // MARK: - UICollectionViewDelegateFlowLayout
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let text = projects[indexPath.item].title
