@@ -123,8 +123,8 @@ final class HomeViewController: UIViewController {
     private let projectCollectionView: UICollectionView = {
            let layout = UICollectionViewFlowLayout()
            layout.scrollDirection = .horizontal
-        //layout.minimumLineSpacing = 0
            let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        
            collectionView.backgroundColor = .clear
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.isPagingEnabled = true
@@ -222,7 +222,7 @@ final class HomeViewController: UIViewController {
             } else {
                 self.projectStackView.addArrangedSubview(self.projectCollectionView)
                 NSLayoutConstraint.activate([
-                    self.projectCollectionView.heightAnchor.constraint(equalToConstant: 100),
+                    self.projectCollectionView.heightAnchor.constraint(equalToConstant: 120),
                     self.projectCollectionView.widthAnchor.constraint(equalTo: self.projectStackView.widthAnchor, constant: -20)
                 ])
                 self.projectCollectionView.reloadData()
@@ -288,7 +288,10 @@ extension HomeViewController: UICollectionViewDelegate {
 
 // MARK: - CollectionView FlowLayoutDelegatew
 extension HomeViewController: UICollectionViewDelegateFlowLayout {
-//TODO: FIX COLLECTION VIEW CONFIGURATION
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+          let width = projectCollectionView.bounds.width / 3
+          return CGSize(width: width, height: width)
+      }
 }
 
 //MARK: - Extensions

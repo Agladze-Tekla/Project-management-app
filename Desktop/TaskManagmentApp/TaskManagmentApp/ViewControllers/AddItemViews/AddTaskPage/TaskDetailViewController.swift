@@ -59,13 +59,12 @@ final class TaskDetailViewController: UIViewController {
     
     //TODO: FIX DUE DATE IMPLEMENTATION
     private let dueDateTextField: UITextField = {
-          let textField = UITextField()
-          textField.placeholder = "Due Date"
-          textField.textAlignment = .center
-        textField.textColor = .systemIndigo
-        textField.backgroundColor = .secondarySystemBackground
-          textField.inputView = UIDatePicker()
-          return textField
+        let textField = UITextField()
+                textField.placeholder = "Select Date"
+                textField.textAlignment = .center
+                textField.backgroundColor = .secondarySystemBackground
+                textField.inputView = UIDatePicker()
+                return textField
       }()
     
     private let projectLabel = CustomLabel(title: "To Project:", fontSize: .med)
@@ -84,6 +83,8 @@ final class TaskDetailViewController: UIViewController {
     private var projects = [ProjectModel]()
     
     private var projectId = ""
+    
+    private var selectedDate: Date?
 
     //MARK: - ViewLifeCycle
     override func viewDidLoad() {
@@ -124,7 +125,6 @@ final class TaskDetailViewController: UIViewController {
         taskStackView.addArrangedSubview(taskInfoStackView)
         taskStackView.addArrangedSubview(saveTaskButton)
         view.addSubview(taskStackView)
- 
     }
     
     private func setupConstraints() {
@@ -150,30 +150,29 @@ final class TaskDetailViewController: UIViewController {
         saveTaskButton.addTarget(self, action: #selector(didTapAddTask), for: .touchUpInside)
     }
     
-    
     private func setupDatePicker() {
         if let datePicker = dueDateTextField.inputView as? UIDatePicker {
-            datePicker.datePickerMode = .date
-            datePicker.addTarget(self, action: #selector(datePickerValueChanged), for: .valueChanged)
-        }
-        addToolbarToDatePicker()
+                   datePicker.datePickerMode = .date
+                   datePicker.addTarget(self, action: #selector(datePickerValueChanged), for: .valueChanged)
+                   datePicker.date = Date()
+               }
     }
 
-    @objc private func datePickerValueChanged(_ sender: UIDatePicker) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .medium
-        dueDateTextField.text = dateFormatter.string(from: sender.date)
-    }
+    private func setupTapGestureRecognizer() {
+         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+         view.addGestureRecognizer(tapGesture)
+     }
 
-    private func addToolbarToDatePicker() {
-        let toolbar = UIToolbar()
-        toolbar.sizeToFit()
+     @objc private func handleTap() {
+         dueDateTextField.resignFirstResponder()
+     }
 
-        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissDatePicker))
-        toolbar.setItems([doneButton], animated: true)
-
-        dueDateTextField.inputAccessoryView = toolbar
-    }
+     @objc private func datePickerValueChanged(_ sender: UIDatePicker) {
+         selectedDate = sender.date
+         let dateFormatter = DateFormatter()
+         dateFormatter.dateStyle = .medium
+         dueDateTextField.text = dateFormatter.string(from: sender.date)
+     }
     
     private func setupCollectionview() {
         collectionView.dataSource = self
@@ -190,10 +189,7 @@ final class TaskDetailViewController: UIViewController {
     }
     
     @objc private func didTapAddTask() {
-                let vc = TabBarViewController()
-                let navigationController = UINavigationController(rootViewController: vc)
-                navigationController.modalPresentationStyle = .fullScreen
-                present(navigationController, animated: true, completion: nil)
+        viewModel.addTask(title: titleTextField.text ?? "", description: descriptionTextField.text, isCompleted: false, date: selectedDate?.timeIntervalSince1970 ?? 0, projectID: projectId)
       }
 }
 
@@ -219,9 +215,11 @@ extension TaskDetailViewController: TaskViewModelDelegate {
             AlertManager.showNoTaskTitleAlert(on: self)
         case .emptyDate:
             AlertManager.showNoTaskDateAlert(on: self)
+        case .emptyID:
+            AlertManager.noChosenProjectAler(on: self)
         }
     }
-    }
+}
 
 // MARK: - UICollectionViewDataSource
 extension TaskDetailViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
@@ -233,7 +231,6 @@ extension TaskDetailViewController: UICollectionViewDataSource, UICollectionView
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: OvalProjectCell.reuseIdentifier, for: indexPath) as? OvalProjectCell else {
             return UICollectionViewCell()
         }
-        
         var projectColor = UIColor.systemIndigo.withAlphaComponent(0.7)
         if projects[indexPath.row].id == projectId {
                     projectColor = .systemIndigo

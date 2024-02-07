@@ -12,6 +12,7 @@ enum savingError: Error {
    case emptyTitle
     case emptyDate
    case addingFailed(Error)
+    case emptyID
 }
 
 protocol TaskViewModelDelegate: AnyObject {
@@ -32,6 +33,10 @@ final class TaskViewModel {
             delegate?.taskAddingFailed(.emptyTitle)
             return
         }
+        guard !projectID.trimmingCharacters(in: .whitespaces).isEmpty else {
+               delegate?.taskAddingFailed(.emptyID)
+               return
+           }
         
      guard let uId = Auth.auth().currentUser?.uid else {
          return
@@ -86,7 +91,6 @@ final class TaskViewModel {
                         print("Error decoding project data: \(error.localizedDescription)")
                     }
                 }
-
                 self.projects = fetchedProjects
                 self.delegate?.projectsFetched(fetchedProjects)
             }

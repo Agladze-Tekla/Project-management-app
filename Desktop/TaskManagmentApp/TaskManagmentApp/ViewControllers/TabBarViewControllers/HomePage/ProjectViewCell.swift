@@ -11,26 +11,12 @@ final class ProjectViewCell: UICollectionViewCell {
     static let identifier = "ProjectCollectionCell"
     
     //MARK: - Properties
-       private let cellStackView: UIStackView = {
-           let stack = UIStackView()
-           stack.axis = .vertical
-           stack.spacing = 3
-           stack.translatesAutoresizingMaskIntoConstraints = false
-           return stack
-       }()
-       
        private let titleLabel: UILabel = {
            let label = UILabel()
-           label.font = .boldSystemFont(ofSize: 16)
-           label.numberOfLines = 2
+           label.font = .boldSystemFont(ofSize: 20)
+           label.numberOfLines = 0
+        label.translatesAutoresizingMaskIntoConstraints = false
            label.textColor = .white
-           return label
-       }()
-       
-       private let descriptionLabel: UILabel = {
-           let label = UILabel()
-           label.textColor = .white
-           label.numberOfLines = 5
            return label
        }()
        
@@ -48,32 +34,32 @@ final class ProjectViewCell: UICollectionViewCell {
     
     //MARK: - Set Up UI
     private func setupBackground() {
-        cellStackView.backgroundColor = .systemIndigo
+        contentView.backgroundColor = .systemIndigo
+        layer.cornerRadius = 8
+        layer.masksToBounds = true
     }
     
     private func addSubViews() {
-        cellStackView.addArrangedSubview(titleLabel)
-        cellStackView.addArrangedSubview(descriptionLabel)
-        contentView.addSubview(cellStackView)
+        contentView.addSubview(titleLabel)
         }
     
     private func setUpConstraints() {
-           NSLayoutConstraint.activate([
-            contentView.heightAnchor.constraint(equalToConstant: 270),
-            contentView.widthAnchor.constraint(equalToConstant: 250)
-           ])
+        NSLayoutConstraint.activate([
+                  titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
+                  titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 5),
+                  titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -5),
+                  titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+              ])
        }
     
     //MARK: - Configure
     func configurate(project: ProjectModel) {
         titleLabel.text = project.title
-        descriptionLabel.text = project.description
         }
     
     // MARK: - CellLifeCycle
           override func prepareForReuse() {
               super.prepareForReuse()
             titleLabel.text = nil
-            descriptionLabel.text = nil
           }
 }
