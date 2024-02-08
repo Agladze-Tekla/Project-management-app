@@ -142,7 +142,7 @@ final class HomeViewController: UIViewController {
     //MARK: - ViewLifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.fetchProjects()
+            viewModel.fetchProjects()
         setupUI()
         setupDelegates()
     }
@@ -154,7 +154,6 @@ final class HomeViewController: UIViewController {
         setupConstraints()
         setupNavigationButton()
         setupWelcomeLabel()
-       // setupTaskLabel()
         setupButtons()
         setupCollectionView()
         setupProjects()
@@ -213,10 +212,6 @@ final class HomeViewController: UIViewController {
                 self.welcomeLabel.text = "Welcome\n\(user.username)!"
             }
         }
-    }
-    
-    private func setupTaskLabel() {
-            todaysTaskLabel.text = "You have \(taskCountLeft) tasks for today"
     }
     
     private func setupProjects() {

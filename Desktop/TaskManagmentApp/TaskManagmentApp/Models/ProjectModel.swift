@@ -12,7 +12,6 @@ struct ProjectModel: Codable {
     let id: String
     var title: String
     var description: String?
-    var tasks: [TaskModel]?
 }
     struct TaskModel: Codable {
         let id: String

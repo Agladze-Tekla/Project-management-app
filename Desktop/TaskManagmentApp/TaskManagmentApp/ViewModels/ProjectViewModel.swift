@@ -35,8 +35,8 @@ class ProjectViewModel {
        let newProject = ProjectModel(
         id: newId,
         title: title,
-        description: description,
-        tasks: nil)
+        description: description
+       )
        db.collection("users")
         .document(uId)
         .collection("projects")

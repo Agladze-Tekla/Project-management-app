@@ -26,7 +26,6 @@ final class TaskViewModel {
 
     private let db = Firestore.firestore()
 
-    
     //addTask
     func addTask(title: String, description: String?, isCompleted: Bool, date: Date, projectID: String) {
      guard !title.trimmingCharacters(in: .whitespaces).isEmpty else {
@@ -95,5 +94,4 @@ final class TaskViewModel {
                 self.delegate?.projectsFetched(fetchedProjects)
             }
         }
-    
-}
+    }
