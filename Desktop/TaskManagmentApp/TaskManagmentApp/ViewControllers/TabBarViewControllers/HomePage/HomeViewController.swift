@@ -135,6 +135,10 @@ final class HomeViewController: UIViewController {
     
     private let viewModel = HomeViewModel()
     
+    private var taskCountLeft = 0
+    
+    private var taskCountDone = 0
+    
     //MARK: - ViewLifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -150,6 +154,7 @@ final class HomeViewController: UIViewController {
         setupConstraints()
         setupNavigationButton()
         setupWelcomeLabel()
+       // setupTaskLabel()
         setupButtons()
         setupCollectionView()
         setupProjects()
@@ -208,6 +213,10 @@ final class HomeViewController: UIViewController {
                 self.welcomeLabel.text = "Welcome\n\(user.username)!"
             }
         }
+    }
+    
+    private func setupTaskLabel() {
+            todaysTaskLabel.text = "You have \(taskCountLeft) tasks for today"
     }
     
     private func setupProjects() {
@@ -296,6 +305,16 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
 
 //MARK: - Extensions
 extension HomeViewController: HomeViewModelDelegate {
+    func tasksCountFetched(_ count: Int) {
+        self.taskCountLeft = count
+        todaysTaskLabel.text = "You have \(taskCountLeft) tasks for today"
+    }
+    
+    
+    func tasksCountFetchingFailed() {
+        //TODO: ADD TASKCOUNTFAILALERT
+    }
+    
     func projectsFetched(_ projects: [ProjectModel]) {
         self.projects = projects
         projectCollectionView.reloadData()

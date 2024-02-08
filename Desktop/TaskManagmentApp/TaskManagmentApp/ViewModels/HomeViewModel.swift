@@ -9,10 +9,18 @@ import UIKit
 import Firebase
 import FirebaseFirestoreSwift
 
+enum FetchingError: Error {
+    case projectsFetchingFailed(Error)
+    case tasksFetchingFailed(Error)
+}
+
 protocol HomeViewModelDelegate: AnyObject {
     func didLogoutSuccessfully()
     func didFailLogout(error: Error)
     func projectsFetched(_ projects: [ProjectModel])
+    func tasksCountFetched(_ count: Int)
+    func tasksCountFetchingFailed()
+    
 }
 
 final class HomeViewModel {
@@ -54,10 +62,9 @@ final class HomeViewModel {
     }
     
     
-    
+    //fetchProjects
     private var projects = [ProjectModel]()
 
-    //fetchProjects
         func fetchProjects() {
             guard let currentUserID = Auth.auth().currentUser?.uid else {
                 return
@@ -90,6 +97,10 @@ final class HomeViewModel {
             }
         }
     
+    
+    
+    //fetchTaskCountForToday
+
     
     
 }

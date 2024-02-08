@@ -28,7 +28,7 @@ final class TaskViewModel {
 
     
     //addTask
-    func addTask(title: String, description: String?, isCompleted: Bool, date: TimeInterval, projectID: String) {
+    func addTask(title: String, description: String?, isCompleted: Bool, date: Date, projectID: String) {
      guard !title.trimmingCharacters(in: .whitespaces).isEmpty else {
             delegate?.taskAddingFailed(.emptyTitle)
             return
@@ -95,6 +95,5 @@ final class TaskViewModel {
                 self.delegate?.projectsFetched(fetchedProjects)
             }
         }
-    
     
 }

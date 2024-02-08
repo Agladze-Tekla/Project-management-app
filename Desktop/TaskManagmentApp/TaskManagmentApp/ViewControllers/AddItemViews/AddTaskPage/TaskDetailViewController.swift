@@ -57,15 +57,7 @@ final class TaskDetailViewController: UIViewController {
     
     private let dueDateLabel = CustomLabel(title: "Due Date", fontSize: .med)
     
-    //TODO: FIX DUE DATE IMPLEMENTATION
-    private let dueDateTextField: UITextField = {
-        let textField = UITextField()
-                textField.placeholder = "Select Date"
-                textField.textAlignment = .center
-                textField.backgroundColor = .secondarySystemBackground
-                textField.inputView = UIDatePicker()
-                return textField
-      }()
+   
     
     private let projectLabel = CustomLabel(title: "To Project:", fontSize: .med)
     
@@ -79,6 +71,17 @@ final class TaskDetailViewController: UIViewController {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
             return collectionView
         }()
+    
+    //TODO: FIX DUE DATE IMPLEMENTATION
+        private let dueDateTextField: UITextField = {
+              let textField = UITextField()
+              textField.placeholder = "Due Date"
+              textField.textAlignment = .center
+            textField.textColor = .systemIndigo
+            textField.backgroundColor = .secondarySystemBackground
+              textField.inputView = UIDatePicker()
+              return textField
+          }()
 
     private var projects = [ProjectModel]()
     
@@ -150,29 +153,6 @@ final class TaskDetailViewController: UIViewController {
         saveTaskButton.addTarget(self, action: #selector(didTapAddTask), for: .touchUpInside)
     }
     
-    private func setupDatePicker() {
-        if let datePicker = dueDateTextField.inputView as? UIDatePicker {
-                   datePicker.datePickerMode = .date
-                   datePicker.addTarget(self, action: #selector(datePickerValueChanged), for: .valueChanged)
-                   datePicker.date = Date()
-               }
-    }
-
-    private func setupTapGestureRecognizer() {
-         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
-         view.addGestureRecognizer(tapGesture)
-     }
-
-     @objc private func handleTap() {
-         dueDateTextField.resignFirstResponder()
-     }
-
-     @objc private func datePickerValueChanged(_ sender: UIDatePicker) {
-         selectedDate = sender.date
-         let dateFormatter = DateFormatter()
-         dateFormatter.dateStyle = .medium
-         dueDateTextField.text = dateFormatter.string(from: sender.date)
-     }
     
     private func setupCollectionview() {
         collectionView.dataSource = self
@@ -183,13 +163,39 @@ final class TaskDetailViewController: UIViewController {
     private func setupProjects() {
         viewModel.fetchProjects()
     }
+    
+    private func setupDatePicker() {
+           if let datePicker = dueDateTextField.inputView as? UIDatePicker {
+               datePicker.datePickerMode = .date
+               datePicker.addTarget(self, action: #selector(datePickerValueChanged), for: .valueChanged)
+           }
+           addToolbarToDatePicker()
+       }
 
-    @objc private func dismissDatePicker() {
-        view.endEditing(true)
-    }
+       @objc private func datePickerValueChanged(_ sender: UIDatePicker) {
+        selectedDate = sender.date
+           let dateFormatter = DateFormatter()
+           dateFormatter.dateStyle = .medium
+           dueDateTextField.text = dateFormatter.string(from: sender.date)
+       }
+
+       private func addToolbarToDatePicker() {
+           let toolbar = UIToolbar()
+           toolbar.sizeToFit()
+
+           let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissDatePicker))
+           toolbar.setItems([doneButton], animated: true)
+
+           dueDateTextField.inputAccessoryView = toolbar
+       }
+
+       @objc private func dismissDatePicker() {
+           view.endEditing(true)
+       }
     
     @objc private func didTapAddTask() {
-        viewModel.addTask(title: titleTextField.text ?? "", description: descriptionTextField.text, isCompleted: false, date: selectedDate?.timeIntervalSince1970 ?? 0, projectID: projectId)
+        let currentDate = Date()
+        viewModel.addTask(title: titleTextField.text ?? "", description: descriptionTextField.text, isCompleted: false, date: selectedDate ?? currentDate, projectID: projectId)
       }
 }
 
