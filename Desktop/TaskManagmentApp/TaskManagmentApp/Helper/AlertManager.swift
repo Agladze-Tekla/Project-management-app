@@ -103,3 +103,10 @@ extension AlertManager {
         self.showBasicAlert(vc: vc, title: "Error Fetching Projects", message: "\(error.localizedDescription)")
     }
 }
+
+//MARK: - Fetch Tasks Alerts
+extension AlertManager {
+    public static func showTasksFetchingError(on vc: UIViewController, error: Error) {
+        self.showBasicAlert(vc: vc, title: "Error Fetching Tasks", message: "\(error.localizedDescription)")
+    }
+}

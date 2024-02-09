@@ -11,6 +11,10 @@ final class ProjectDetailViewController: UIViewController {
     // MARK: - Private Properties
       private let project: ProjectModel
     
+    private var tasks = [TaskModel]()
+    
+    private var viewModel = ProjectDetailViewModel()
+    
     // MARK: - UI Components
     private let mainStackView: UIStackView = {
         let stackView = UIStackView()
@@ -81,7 +85,9 @@ private let addTaskButton = CustomButton(title: "+ Add Task", hasBackground: fal
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel.fetchTasks(for: project.id)
         setupUI()
+        setupDelegate()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -90,6 +96,10 @@ private let addTaskButton = CustomButton(title: "+ Add Task", hasBackground: fal
     }
 
     // MARK: - Private Methods
+    private func setupDelegate() {
+        viewModel.delegate = self
+    }
+    
     private func setupUI() {
         setupBackground()
         addSubviews()
@@ -136,6 +146,20 @@ private let addTaskButton = CustomButton(title: "+ Add Task", hasBackground: fal
         vc.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(vc, animated: true)
     }
+}
+
+
+//MARK: - Extensions
+extension ProjectDetailViewController: ProjectDetailViewModelDelegate {
+    func tasksFetchedSuccessfully(_ tasks: [TaskModel]) {
+        self.tasks = tasks
+    }
+    
+    func tasksFetchingFailed(_ error: Error) {
+        AlertManager.showTasksFetchingError(on: self, error: error)
+    }
+    
+    
     
     
 }
