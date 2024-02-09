@@ -69,6 +69,13 @@ final class ProjectDetailViewController: UIViewController {
         return stackView
     }()
 
+    private let tasksTableView: UITableView = {
+        let tableView = UITableView()
+        tableView.separatorStyle = .none
+        tableView.showsVerticalScrollIndicator = false
+        return tableView
+    }()
+    
     private let tasksLabel = CustomLabel(title: "Tasks", fontSize: .med)
 
 private let addTaskButton = CustomButton(title: "+ Add Task", hasBackground: false, fontSize: .small)
@@ -106,6 +113,7 @@ private let addTaskButton = CustomButton(title: "+ Add Task", hasBackground: fal
         setupConstraints()
         configure(with: project)
         setupButtons()
+        configureTasksTableView()
     }
 
     private func setupBackground() {
@@ -141,6 +149,17 @@ private let addTaskButton = CustomButton(title: "+ Add Task", hasBackground: fal
         addTaskButton.addTarget(self, action: #selector(didTapNewTask), for: .touchUpInside)
     }
     
+    private func configureTasksTableView() {
+        taskStackView.addArrangedSubview(tasksTableView)
+        
+        tasksTableView.delegate = self
+        tasksTableView.dataSource = self
+        
+        tasksTableView.register(TaskViewCell.self, forCellReuseIdentifier: TaskViewCell.identifier)
+        tasksTableView.backgroundColor = .clear
+        tasksTableView.reloadData()
+    }
+    
     @objc private func didTapNewTask() {
         let vc = TaskDetailViewController()
         vc.hidesBottomBarWhenPushed = true
@@ -153,13 +172,36 @@ private let addTaskButton = CustomButton(title: "+ Add Task", hasBackground: fal
 extension ProjectDetailViewController: ProjectDetailViewModelDelegate {
     func tasksFetchedSuccessfully(_ tasks: [TaskModel]) {
         self.tasks = tasks
+        tasksTableView.reloadData()
     }
     
     func tasksFetchingFailed(_ error: Error) {
         AlertManager.showTasksFetchingError(on: self, error: error)
     }
-    
-    
-    
-    
+}
+
+//MARK: - TableView Extensions
+extension ProjectDetailViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return tasks.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: TaskViewCell.identifier, for: indexPath) as? TaskViewCell else {
+            fatalError("Unable to dequeue TaskCell")
+        }
+
+        let task = tasks[indexPath.row]
+        cell.configure(with: task)
+
+        return cell
+    }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
 }
