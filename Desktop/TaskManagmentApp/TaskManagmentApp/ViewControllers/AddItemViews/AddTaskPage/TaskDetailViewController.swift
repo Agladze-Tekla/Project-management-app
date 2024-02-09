@@ -98,11 +98,6 @@ final class TaskDetailViewController: UIViewController {
         setupUI()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.isHidden = true
-    }
-    
     //MARK: - Private Methods
     private func setupUI() {
         setupBackground()

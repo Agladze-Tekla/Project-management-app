@@ -64,11 +64,6 @@ final class ProjectViewController: UIViewController {
         setupDelegates()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.isHidden = true
-    }
-    
     // MARK: - Configure
         func configure(model: ProjectModel) {
             if !model.title.isEmpty {

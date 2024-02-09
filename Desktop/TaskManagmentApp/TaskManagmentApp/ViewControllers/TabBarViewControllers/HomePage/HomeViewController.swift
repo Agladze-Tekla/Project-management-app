@@ -226,7 +226,7 @@ final class HomeViewController: UIViewController {
             } else {
                 self.projectStackView.addArrangedSubview(self.projectCollectionView)
                 NSLayoutConstraint.activate([
-                    self.projectCollectionView.heightAnchor.constraint(equalToConstant: 120),
+                    self.projectCollectionView.heightAnchor.constraint(equalToConstant: 170),
                     self.projectCollectionView.widthAnchor.constraint(equalTo: self.projectStackView.widthAnchor, constant: -20)
                 ])
                 self.projectCollectionView.reloadData()
@@ -283,10 +283,9 @@ extension  HomeViewController: UICollectionViewDataSource {
 //MARK: - CollectionView Delegate
 extension HomeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-          //let vc = ProjectDetailViewController()
-         //vc.configure(movies: projects[indexPath.row])
-          //navigationController?.pushViewController(vc, animated: true)
-        return
+        let vc = ProjectDetailViewController(project: projects[indexPath.row])
+        vc.hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(vc, animated: true)
       }
 }
 

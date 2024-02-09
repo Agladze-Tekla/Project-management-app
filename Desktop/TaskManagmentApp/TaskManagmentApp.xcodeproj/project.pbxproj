@@ -45,6 +45,7 @@
 		3E635A182B6157CE007D0FBE /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 3E635A172B6157CE007D0FBE /* FirebaseFirestore */; };
 		3E635A1A2B6157CE007D0FBE /* FirebaseFirestoreSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 3E635A192B6157CE007D0FBE /* FirebaseFirestoreSwift-Beta */; };
 		3E635A1F2B615E77007D0FBE /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E635A1E2B615E76007D0FBE /* LoginViewModel.swift */; };
+		3E63A7292B758B990078ACBC /* ProjectDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E63A7282B758B990078ACBC /* ProjectDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -85,6 +86,7 @@
 		3E61B4F62B61B60300DB760D /* Authentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
 		3E635A112B613F15007D0FBE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3E635A1E2B615E76007D0FBE /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		3E63A7282B758B990078ACBC /* ProjectDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -257,6 +259,7 @@
 				3E5778C82B698C50009C5C1F /* TabBarViewControllers */,
 				3E5778C42B698B9F009C5C1F /* TabBar */,
 				3E5F2C342B60804F0072006F /* Onboarding */,
+				3E63A7282B758B990078ACBC /* ProjectDetailViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -359,6 +362,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3E5F2C2F2B6073D50072006F /* ProjectModel.swift in Sources */,
+				3E63A7292B758B990078ACBC /* ProjectDetailViewController.swift in Sources */,
 				3E5F2C2B2B6073C00072006F /* OnboardingModel.swift in Sources */,
 				3E57787D2B65691F009C5C1F /* Encodable.swift in Sources */,
 				3E5778F32B6D938E009C5C1F /* CustomLabel.swift in Sources */,
