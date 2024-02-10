@@ -61,7 +61,6 @@ final class ProjectDetailViewModel {
             return
         }
         
-        let db = Firestore.firestore()
         db.collection("users").document(currentUserID).collection("projects").document(projectId).collection("tasks").document(taskCopy.id).setData(taskCopy.asDictionary())
         
         self.delegate?.fetchTask(taskCopy)

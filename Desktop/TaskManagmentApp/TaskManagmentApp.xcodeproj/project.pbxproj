@@ -50,6 +50,7 @@
 		3E63A7302B7653C80078ACBC /* TaskViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E63A72F2B7653C80078ACBC /* TaskViewCell.swift */; };
 		3E63C5952B77930800E06ED5 /* EditProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E63C5942B77930800E06ED5 /* EditProjectViewController.swift */; };
 		3E63C5982B77934200E06ED5 /* EditTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E63C5972B77934200E06ED5 /* EditTaskViewController.swift */; };
+		3E63C59B2B77C99800E06ED5 /* EditProjectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E63C59A2B77C99800E06ED5 /* EditProjectViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -95,6 +96,7 @@
 		3E63A72F2B7653C80078ACBC /* TaskViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewCell.swift; sourceTree = "<group>"; };
 		3E63C5942B77930800E06ED5 /* EditProjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProjectViewController.swift; sourceTree = "<group>"; };
 		3E63C5972B77934200E06ED5 /* EditTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskViewController.swift; sourceTree = "<group>"; };
+		3E63C59A2B77C99800E06ED5 /* EditProjectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProjectViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -246,6 +248,7 @@
 				3E5778D92B6C3A6F009C5C1F /* TaskViewModel.swift */,
 				3E5778DC2B6C4A9D009C5C1F /* HomeViewModel.swift */,
 				3E63A72B2B763C990078ACBC /* ProjectDetailViewModel.swift */,
+				3E63C59A2B77C99800E06ED5 /* EditProjectViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -401,6 +404,7 @@
 				3E61B4F72B61B60300DB760D /* Authentication.swift in Sources */,
 				3E5778B12B692143009C5C1F /* HomeViewController.swift in Sources */,
 				3E5F2C322B607F0C0072006F /* OnboardingView.swift in Sources */,
+				3E63C59B2B77C99800E06ED5 /* EditProjectViewModel.swift in Sources */,
 				3E5778CA2B698C7B009C5C1F /* TaskViewController.swift in Sources */,
 				3E5778C62B698BDB009C5C1F /* TabBarViewController.swift in Sources */,
 				3E5778BE2B693E3D009C5C1F /* AlertManager.swift in Sources */,

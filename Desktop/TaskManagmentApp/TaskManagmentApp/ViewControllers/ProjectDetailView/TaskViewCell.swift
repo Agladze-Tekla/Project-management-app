@@ -137,11 +137,11 @@ final class TaskViewCell: UITableViewCell {
 //MARK: - Extensions
 extension TaskViewCell: ProjectDetailViewModelDelegate {
     func tasksFetchedSuccessfully(_ tasks: [TaskModel]) {
-        print("No need.")
+      
     }
     
     func tasksFetchingFailed(_ error: Error) {
-        print("No need.")
+     
     }
     
     func fetchTask(_ task: TaskModel) {

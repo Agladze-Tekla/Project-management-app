@@ -42,13 +42,16 @@ final class ProjectDetailViewController: UIViewController {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 24, weight: .bold)
+        label.lineBreakMode = .byWordWrapping
+        label.numberOfLines = 3
         label.textColor = .white
         return label
     }()
 
     private let descriptionLabel: UILabel = {
         let label = UILabel()
-        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
+        label.numberOfLines = 7
         label.font = UIFont.systemFont(ofSize: 20)
         label.textColor = .white
         return label
@@ -147,6 +150,8 @@ private let addTaskButton = CustomButton(title: "+ Add Task", hasBackground: fal
     
     private func setupButtons() {
         addTaskButton.addTarget(self, action: #selector(didTapNewTask), for: .touchUpInside)
+            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit Project", style: .plain, target: self, action: #selector(didTapEditProject))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Go Home", style: .plain, target: self, action: #selector(didTapGoHome))
     }
     
     private func configureTasksTableView() {
@@ -165,13 +170,26 @@ private let addTaskButton = CustomButton(title: "+ Add Task", hasBackground: fal
         vc.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    
+    @objc private func didTapEditProject() {
+        let vc = EditProjectViewController()
+        vc.hidesBottomBarWhenPushed = true
+        vc.configure(project: project)
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc private func didTapGoHome() {
+        let vc = TabBarViewController()
+        let navigationController = UINavigationController(rootViewController: vc)
+        navigationController.modalPresentationStyle = .fullScreen
+        present(navigationController, animated: true, completion: nil)
+    }
 }
-
 
 //MARK: - Extensions
 extension ProjectDetailViewController: ProjectDetailViewModelDelegate {
     func fetchTask(_ task: TaskModel) {
-        print("No need")
+       
     }
     
     func tasksFetchedSuccessfully(_ tasks: [TaskModel]) {

@@ -64,14 +64,6 @@ final class ProjectViewController: UIViewController {
         setupDelegates()
     }
     
-    // MARK: - Configure
-        func configure(model: ProjectModel) {
-            if !model.title.isEmpty {
-             titleLabel.text = model.title
-         }
-             descriptionLabel.text = model.description
-         }
-    
     //MARK: - Private Methods
     private func setupUI() {
         setupBackground()
@@ -92,7 +84,6 @@ final class ProjectViewController: UIViewController {
         projectStackView.addArrangedSubview(projectInfoStackView)
         projectStackView.addArrangedSubview(saveProjectButton)
         view.addSubview(projectStackView)
- 
     }
     
     private func setupConstraints() {
