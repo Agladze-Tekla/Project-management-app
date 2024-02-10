@@ -35,7 +35,7 @@ final class ProjectViewCell: UICollectionViewCell {
     //MARK: - Set Up UI
     private func setupBackground() {
         contentView.backgroundColor = .systemIndigo
-        layer.cornerRadius = 8
+        layer.cornerRadius = 20
         layer.masksToBounds = true
     }
     

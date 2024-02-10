@@ -63,7 +63,7 @@ final class HomeViewController: UIViewController {
         stack.alignment = .center
         stack.backgroundColor = .systemBackground
         stack.spacing = 15
-        stack.layer.cornerRadius = 25
+        stack.layer.cornerRadius = 30
         stack.distribution = .equalSpacing
         stack.isLayoutMarginsRelativeArrangement = true
         stack.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 20, leading: 20, bottom: 60, trailing: 20)
@@ -75,9 +75,8 @@ final class HomeViewController: UIViewController {
         let stack = UIStackView()
         stack.axis = .vertical
         stack.alignment = .leading
-        stack.layer.cornerRadius = 13
-        stack.spacing = 20
-        stack.distribution = .equalSpacing
+        stack.spacing = 40
+        stack.distribution = .equalCentering
         stack.isLayoutMarginsRelativeArrangement = true
         stack.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 20, leading: 20, bottom: 20, trailing: 20)
         stack.translatesAutoresizingMaskIntoConstraints = false
@@ -89,7 +88,6 @@ final class HomeViewController: UIViewController {
     private let progressStackView: UIStackView = {
         let stack = UIStackView()
         stack.alignment = .leading
-        stack.layer.cornerRadius = 13
         stack.distribution = .equalSpacing
         stack.isLayoutMarginsRelativeArrangement = true
         return stack
@@ -98,7 +96,7 @@ final class HomeViewController: UIViewController {
     private let welcomeStackView: UIStackView = {
         let stack = UIStackView()
         stack.alignment = .leading
-        stack.layer.cornerRadius = 13
+        stack.layer.cornerRadius = 20
         stack.backgroundColor = .systemBackground
         stack.distribution = .equalSpacing
         stack.isLayoutMarginsRelativeArrangement = true
@@ -124,20 +122,15 @@ final class HomeViewController: UIViewController {
            let layout = UICollectionViewFlowLayout()
            layout.scrollDirection = .horizontal
            let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        
            collectionView.backgroundColor = .clear
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.isPagingEnabled = true
+        collectionView.showsHorizontalScrollIndicator = false
            return collectionView
        }()
 
     private var projects = [ProjectModel]()
     
     private let viewModel = HomeViewModel()
-    
-    private var taskCountLeft = 0
-    
-    private var taskCountDone = 0
     
     //MARK: - ViewLifeCycle
     override func viewDidLoad() {
@@ -226,7 +219,7 @@ final class HomeViewController: UIViewController {
             } else {
                 self.projectStackView.addArrangedSubview(self.projectCollectionView)
                 NSLayoutConstraint.activate([
-                    self.projectCollectionView.heightAnchor.constraint(equalToConstant: 170),
+                    self.projectCollectionView.heightAnchor.constraint(equalToConstant: 200),
                     self.projectCollectionView.widthAnchor.constraint(equalTo: self.projectStackView.widthAnchor, constant: -20)
                 ])
                 self.projectCollectionView.reloadData()
@@ -288,23 +281,21 @@ extension HomeViewController: UICollectionViewDelegate {
         let navigationController = UINavigationController(rootViewController: vc)
         navigationController.modalPresentationStyle = .fullScreen
         present(navigationController, animated: true, completion: nil)
-            //navigationController?.pushViewController(vc, animated: true)
       }
 }
 
 // MARK: - CollectionView FlowLayoutDelegatew
 extension HomeViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-          let width = projectCollectionView.bounds.width / 3
-          return CGSize(width: width, height: width)
+        let width = projectCollectionView.bounds.width / 2.2
+        let height = projectCollectionView.bounds.height
+          return CGSize(width: width, height: height)
       }
 }
 
 //MARK: - Extensions
 extension HomeViewController: HomeViewModelDelegate {
     func tasksCountFetched(_ count: Int) {
-        self.taskCountLeft = count
-        todaysTaskLabel.text = "You have \(taskCountLeft) tasks for today"
     }
     
     

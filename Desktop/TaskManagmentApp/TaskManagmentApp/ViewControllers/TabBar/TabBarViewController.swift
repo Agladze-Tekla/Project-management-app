@@ -17,6 +17,7 @@ final class TabBarViewController: UITabBarController {
     
     // MARK: - Private Methods
     private func setupTabBar() {
+        
         tabBar.barTintColor = .secondarySystemBackground
         tabBar.tintColor = .systemIndigo
         tabBar.unselectedItemTintColor = .systemBackground
