@@ -11,7 +11,7 @@ final class TaskViewCell: UITableViewCell {
     // MARK: - Properties
     static let identifier = "TaskViewCell"
     
-    private var viewModel = ProjectDetailViewModel()
+    private var viewModel = TaskCellViewModel()
     
     private var projectId: String?
     
@@ -135,18 +135,8 @@ final class TaskViewCell: UITableViewCell {
 }
 
 //MARK: - Extensions
-extension TaskViewCell: ProjectDetailViewModelDelegate {
-    func tasksFetchedSuccessfully(_ tasks: [TaskModel]) {
-      
-    }
-    
-    func tasksFetchingFailed(_ error: Error) {
-     
-    }
-    
+extension TaskViewCell: TaskCellViewModelDelegate {
     func fetchTask(_ task: TaskModel) {
         self.task = task
     }
-    
-    
 }

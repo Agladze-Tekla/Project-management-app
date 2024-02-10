@@ -188,10 +188,6 @@ private let addTaskButton = CustomButton(title: "+ Add Task", hasBackground: fal
 
 //MARK: - Extensions
 extension ProjectDetailViewController: ProjectDetailViewModelDelegate {
-    func fetchTask(_ task: TaskModel) {
-       
-    }
-    
     func tasksFetchedSuccessfully(_ tasks: [TaskModel]) {
         self.tasks = tasks
         tasksTableView.reloadData()
@@ -226,4 +222,13 @@ extension ProjectDetailViewController: UITableViewDataSource, UITableViewDelegat
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
+    
+    
 }
