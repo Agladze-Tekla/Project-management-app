@@ -110,3 +110,15 @@ extension AlertManager {
         self.showBasicAlert(vc: vc, title: "Error Fetching Tasks", message: "\(error.localizedDescription)")
     }
 }
+
+//MARK: - Delete Items Alerts
+extension AlertManager {
+    public static func showTasksDeleteError(on vc: UIViewController, error: Error) {
+        self.showBasicAlert(vc: vc, title: "Error Deleting Task", message: "\(error.localizedDescription)")
+    }
+}
+extension AlertManager {
+    public static func showProjectDeleteError(on vc: UIViewController, error: Error) {
+        self.showBasicAlert(vc: vc, title: "Error Deleting Project", message: "\(error.localizedDescription)")
+    }
+}

@@ -11,6 +11,7 @@ import Firebase
 protocol ProjectDetailViewModelDelegate: AnyObject {
     func tasksFetchedSuccessfully(_ tasks: [TaskModel])
     func tasksFetchingFailed(_ error: Error)
+    func taskDeleteFailed(_ error: Error)
 }
 
 final class ProjectDetailViewModel {
@@ -45,9 +46,20 @@ final class ProjectDetailViewModel {
                     print("Error decoding task data: \(error.localizedDescription)")
                 }
             }
-
             self.delegate?.tasksFetchedSuccessfully(fetchedTasks)
         }
     }
+    
+    func deleteTask(task: TaskModel) {
+        guard let currentUserID = Auth.auth().currentUser?.uid else {
+            return
+        }
+        db.collection("users").document(currentUserID).collection("projects").document(task.project).collection("tasks").document(task.id).delete() { error in
+            if let error = error {
+                self.delegate?.taskDeleteFailed(error)
+            }
+        } 
+    }
+    
 }
 
