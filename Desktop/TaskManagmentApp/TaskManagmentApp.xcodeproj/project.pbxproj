@@ -48,6 +48,8 @@
 		3E63A7292B758B990078ACBC /* ProjectDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E63A7282B758B990078ACBC /* ProjectDetailViewController.swift */; };
 		3E63A72C2B763C990078ACBC /* ProjectDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E63A72B2B763C990078ACBC /* ProjectDetailViewModel.swift */; };
 		3E63A7302B7653C80078ACBC /* TaskViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E63A72F2B7653C80078ACBC /* TaskViewCell.swift */; };
+		3E63C5952B77930800E06ED5 /* EditProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E63C5942B77930800E06ED5 /* EditProjectViewController.swift */; };
+		3E63C5982B77934200E06ED5 /* EditTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E63C5972B77934200E06ED5 /* EditTaskViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -91,6 +93,8 @@
 		3E63A7282B758B990078ACBC /* ProjectDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDetailViewController.swift; sourceTree = "<group>"; };
 		3E63A72B2B763C990078ACBC /* ProjectDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDetailViewModel.swift; sourceTree = "<group>"; };
 		3E63A72F2B7653C80078ACBC /* TaskViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewCell.swift; sourceTree = "<group>"; };
+		3E63C5942B77930800E06ED5 /* EditProjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProjectViewController.swift; sourceTree = "<group>"; };
+		3E63C5972B77934200E06ED5 /* EditTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -259,6 +263,7 @@
 		3E5F2C292B6071D80072006F /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				3E63C5932B7792CC00E06ED5 /* EditItemViews */,
 				3E5778DF2B6C7726009C5C1F /* AddItemViews */,
 				3E5778CD2B698F08009C5C1F /* Login-Signup */,
 				3E5778C82B698C50009C5C1F /* TabBarViewControllers */,
@@ -295,6 +300,15 @@
 				3E63A72F2B7653C80078ACBC /* TaskViewCell.swift */,
 			);
 			path = ProjectDetailView;
+			sourceTree = "<group>";
+		};
+		3E63C5932B7792CC00E06ED5 /* EditItemViews */ = {
+			isa = PBXGroup;
+			children = (
+				3E63C5942B77930800E06ED5 /* EditProjectViewController.swift */,
+				3E63C5972B77934200E06ED5 /* EditTaskViewController.swift */,
+			);
+			path = EditItemViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -396,6 +410,7 @@
 				3E5778DA2B6C3A6F009C5C1F /* TaskViewModel.swift in Sources */,
 				3E5778F92B6DC35E009C5C1F /* TaskDetailViewController.swift in Sources */,
 				3E5778AE2B69212C009C5C1F /* SignupViewController.swift in Sources */,
+				3E63C5982B77934200E06ED5 /* EditTaskViewController.swift in Sources */,
 				3E63A72C2B763C990078ACBC /* ProjectDetailViewModel.swift in Sources */,
 				3E63A7302B7653C80078ACBC /* TaskViewCell.swift in Sources */,
 				3E5778E12B6C7746009C5C1F /* ProjectViewController.swift in Sources */,
@@ -409,6 +424,7 @@
 				3E5778BB2B6934E9009C5C1F /* CustomButton.swift in Sources */,
 				3E5778AC2B692115009C5C1F /* LoginViewController.swift in Sources */,
 				3E5778B52B69229F009C5C1F /* AuthHeaderView.swift in Sources */,
+				3E63C5952B77930800E06ED5 /* EditProjectViewController.swift in Sources */,
 				3E635A1F2B615E77007D0FBE /* LoginViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
