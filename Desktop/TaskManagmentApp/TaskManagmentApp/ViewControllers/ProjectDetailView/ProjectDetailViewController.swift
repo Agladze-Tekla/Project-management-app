@@ -76,7 +76,7 @@ final class ProjectDetailViewController: UIViewController {
         return tableView
     }()
     
-    private let tasksLabel = CustomLabel(title: "Tasks", fontSize: .med)
+    private let tasksLabel = CustomLabel(title: "Tasks", fontSize: .big)
 
 private let addTaskButton = CustomButton(title: "+ Add Task", hasBackground: false, fontSize: .small)
 
@@ -170,6 +170,10 @@ private let addTaskButton = CustomButton(title: "+ Add Task", hasBackground: fal
 
 //MARK: - Extensions
 extension ProjectDetailViewController: ProjectDetailViewModelDelegate {
+    func fetchTask(_ task: TaskModel) {
+        print("No need")
+    }
+    
     func tasksFetchedSuccessfully(_ tasks: [TaskModel]) {
         self.tasks = tasks
         tasksTableView.reloadData()
@@ -192,7 +196,7 @@ extension ProjectDetailViewController: UITableViewDataSource, UITableViewDelegat
         }
 
         let task = tasks[indexPath.row]
-        cell.configure(with: task)
+        cell.configure(task: task, projectId: project.id)
 
         return cell
     }

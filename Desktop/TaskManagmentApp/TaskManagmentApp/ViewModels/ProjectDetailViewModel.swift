@@ -11,6 +11,7 @@ import Firebase
 protocol ProjectDetailViewModelDelegate: AnyObject {
     func tasksFetchedSuccessfully(_ tasks: [TaskModel])
     func tasksFetchingFailed(_ error: Error)
+    func fetchTask(_ task: TaskModel)
 }
 
 final class ProjectDetailViewModel {
@@ -18,6 +19,7 @@ final class ProjectDetailViewModel {
 
     private let db = Firestore.firestore()
 
+    //fetchTasks
     func fetchTasks(for projectId: String) {
         guard let currentUserID = Auth.auth().currentUser?.uid else {
             return
@@ -48,5 +50,22 @@ final class ProjectDetailViewModel {
             self.delegate?.tasksFetchedSuccessfully(fetchedTasks)
         }
     }
+    
+    
+    //task isCompleted
+    func toggleIsComplete(task: TaskModel, projectId: String) {
+        var taskCopy = task
+        taskCopy.setDone(!task.isCompleted)
+        
+        guard let currentUserID = Auth.auth().currentUser?.uid else {
+            return
+        }
+        
+        let db = Firestore.firestore()
+        db.collection("users").document(currentUserID).collection("projects").document(projectId).collection("tasks").document(taskCopy.id).setData(taskCopy.asDictionary())
+        
+        self.delegate?.fetchTask(taskCopy)
+    }
+    
 }
 

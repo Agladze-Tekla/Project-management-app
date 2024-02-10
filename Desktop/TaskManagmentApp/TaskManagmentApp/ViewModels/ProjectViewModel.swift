@@ -18,7 +18,7 @@ protocol ProjectViewModelDelegate: AnyObject {
    func projectAddingFailed(_ error: addingError)
 }
 
-class ProjectViewModel {
+final class ProjectViewModel {
    weak var delegate: ProjectViewModelDelegate?
 
    private let db = Firestore.firestore()
