@@ -53,6 +53,7 @@
 		3E63C59B2B77C99800E06ED5 /* EditProjectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E63C59A2B77C99800E06ED5 /* EditProjectViewModel.swift */; };
 		3E63C59E2B780F8F00E06ED5 /* TaskCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E63C59D2B780F8F00E06ED5 /* TaskCellViewModel.swift */; };
 		3E63C5A52B78F16D00E06ED5 /* ProjectCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E63C5A42B78F16D00E06ED5 /* ProjectCellViewModel.swift */; };
+		3E63C5A82B7903F900E06ED5 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E63C5A72B7903F900E06ED5 /* StringExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -101,6 +102,7 @@
 		3E63C59A2B77C99800E06ED5 /* EditProjectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProjectViewModel.swift; sourceTree = "<group>"; };
 		3E63C59D2B780F8F00E06ED5 /* TaskCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCellViewModel.swift; sourceTree = "<group>"; };
 		3E63C5A42B78F16D00E06ED5 /* ProjectCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectCellViewModel.swift; sourceTree = "<group>"; };
+		3E63C5A72B7903F900E06ED5 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -238,6 +240,7 @@
 			isa = PBXGroup;
 			children = (
 				3E57787C2B65691F009C5C1F /* Encodable.swift */,
+				3E63C5A72B7903F900E06ED5 /* StringExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -435,6 +438,7 @@
 				3E5778F62B6DA5D9009C5C1F /* AddPopUpViewController.swift in Sources */,
 				3E5778BB2B6934E9009C5C1F /* CustomButton.swift in Sources */,
 				3E5778AC2B692115009C5C1F /* LoginViewController.swift in Sources */,
+				3E63C5A82B7903F900E06ED5 /* StringExtension.swift in Sources */,
 				3E5778B52B69229F009C5C1F /* AuthHeaderView.swift in Sources */,
 				3E63C5952B77930800E06ED5 /* EditProjectViewController.swift in Sources */,
 				3E635A1F2B615E77007D0FBE /* LoginViewModel.swift in Sources */,

@@ -212,7 +212,6 @@ extension ProjectDetailViewController: UITableViewDataSource, UITableViewDelegat
         guard let cell = tableView.dequeueReusableCell(withIdentifier: TaskViewCell.identifier, for: indexPath) as? TaskViewCell else {
             fatalError("Unable to dequeue TaskCell")
         }
-
         let task = tasks[indexPath.row]
         cell.configure(task: task, projectId: project.id)
 
@@ -235,5 +234,12 @@ extension ProjectDetailViewController: UITableViewDataSource, UITableViewDelegat
         }
     }
     
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+         //TODO: NAVIGATE TO DETAILS PAGE
+        let selectedTask = tasks[indexPath.row]
+        let vc = EditTaskViewController()
+        vc.configure(task: selectedTask)
+        vc.hidesBottomBarWhenPushed = true
+                navigationController?.pushViewController(vc, animated: true)
+       }
 }
