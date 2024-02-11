@@ -18,7 +18,7 @@ protocol LoginViewModelDelegate: AnyObject {
     func loginError(_ error: LoginError)
 }
 
-class LoginViewModel {
+final class LoginViewModel {
     weak var delegate: LoginViewModelDelegate?
 
     func loginUser(email: String, password: String) {

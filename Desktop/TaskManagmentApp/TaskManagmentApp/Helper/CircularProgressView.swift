@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CircularProgressView: UIView {
+final class CircularProgressView: UIView {
 
 
 fileprivate var progressLayer = CAShapeLayer()
