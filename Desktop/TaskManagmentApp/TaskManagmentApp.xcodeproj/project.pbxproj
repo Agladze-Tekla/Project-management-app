@@ -26,7 +26,6 @@
 		3E5778E12B6C7746009C5C1F /* ProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5778E02B6C7746009C5C1F /* ProjectViewController.swift */; };
 		3E5778ED2B6C882F009C5C1F /* UnderlinedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5778EC2B6C882F009C5C1F /* UnderlinedTextField.swift */; };
 		3E5778F32B6D938E009C5C1F /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5778F22B6D938E009C5C1F /* CustomLabel.swift */; };
-		3E5778F62B6DA5D9009C5C1F /* AddPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5778F52B6DA5D9009C5C1F /* AddPopUpViewController.swift */; };
 		3E5778F92B6DC35E009C5C1F /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5778F82B6DC35E009C5C1F /* AddTaskViewController.swift */; };
 		3E5778FD2B6FBCE1009C5C1F /* ProjectViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5778FC2B6FBCE1009C5C1F /* ProjectViewCell.swift */; };
 		3E5F16DC2B790F3400C8D286 /* TaskPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5F16DB2B790F3400C8D286 /* TaskPresentationController.swift */; };
@@ -79,7 +78,6 @@
 		3E5778E02B6C7746009C5C1F /* ProjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectViewController.swift; sourceTree = "<group>"; };
 		3E5778EC2B6C882F009C5C1F /* UnderlinedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlinedTextField.swift; sourceTree = "<group>"; };
 		3E5778F22B6D938E009C5C1F /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
-		3E5778F52B6DA5D9009C5C1F /* AddPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPopUpViewController.swift; sourceTree = "<group>"; };
 		3E5778F82B6DC35E009C5C1F /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
 		3E5778FC2B6FBCE1009C5C1F /* ProjectViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectViewCell.swift; sourceTree = "<group>"; };
 		3E5F16DB2B790F3400C8D286 /* TaskPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskPresentationController.swift; sourceTree = "<group>"; };
@@ -138,7 +136,6 @@
 			children = (
 				3E5778CF2B6990BD009C5C1F /* TasksPage */,
 				3E5778CE2B6990AE009C5C1F /* HomePage */,
-				3E5778F52B6DA5D9009C5C1F /* AddPopUpViewController.swift */,
 			);
 			path = TabBarViewControllers;
 			sourceTree = "<group>";
@@ -463,7 +460,6 @@
 				3E5778762B651317009C5C1F /* UserModel.swift in Sources */,
 				3E63C5A52B78F16D00E06ED5 /* ProjectCellViewModel.swift in Sources */,
 				3E5778FD2B6FBCE1009C5C1F /* ProjectViewCell.swift in Sources */,
-				3E5778F62B6DA5D9009C5C1F /* AddPopUpViewController.swift in Sources */,
 				3E5778BB2B6934E9009C5C1F /* CustomButton.swift in Sources */,
 				3E5778AC2B692115009C5C1F /* LoginViewController.swift in Sources */,
 				3E63C5A82B7903F900E06ED5 /* StringExtension.swift in Sources */,

@@ -13,14 +13,6 @@ final class HomeViewController: UIViewController {
     
     private let addTaskButton = CustomButton(title: "+ Add Task", hasBackground: false, fontSize: .small)
     
-    private let projectLabelButtonStackView: UIStackView = {
-        let stack = UIStackView()
-        stack.layer.cornerRadius = 13
-        stack.spacing = 30
-        stack.distribution = .equalCentering
-        return stack
-    }()
-    
     private let allProjectStackView: UIStackView = {
         let stack = UIStackView()
         stack.axis = .vertical
@@ -60,13 +52,13 @@ final class HomeViewController: UIViewController {
     private let projectStackView: UIStackView = {
         let stack = UIStackView()
         stack.axis = .vertical
-        stack.alignment = .center
+        stack.alignment = .leading
         stack.backgroundColor = .systemBackground
         stack.spacing = 15
         stack.layer.cornerRadius = 30
         stack.distribution = .equalSpacing
         stack.isLayoutMarginsRelativeArrangement = true
-        stack.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 20, leading: 20, bottom: 60, trailing: 20)
+        stack.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 20, leading: 20, bottom: 80, trailing: 20)
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
@@ -127,7 +119,23 @@ final class HomeViewController: UIViewController {
         collectionView.showsHorizontalScrollIndicator = false
            return collectionView
        }()
-
+    
+    private let addButton: UIButton = {
+        let button =  UIButton(type: .system)
+        button.setTitle("+", for: .normal)
+              button.titleLabel?.font = UIFont.systemFont(ofSize: 24, weight: .bold)
+              button.tintColor = .white
+              button.backgroundColor = .systemIndigo
+              button.layer.cornerRadius = 25
+              button.layer.shadowColor = UIColor.black.cgColor
+              button.layer.shadowOpacity = 0.5
+              button.layer.shadowOffset = CGSize(width: 0, height: 2)
+              button.layer.shadowRadius = 5
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.showsMenuAsPrimaryAction = true
+        return button
+    }()
+    
     private var projects = [ProjectModel]()
     
     private let viewModel = HomeViewModel()
@@ -138,6 +146,12 @@ final class HomeViewController: UIViewController {
             viewModel.fetchProjects()
         setupUI()
         setupDelegates()
+        navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
     //MARK: - Private Methods
@@ -145,7 +159,6 @@ final class HomeViewController: UIViewController {
         setupBackground()
         addSubviews()
         setupConstraints()
-        setupNavigationButton()
         setupWelcomeLabel()
         setupButtons()
         setupCollectionView()
@@ -162,13 +175,11 @@ final class HomeViewController: UIViewController {
         progressStackView.addArrangedSubview(todaysTaskLabel)
         accountStackView.addArrangedSubview(welcomeStackView)
         accountStackView.addArrangedSubview(progressStackView)
-        projectLabelButtonStackView.addArrangedSubview(projectLabel)
-        projectLabelButtonStackView.addArrangedSubview(addProjectButton)
-        projectLabelButtonStackView.addArrangedSubview(addTaskButton)
-        projectStackView.addArrangedSubview(projectLabelButtonStackView)
+        projectStackView.addArrangedSubview(projectLabel)
         projectStackView.addArrangedSubview(allProjectStackView)
         view.addSubview(accountStackView)
         view.addSubview(projectStackView)
+        view.addSubview(addButton)
     }
     
     private func setupConstraints() {
@@ -186,12 +197,12 @@ final class HomeViewController: UIViewController {
         NSLayoutConstraint.activate([
             projectStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 40),
             projectStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            projectStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
+            projectStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            addButton.widthAnchor.constraint(equalToConstant: 50),
+            addButton.heightAnchor.constraint(equalToConstant: 50),
+            addButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16),
+            addButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16)
         ])
-    }
-    
-    private func setupNavigationButton() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log Out", style: .plain, target: self, action: #selector(didTapLogout))
     }
     
     private func setupWelcomeLabel() {
@@ -238,23 +249,41 @@ final class HomeViewController: UIViewController {
     }
     
     private func setupButtons() {
-        addProjectButton.addTarget(self, action: #selector(didTapNewProject), for: .touchUpInside)
-        addTaskButton.addTarget(self, action: #selector(didTapNewTask), for: .touchUpInside)
+        addButton.addTarget(self, action: #selector(showContextMenu), for: .touchUpInside)
     }
     
-    @objc private func didTapNewProject() {
+    @objc private func showContextMenu() {
+        let addTaskAction = UIAction(title: "+ Add Task", image: UIImage(systemName: "plus.circle")) { _ in
+                    self.didTapNewTask()
+                }
+
+                let addProjectAction = UIAction(title: "+ Add Project", image: UIImage(systemName: "folder.badge.plus")) { _ in
+                    self.didTapNewProject()
+                }
+
+                let logoutAction = UIAction(title: "Logout", image: UIImage(systemName: "arrow.left.square")) { _ in
+                    self.didTapLogout()
+                }
+
+                let addMenu = UIMenu(title: "", children: [addTaskAction, addProjectAction, logoutAction])
+
+        addButton.menu = addMenu
+        
+       }
+    
+    private func didTapNewProject() {
         let vc = ProjectViewController()
         vc.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    @objc private func didTapNewTask() {
+    private func didTapNewTask() {
         let vc = AddTaskViewController()
         vc.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    @objc private func didTapLogout() {
+    private func didTapLogout() {
         viewModel.logout()
     }
 }
