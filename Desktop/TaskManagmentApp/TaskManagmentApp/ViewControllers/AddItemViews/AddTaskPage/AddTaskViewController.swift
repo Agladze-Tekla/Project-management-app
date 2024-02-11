@@ -190,8 +190,12 @@ final class AddTaskViewController: UIViewController {
     
     @objc private func didTapAddTask() {
         let currentDate = Date()
-        viewModel.addTask(title: titleTextField.text ?? "", description: descriptionTextField.text, isCompleted: false, date: selectedDate ?? currentDate, projectID: projectId)
+        if selectedDate == nil {
+            AlertManager.showNoTaskDateAlert(on: self)
+        } else {
+            viewModel.addTask(title: titleTextField.text ?? "", description: descriptionTextField.text, isCompleted: false, date: selectedDate ?? currentDate, projectID: projectId)
       }
+    }
 }
 
 //MARK: - Extensions
