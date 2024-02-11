@@ -115,16 +115,32 @@ final class EditProjectViewController: UIViewController {
     
     private func setupButtons() {
         saveProjectButton.addTarget(self, action: #selector(didTapSaveProject), for: .touchUpInside)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Delete Project", style: .plain, target: self, action: #selector(didTapDeleteProject))
     }
     
     @objc private func didTapSaveProject() {
         let editedProject = ProjectModel(id: currentProject?.id ?? "", title: titleTextField.text ?? "", description: descriptionTextField.text)
         viewModel.saveProject(project: editedProject)
       }
+    
+    @objc private func didTapDeleteProject() {
+        viewModel.deleteProject(for: currentProject?.id ?? "")
+      }
 }
 
 //MARK: - Extensions
 extension EditProjectViewController: EditProjectViewModelDelegate {
+    func projectDeletedSuccesfully() {
+        let vc = TabBarViewController()
+        let navigationController = UINavigationController(rootViewController: vc)
+        navigationController.modalPresentationStyle = .fullScreen
+        present(navigationController, animated: true, completion: nil)
+    }
+    
+    func projectDeleteFailed(_ error: Error) {
+        AlertManager.showProjectDeleteError(on: self, error: error)
+    }
+    
     func projectAddingFailed(_ error: addingError) {
         AlertManager.showNoProjectTitleAlert(on: self)
     }
