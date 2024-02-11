@@ -8,22 +8,28 @@
 import UIKit
 
 final class ProjectViewCell: UICollectionViewCell {
+    //MARK: - Properties
+    private var viewModel = ProjectCellViewModel()
+    
     static let identifier = "ProjectCollectionCell"
     
-    //MARK: - Properties
+    private var completedTasks: Int?
+    
+    private var totalTasks: Int?
+    
+    //MARK: - UI Components
        private let titleLabel: UILabel = {
            let label = UILabel()
            label.font = .boldSystemFont(ofSize: 20)
-           label.numberOfLines = 0
+           label.numberOfLines = 6
+        label.lineBreakMode = .byWordWrapping
            label.textColor = .white
            return label
        }()
     
-    private var currentProject: ProjectModel?
-    
     private var progressBar: UIProgressView = {
         let bar = UIProgressView(progressViewStyle: .default)
-        bar.backgroundColor = .purple//UIColor.systemIndigo.withAlphaComponent(0.3)
+        bar.backgroundColor = .purple
         bar.progressTintColor = .white
         bar.translatesAutoresizingMaskIntoConstraints = false
         return bar
@@ -44,10 +50,10 @@ final class ProjectViewCell: UICollectionViewCell {
     //MARK: - Init
       override init(frame: CGRect) {
         super.init(frame: frame)
+        viewModel.delegate = self
         setupBackground()
         addSubViews()
         setUpConstraints()
-        setupProgressBar()
       }
       
       required init?(coder: NSCoder) {
@@ -78,16 +84,16 @@ final class ProjectViewCell: UICollectionViewCell {
         ])
        }
     
-    private func setupProgressBar() {
-        let completedTasks = 13
-        let allTasks = 19
-        let progress = Float(completedTasks)/Float(allTasks)
+    private func setupProgressBar(totalTasks: Int, completedTasks: Int) {
+        let progress = Float(completedTasks )/Float(totalTasks)
         progressBar.setProgress(progress, animated: true)
     }
     
     //MARK: - Configure
     func configurate(project: ProjectModel) {
-        currentProject = project
+        viewModel.fetchTaskCount(for: project.id) { totalTasks, completedTasks in
+            self.setupProgressBar(totalTasks: totalTasks, completedTasks: completedTasks)
+        }
         titleLabel.text = project.title
         }
     
@@ -95,5 +101,20 @@ final class ProjectViewCell: UICollectionViewCell {
           override func prepareForReuse() {
               super.prepareForReuse()
             titleLabel.text = nil
+            progressBar.progress = 0
           }
+}
+
+//MARK: - Extension
+extension ProjectViewCell: ProjectCellViewModelDelegate {
+    func taskCountFetched(totalTasks: Int, completedTasks: Int) {
+        self.completedTasks = completedTasks
+        self.totalTasks = totalTasks
+    }
+    
+    func taskCountFetchingFailed(error: Error) {
+        AlertManager.showTasksFetchingError(on: HomeViewController(), error: error)
+    }
+    
+    
 }

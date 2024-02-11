@@ -52,6 +52,7 @@
 		3E63C5982B77934200E06ED5 /* EditTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E63C5972B77934200E06ED5 /* EditTaskViewController.swift */; };
 		3E63C59B2B77C99800E06ED5 /* EditProjectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E63C59A2B77C99800E06ED5 /* EditProjectViewModel.swift */; };
 		3E63C59E2B780F8F00E06ED5 /* TaskCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E63C59D2B780F8F00E06ED5 /* TaskCellViewModel.swift */; };
+		3E63C5A52B78F16D00E06ED5 /* ProjectCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E63C5A42B78F16D00E06ED5 /* ProjectCellViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -99,6 +100,7 @@
 		3E63C5972B77934200E06ED5 /* EditTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskViewController.swift; sourceTree = "<group>"; };
 		3E63C59A2B77C99800E06ED5 /* EditProjectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProjectViewModel.swift; sourceTree = "<group>"; };
 		3E63C59D2B780F8F00E06ED5 /* TaskCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCellViewModel.swift; sourceTree = "<group>"; };
+		3E63C5A42B78F16D00E06ED5 /* ProjectCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectCellViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -252,6 +254,7 @@
 				3E63A72B2B763C990078ACBC /* ProjectDetailViewModel.swift */,
 				3E63C59A2B77C99800E06ED5 /* EditProjectViewModel.swift */,
 				3E63C59D2B780F8F00E06ED5 /* TaskCellViewModel.swift */,
+				3E63C5A42B78F16D00E06ED5 /* ProjectCellViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -427,6 +430,7 @@
 				3E5778D62B6C3A56009C5C1F /* ProjectViewModel.swift in Sources */,
 				3E5778D32B6C3A0F009C5C1F /* SignupViewModel.swift in Sources */,
 				3E5778762B651317009C5C1F /* UserModel.swift in Sources */,
+				3E63C5A52B78F16D00E06ED5 /* ProjectCellViewModel.swift in Sources */,
 				3E5778FD2B6FBCE1009C5C1F /* ProjectViewCell.swift in Sources */,
 				3E5778F62B6DA5D9009C5C1F /* AddPopUpViewController.swift in Sources */,
 				3E5778BB2B6934E9009C5C1F /* CustomButton.swift in Sources */,

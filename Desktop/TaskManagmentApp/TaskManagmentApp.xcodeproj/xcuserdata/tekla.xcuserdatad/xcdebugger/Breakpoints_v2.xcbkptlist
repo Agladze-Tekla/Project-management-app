@@ -215,38 +215,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "FDC70FFE-AE0B-422A-9CE6-2725F395DE35"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TaskManagmentApp/ViewControllers/TabBarViewControllers/HomePage/ProjectViewCell.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
-            landmarkName = "ProjectViewCell"
-            landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "5F04C069-8DFA-4A7A-8400-1DF3342AF1F1"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "TaskManagmentApp/ViewControllers/TabBarViewControllers/HomePage/ProjectViewCell.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "91"
-            endingLineNumber = "91"
-            landmarkName = "configurate(project:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "FA70C6B4-38EC-4A97-98C2-B2A7109940E0"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -792,7 +760,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "8270A61A-1C9D-4237-B2CB-7E4FB801091D"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TaskManagmentApp/ViewControllers/ProjectDetailView/TaskViewCell.swift"
@@ -808,7 +776,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "86BF0B5B-2EBC-47B9-9839-B45A9A0FC5EA"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TaskManagmentApp/ViewControllers/ProjectDetailView/TaskViewCell.swift"
@@ -824,7 +792,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "75E91C44-BF8D-405D-A101-C8DC369D0D08"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TaskManagmentApp/ViewControllers/ProjectDetailView/TaskViewCell.swift"
@@ -833,6 +801,134 @@
             startingLineNumber = "140"
             endingLineNumber = "140"
             landmarkName = "fetchTask(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1F6E4681-6EF1-482B-B153-D2403AF7A537"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TaskManagmentApp/ViewControllers/TabBarViewControllers/HomePage/ProjectViewCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
+            landmarkName = "configurate(project:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "1F6E4681-6EF1-482B-B153-D2403AF7A537 - 1d304c8a8e7834e3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TaskManagmentApp.ProjectViewCell.configurate(project: TaskManagmentApp.ProjectModel) -&gt; ()"
+                  moduleName = "TaskManagmentApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tekla/Desktop/TaskManagmentApp/TaskManagmentApp/ViewControllers/TabBarViewControllers/HomePage/ProjectViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "98"
+                  endingLineNumber = "98"
+                  offsetFromSymbolStart = "37">
+               </Location>
+               <Location
+                  uuid = "1F6E4681-6EF1-482B-B153-D2403AF7A537 - cf060a0847bdb042"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Int, Swift.Int) -&gt; () in TaskManagmentApp.ProjectViewCell.configurate(project: TaskManagmentApp.ProjectModel) -&gt; ()"
+                  moduleName = "TaskManagmentApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tekla/Desktop/TaskManagmentApp/TaskManagmentApp/ViewControllers/TabBarViewControllers/HomePage/ProjectViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "99"
+                  endingLineNumber = "99"
+                  offsetFromSymbolStart = "46">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3A93E641-7CCB-4909-B04C-AF8E5FA1C415"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TaskManagmentApp/ViewControllers/TabBarViewControllers/HomePage/ProjectViewCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
+            landmarkName = "taskCountFetched(totalTasks:completedTasks:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C5D59F60-0DA7-4B19-AF7A-B22F49EE8A45"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TaskManagmentApp/ViewControllers/TabBarViewControllers/HomePage/ProjectViewCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "112"
+            endingLineNumber = "112"
+            landmarkName = "taskCountFetched(totalTasks:completedTasks:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DB07CFD2-9BD2-4623-A79E-7E4216929666"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TaskManagmentApp/ViewControllers/TabBarViewControllers/HomePage/ProjectViewCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
+            landmarkName = "setupProgressBar(totalTasks:completedTasks:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A1E2F81D-744F-4B30-B903-D169B07C75F8"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TaskManagmentApp/ViewControllers/TabBarViewControllers/HomePage/ProjectViewCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
+            landmarkName = "setupProgressBar(totalTasks:completedTasks:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "23066A95-4C63-4470-83B2-C65B76224FCC"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TaskManagmentApp/ViewControllers/TabBarViewControllers/HomePage/ProjectViewCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
+            landmarkName = "configurate(project:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
