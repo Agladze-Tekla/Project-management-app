@@ -1,5 +1,5 @@
 //
-//  TaskDetailViewController.swift
+//  AddTaskViewController.swift
 //  TaskManagmentApp
 //
 //  Created by Tekla on 2/2/24.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class TaskDetailViewController: UIViewController {
+final class AddTaskViewController: UIViewController {
     //MARK: - UI Components
     private let viewModel = TaskViewModel();
     
@@ -195,7 +195,7 @@ final class TaskDetailViewController: UIViewController {
 }
 
 //MARK: - Extensions
-extension TaskDetailViewController: TaskViewModelDelegate {
+extension AddTaskViewController: TaskViewModelDelegate {
     func projectsFetched(_ projects: [ProjectModel]) {
         self.projects = projects
         collectionView.reloadData()
@@ -223,7 +223,7 @@ extension TaskDetailViewController: TaskViewModelDelegate {
 }
 
 // MARK: - UICollectionViewDataSource
-extension TaskDetailViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+extension AddTaskViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return projects.count
     }

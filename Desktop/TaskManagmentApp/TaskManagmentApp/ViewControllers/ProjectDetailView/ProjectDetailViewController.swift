@@ -166,7 +166,7 @@ private let addTaskButton = CustomButton(title: "+ Add Task", hasBackground: fal
     }
     
     @objc private func didTapNewTask() {
-        let vc = TaskDetailViewController()
+        let vc = AddTaskViewController()
         vc.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(vc, animated: true)
     }
@@ -236,10 +236,23 @@ extension ProjectDetailViewController: UITableViewDataSource, UITableViewDelegat
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
          //TODO: NAVIGATE TO DETAILS PAGE
+        /*
         let selectedTask = tasks[indexPath.row]
         let vc = EditTaskViewController()
         vc.configure(task: selectedTask)
         vc.hidesBottomBarWhenPushed = true
                 navigationController?.pushViewController(vc, animated: true)
+ */
+        let vc = EditTaskViewController()
+                vc.modalPresentationStyle = .custom
+                vc.transitioningDelegate = self
+                self.present(vc, animated: true, completion: nil)
        }
+}
+
+//MARK: - Transition Extension
+extension ProjectDetailViewController: UIViewControllerTransitioningDelegate {
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+        return TaskPresentationController(presentedViewController: presented, presenting: presenting)
+    }
 }

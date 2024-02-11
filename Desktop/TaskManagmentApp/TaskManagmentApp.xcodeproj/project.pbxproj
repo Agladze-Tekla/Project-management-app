@@ -27,8 +27,9 @@
 		3E5778ED2B6C882F009C5C1F /* UnderlinedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5778EC2B6C882F009C5C1F /* UnderlinedTextField.swift */; };
 		3E5778F32B6D938E009C5C1F /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5778F22B6D938E009C5C1F /* CustomLabel.swift */; };
 		3E5778F62B6DA5D9009C5C1F /* AddPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5778F52B6DA5D9009C5C1F /* AddPopUpViewController.swift */; };
-		3E5778F92B6DC35E009C5C1F /* TaskDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5778F82B6DC35E009C5C1F /* TaskDetailViewController.swift */; };
+		3E5778F92B6DC35E009C5C1F /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5778F82B6DC35E009C5C1F /* AddTaskViewController.swift */; };
 		3E5778FD2B6FBCE1009C5C1F /* ProjectViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5778FC2B6FBCE1009C5C1F /* ProjectViewCell.swift */; };
+		3E5F16DC2B790F3400C8D286 /* TaskPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5F16DB2B790F3400C8D286 /* TaskPresentationController.swift */; };
 		3E5F2C0E2B606F3E0072006F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5F2C0D2B606F3E0072006F /* AppDelegate.swift */; };
 		3E5F2C102B606F3E0072006F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5F2C0F2B606F3E0072006F /* SceneDelegate.swift */; };
 		3E5F2C172B606F470072006F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E5F2C162B606F470072006F /* Assets.xcassets */; };
@@ -77,8 +78,9 @@
 		3E5778EC2B6C882F009C5C1F /* UnderlinedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlinedTextField.swift; sourceTree = "<group>"; };
 		3E5778F22B6D938E009C5C1F /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		3E5778F52B6DA5D9009C5C1F /* AddPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPopUpViewController.swift; sourceTree = "<group>"; };
-		3E5778F82B6DC35E009C5C1F /* TaskDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailViewController.swift; sourceTree = "<group>"; };
+		3E5778F82B6DC35E009C5C1F /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
 		3E5778FC2B6FBCE1009C5C1F /* ProjectViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectViewCell.swift; sourceTree = "<group>"; };
+		3E5F16DB2B790F3400C8D286 /* TaskPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskPresentationController.swift; sourceTree = "<group>"; };
 		3E5F2C0A2B606F3E0072006F /* TaskManagmentApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaskManagmentApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E5F2C0D2B606F3E0072006F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3E5F2C0F2B606F3E0072006F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -299,7 +301,7 @@
 		3E5FDB902B72DA5B0038C3BD /* AddTaskPage */ = {
 			isa = PBXGroup;
 			children = (
-				3E5778F82B6DC35E009C5C1F /* TaskDetailViewController.swift */,
+				3E5778F82B6DC35E009C5C1F /* AddTaskViewController.swift */,
 				3E5FDB912B72DA8F0038C3BD /* OvalProjectCell.swift */,
 			);
 			path = AddTaskPage;
@@ -310,6 +312,7 @@
 			children = (
 				3E63A7282B758B990078ACBC /* ProjectDetailViewController.swift */,
 				3E63A72F2B7653C80078ACBC /* TaskViewCell.swift */,
+				3E5F16DB2B790F3400C8D286 /* TaskPresentationController.swift */,
 			);
 			path = ProjectDetailView;
 			sourceTree = "<group>";
@@ -411,6 +414,7 @@
 				3E5F2C3B2B60859F0072006F /* OnboardingViewController.swift in Sources */,
 				3E5778B82B692D2C009C5C1F /* CustomTextField.swift in Sources */,
 				3E61B4F72B61B60300DB760D /* Authentication.swift in Sources */,
+				3E5F16DC2B790F3400C8D286 /* TaskPresentationController.swift in Sources */,
 				3E5778B12B692143009C5C1F /* HomeViewController.swift in Sources */,
 				3E5F2C322B607F0C0072006F /* OnboardingView.swift in Sources */,
 				3E63C59E2B780F8F00E06ED5 /* TaskCellViewModel.swift in Sources */,
@@ -422,7 +426,7 @@
 				3E5F2C0E2B606F3E0072006F /* AppDelegate.swift in Sources */,
 				3E5F2C102B606F3E0072006F /* SceneDelegate.swift in Sources */,
 				3E5778DA2B6C3A6F009C5C1F /* TaskViewModel.swift in Sources */,
-				3E5778F92B6DC35E009C5C1F /* TaskDetailViewController.swift in Sources */,
+				3E5778F92B6DC35E009C5C1F /* AddTaskViewController.swift in Sources */,
 				3E5778AE2B69212C009C5C1F /* SignupViewController.swift in Sources */,
 				3E63C5982B77934200E06ED5 /* EditTaskViewController.swift in Sources */,
 				3E63A72C2B763C990078ACBC /* ProjectDetailViewModel.swift in Sources */,

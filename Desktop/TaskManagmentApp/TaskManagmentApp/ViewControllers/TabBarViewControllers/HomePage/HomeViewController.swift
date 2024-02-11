@@ -249,7 +249,7 @@ final class HomeViewController: UIViewController {
     }
     
     @objc private func didTapNewTask() {
-        let vc = TaskDetailViewController()
+        let vc = AddTaskViewController()
         vc.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(vc, animated: true)
     }
