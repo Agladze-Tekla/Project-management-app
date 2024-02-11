@@ -27,7 +27,7 @@ final class TaskPresentationController: UIPresentationController {
             frame.size = size(forChildContentContainer: presentedViewController,
                               withParentContainerSize: containerView!.bounds.size)
             
-            frame.origin.y = containerView!.frame.height*(1.0/2.0)
+            frame.origin.y = containerView!.frame.height*(3.0/5.0)
             return frame
         }
         
@@ -71,7 +71,7 @@ final class TaskPresentationController: UIPresentationController {
         
         override func size(forChildContentContainer container: UIContentContainer,
                            withParentContainerSize parentSize: CGSize) -> CGSize {
-            return CGSize(width: parentSize.width, height: parentSize.height*(1.0/2.0))
+            return CGSize(width: parentSize.width, height: parentSize.height*(2.0/5.0))
         }
 }
 
