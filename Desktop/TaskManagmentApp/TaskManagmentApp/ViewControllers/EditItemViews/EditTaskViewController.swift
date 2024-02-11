@@ -9,7 +9,7 @@ import UIKit
 
 final class EditTaskViewController: UIViewController {
     //MARK: - UI Components
-    private let viewModel = TaskViewModel();
+    private let viewModel = AddTaskViewModel();
     
     private let saveTaskButton = CustomButton(title: "Save Task", hasBackground: true, fontSize: .med)
     
@@ -199,7 +199,7 @@ final class EditTaskViewController: UIViewController {
 }
 
 //MARK: - Extensions
-extension EditTaskViewController: TaskViewModelDelegate {
+extension EditTaskViewController: AddTaskViewModelDelegate {
     func projectsFetched(_ projects: [ProjectModel]) {
         self.projects = projects
         collectionView.reloadData()

@@ -1,5 +1,5 @@
 //
-//  ProjectViewModel.swift
+//  AddProjectViewModel.swift
 //  TaskManagmentApp
 //
 //  Created by Tekla on 2/1/24.
@@ -13,13 +13,13 @@ enum addingError: Error {
    case addingFailed(Error)
 }
 
-protocol ProjectViewModelDelegate: AnyObject {
+protocol AddProjectViewModelDelegate: AnyObject {
    func projectAddedSuccessfully()
    func projectAddingFailed(_ error: addingError)
 }
 
-final class ProjectViewModel {
-   weak var delegate: ProjectViewModelDelegate?
+final class AddProjectViewModel {
+   weak var delegate: AddProjectViewModelDelegate?
 
    private let db = Firestore.firestore()
 

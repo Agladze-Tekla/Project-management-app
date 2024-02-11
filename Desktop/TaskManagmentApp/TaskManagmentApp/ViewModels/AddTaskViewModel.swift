@@ -1,5 +1,5 @@
 //
-//  TaskViewModel.swift
+//  AddTaskViewModel.swift
 //  TaskManagmentApp
 //
 //  Created by Tekla on 2/1/24.
@@ -15,14 +15,14 @@ enum savingError: Error {
     case emptyID
 }
 
-protocol TaskViewModelDelegate: AnyObject {
+protocol AddTaskViewModelDelegate: AnyObject {
    func taskAddedSuccessfully()
    func taskAddingFailed(_ error: savingError)
     func projectsFetched(_ projects: [ProjectModel])
 }
 
-final class TaskViewModel {
-    weak var delegate: TaskViewModelDelegate?
+final class AddTaskViewModel {
+    weak var delegate: AddTaskViewModelDelegate?
 
     private let db = Firestore.firestore()
 

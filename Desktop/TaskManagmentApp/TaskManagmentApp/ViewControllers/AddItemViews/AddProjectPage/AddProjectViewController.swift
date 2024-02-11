@@ -9,7 +9,7 @@ import UIKit
 
 final class AddProjectViewController: UIViewController {
     //MARK: - UI Components
-    private let viewModel = ProjectViewModel();
+    private let viewModel = AddProjectViewModel();
     
     private let saveProjectButton = CustomButton(title: "Save Project", hasBackground: true, fontSize: .med)
     
@@ -113,7 +113,7 @@ final class AddProjectViewController: UIViewController {
 }
 
 //MARK: - Extensions
-extension AddProjectViewController: ProjectViewModelDelegate {
+extension AddProjectViewController: AddProjectViewModelDelegate {
     func projectAddedSuccessfully() {
         let vc = TabBarViewController()
         let navigationController = UINavigationController(rootViewController: vc)
