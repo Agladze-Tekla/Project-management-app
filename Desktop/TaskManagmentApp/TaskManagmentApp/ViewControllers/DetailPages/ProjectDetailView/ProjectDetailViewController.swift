@@ -79,6 +79,21 @@ final class ProjectDetailViewController: UIViewController {
         return tableView
     }()
     
+    private var progressView: CircularProgressView = {
+        var view = CircularProgressView(frame: CGRect(x: 0, y: 0, width: 50, height: 50), lineWidth: 10, rounded: false)
+        view.progressColor = .white
+        view.trackColor = .purple
+        return view
+    }()
+    
+    private let progressStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.distribution = .equalSpacing
+        stackView.spacing = 8
+        return stackView
+    }()
+    
     private let tasksLabel = CustomLabel(title: "Tasks", fontSize: .big)
 
 private let addTaskButton = CustomButton(title: "+ Add Task", hasBackground: false, fontSize: .small)
@@ -117,6 +132,13 @@ private let addTaskButton = CustomButton(title: "+ Add Task", hasBackground: fal
         configure(with: project)
         setupButtons()
         configureTasksTableView()
+        setupProgressView()
+    }
+    
+    private func setupProgressView() {
+        //TODO: ADD GETPROGRESS FUNCTION
+        progressView.progress = 0.3
+        progressView.center = progressStackView.center
     }
 
     private func setupBackground() {
@@ -129,6 +151,8 @@ private let addTaskButton = CustomButton(title: "+ Add Task", hasBackground: fal
         mainStackView.addArrangedSubview(taskStackView)
         projectDetailStackView.addArrangedSubview(titleLabel)
         projectDetailStackView.addArrangedSubview(descriptionLabel)
+        //progressStackView.addArrangedSubview(progressView)
+        //projectDetailStackView.addArrangedSubview(progressStackView)
         labelAndButtonStackView.addArrangedSubview(tasksLabel)
         labelAndButtonStackView.addArrangedSubview(addTaskButton)
         taskStackView.addArrangedSubview(labelAndButtonStackView)

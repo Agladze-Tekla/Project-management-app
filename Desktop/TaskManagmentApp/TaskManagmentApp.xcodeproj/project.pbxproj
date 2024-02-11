@@ -31,6 +31,7 @@
 		3E5778FD2B6FBCE1009C5C1F /* ProjectViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5778FC2B6FBCE1009C5C1F /* ProjectViewCell.swift */; };
 		3E5F16DC2B790F3400C8D286 /* TaskPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5F16DB2B790F3400C8D286 /* TaskPresentationController.swift */; };
 		3E5F16E22B79127B00C8D286 /* TaskDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5F16E12B79127B00C8D286 /* TaskDetailViewController.swift */; };
+		3E5F16E72B7926BB00C8D286 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5F16E62B7926BA00C8D286 /* CircularProgressView.swift */; };
 		3E5F2C0E2B606F3E0072006F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5F2C0D2B606F3E0072006F /* AppDelegate.swift */; };
 		3E5F2C102B606F3E0072006F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5F2C0F2B606F3E0072006F /* SceneDelegate.swift */; };
 		3E5F2C172B606F470072006F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E5F2C162B606F470072006F /* Assets.xcassets */; };
@@ -83,6 +84,7 @@
 		3E5778FC2B6FBCE1009C5C1F /* ProjectViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectViewCell.swift; sourceTree = "<group>"; };
 		3E5F16DB2B790F3400C8D286 /* TaskPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskPresentationController.swift; sourceTree = "<group>"; };
 		3E5F16E12B79127B00C8D286 /* TaskDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailViewController.swift; sourceTree = "<group>"; };
+		3E5F16E62B7926BA00C8D286 /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
 		3E5F2C0A2B606F3E0072006F /* TaskManagmentApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaskManagmentApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E5F2C0D2B606F3E0072006F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3E5F2C0F2B606F3E0072006F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -254,6 +256,7 @@
 				3E5778C02B695711009C5C1F /* Validator.swift */,
 				3E5778EC2B6C882F009C5C1F /* UnderlinedTextField.swift */,
 				3E5778F22B6D938E009C5C1F /* CustomLabel.swift */,
+				3E5F16E62B7926BA00C8D286 /* CircularProgressView.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -433,6 +436,7 @@
 				3E5F2C3B2B60859F0072006F /* OnboardingViewController.swift in Sources */,
 				3E5778B82B692D2C009C5C1F /* CustomTextField.swift in Sources */,
 				3E61B4F72B61B60300DB760D /* Authentication.swift in Sources */,
+				3E5F16E72B7926BB00C8D286 /* CircularProgressView.swift in Sources */,
 				3E5F16DC2B790F3400C8D286 /* TaskPresentationController.swift in Sources */,
 				3E5778B12B692143009C5C1F /* HomeViewController.swift in Sources */,
 				3E5F2C322B607F0C0072006F /* OnboardingView.swift in Sources */,
