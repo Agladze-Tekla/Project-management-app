@@ -1,5 +1,5 @@
 //
-//  ProjectViewController.swift
+//  AddProjectViewController.swift
 //  TaskManagmentApp
 //
 //  Created by Tekla on 2/1/24.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ProjectViewController: UIViewController {
+final class AddProjectViewController: UIViewController {
     //MARK: - UI Components
     private let viewModel = ProjectViewModel();
     
@@ -113,7 +113,7 @@ final class ProjectViewController: UIViewController {
 }
 
 //MARK: - Extensions
-extension ProjectViewController: ProjectViewModelDelegate {
+extension AddProjectViewController: ProjectViewModelDelegate {
     func projectAddedSuccessfully() {
         let vc = TabBarViewController()
         let navigationController = UINavigationController(rootViewController: vc)

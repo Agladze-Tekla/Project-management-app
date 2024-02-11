@@ -23,7 +23,7 @@
 		3E5778D62B6C3A56009C5C1F /* ProjectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5778D52B6C3A55009C5C1F /* ProjectViewModel.swift */; };
 		3E5778DA2B6C3A6F009C5C1F /* TaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5778D92B6C3A6F009C5C1F /* TaskViewModel.swift */; };
 		3E5778DD2B6C4A9D009C5C1F /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5778DC2B6C4A9D009C5C1F /* HomeViewModel.swift */; };
-		3E5778E12B6C7746009C5C1F /* ProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5778E02B6C7746009C5C1F /* ProjectViewController.swift */; };
+		3E5778E12B6C7746009C5C1F /* AddProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5778E02B6C7746009C5C1F /* AddProjectViewController.swift */; };
 		3E5778ED2B6C882F009C5C1F /* UnderlinedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5778EC2B6C882F009C5C1F /* UnderlinedTextField.swift */; };
 		3E5778F32B6D938E009C5C1F /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5778F22B6D938E009C5C1F /* CustomLabel.swift */; };
 		3E5778F92B6DC35E009C5C1F /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5778F82B6DC35E009C5C1F /* AddTaskViewController.swift */; };
@@ -75,7 +75,7 @@
 		3E5778D52B6C3A55009C5C1F /* ProjectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectViewModel.swift; sourceTree = "<group>"; };
 		3E5778D92B6C3A6F009C5C1F /* TaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewModel.swift; sourceTree = "<group>"; };
 		3E5778DC2B6C4A9D009C5C1F /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
-		3E5778E02B6C7746009C5C1F /* ProjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectViewController.swift; sourceTree = "<group>"; };
+		3E5778E02B6C7746009C5C1F /* AddProjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProjectViewController.swift; sourceTree = "<group>"; };
 		3E5778EC2B6C882F009C5C1F /* UnderlinedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlinedTextField.swift; sourceTree = "<group>"; };
 		3E5778F22B6D938E009C5C1F /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		3E5778F82B6DC35E009C5C1F /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
@@ -169,7 +169,7 @@
 		3E5778DF2B6C7726009C5C1F /* AddItemViews */ = {
 			isa = PBXGroup;
 			children = (
-				3E5778E02B6C7746009C5C1F /* ProjectViewController.swift */,
+				3E5778E02B6C7746009C5C1F /* AddProjectViewController.swift */,
 				3E5FDB902B72DA5B0038C3BD /* AddTaskPage */,
 			);
 			path = AddItemViews;
@@ -452,7 +452,7 @@
 				3E63C5982B77934200E06ED5 /* EditTaskViewController.swift in Sources */,
 				3E63A72C2B763C990078ACBC /* ProjectDetailViewModel.swift in Sources */,
 				3E63A7302B7653C80078ACBC /* TaskViewCell.swift in Sources */,
-				3E5778E12B6C7746009C5C1F /* ProjectViewController.swift in Sources */,
+				3E5778E12B6C7746009C5C1F /* AddProjectViewController.swift in Sources */,
 				3E5778C12B695711009C5C1F /* Validator.swift in Sources */,
 				3E5F2C362B6080700072006F /* PageView.swift in Sources */,
 				3E5778D62B6C3A56009C5C1F /* ProjectViewModel.swift in Sources */,

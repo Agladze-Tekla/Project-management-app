@@ -272,7 +272,7 @@ final class HomeViewController: UIViewController {
        }
     
     private func didTapNewProject() {
-        let vc = ProjectViewController()
+        let vc = AddProjectViewController()
         vc.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(vc, animated: true)
     }
