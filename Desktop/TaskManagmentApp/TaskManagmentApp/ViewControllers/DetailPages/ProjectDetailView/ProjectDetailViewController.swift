@@ -235,15 +235,8 @@ extension ProjectDetailViewController: UITableViewDataSource, UITableViewDelegat
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-         //TODO: NAVIGATE TO DETAILS PAGE
-        /*
-        let selectedTask = tasks[indexPath.row]
-        let vc = EditTaskViewController()
-        vc.configure(task: selectedTask)
-        vc.hidesBottomBarWhenPushed = true
-                navigationController?.pushViewController(vc, animated: true)
- */
-        let vc = EditTaskViewController()
+        let vc = TaskDetailViewController()
+        vc.configure(task: tasks[indexPath.row], projectTitle: project.title)
                 vc.modalPresentationStyle = .custom
                 vc.transitioningDelegate = self
                 self.present(vc, animated: true, completion: nil)
