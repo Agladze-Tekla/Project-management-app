@@ -169,7 +169,7 @@
 		3E5778DF2B6C7726009C5C1F /* AddItemViews */ = {
 			isa = PBXGroup;
 			children = (
-				3E5778E02B6C7746009C5C1F /* AddProjectViewController.swift */,
+				3E5F16EB2B79440F00C8D286 /* AddProjectPage */,
 				3E5FDB902B72DA5B0038C3BD /* AddTaskPage */,
 			);
 			path = AddItemViews;
@@ -191,6 +191,14 @@
 				3E5F16DB2B790F3400C8D286 /* TaskPresentationController.swift */,
 			);
 			path = TaskDetailView;
+			sourceTree = "<group>";
+		};
+		3E5F16EB2B79440F00C8D286 /* AddProjectPage */ = {
+			isa = PBXGroup;
+			children = (
+				3E5778E02B6C7746009C5C1F /* AddProjectViewController.swift */,
+			);
+			path = AddProjectPage;
 			sourceTree = "<group>";
 		};
 		3E5F2C012B606F3E0072006F = {
