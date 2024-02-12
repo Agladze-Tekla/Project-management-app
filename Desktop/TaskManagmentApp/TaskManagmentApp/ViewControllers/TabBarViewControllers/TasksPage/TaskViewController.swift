@@ -18,14 +18,14 @@ final class TaskViewController: UIViewController {
            let stackView = UIStackView()
            stackView.axis = .vertical
            stackView.spacing = 20
-           stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.translatesAutoresizingMaskIntoConstraints = false
            return stackView
        }()
        
        private let currentDateLabel: UILabel = {
            let label = UILabel()
            label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
-           label.textColor = .black
+           label.textColor = .systemIndigo
            return label
        }()
        
@@ -34,7 +34,7 @@ final class TaskViewController: UIViewController {
            stackView.axis = .vertical
            stackView.spacing = 20
            stackView.layer.cornerRadius = 20
-           stackView.backgroundColor = UIColor.systemIndigo.withAlphaComponent(0.1)
+        stackView.backgroundColor = .secondarySystemBackground
            return stackView
        }()
        
@@ -108,7 +108,7 @@ final class TaskViewController: UIViewController {
        }
     
     private func setupBackground() {
-            view.backgroundColor = .white
+        view.backgroundColor = .white
         }
 
         private func addSubviews() {
@@ -141,7 +141,6 @@ final class TaskViewController: UIViewController {
             tasksTableView.delegate = self
             tasksTableView.dataSource = self
             tasksTableView.register(TaskViewCell.self, forCellReuseIdentifier: TaskViewCell.identifier)
-            tasksTableView.backgroundColor = .clear
             tasksTableView.reloadData()
         }
         
