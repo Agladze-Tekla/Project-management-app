@@ -57,6 +57,7 @@ final class CalendarViewCell: UICollectionViewCell {
 
     //MARK: - Methods
         private func setupUI() {
+            contentView.layer.cornerRadius = contentView.frame.width / 2
             stackView.addArrangedSubview(weekLabel)
             stackView.addArrangedSubview(dateLabel)
             stackView.addArrangedSubview(monthLabel)
