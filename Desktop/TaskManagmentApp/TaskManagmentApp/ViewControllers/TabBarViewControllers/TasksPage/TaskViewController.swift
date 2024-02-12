@@ -66,7 +66,6 @@ final class TaskViewController: UIViewController {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = 10
-        layout.sectionInset = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.showsHorizontalScrollIndicator = false
@@ -123,7 +122,7 @@ final class TaskViewController: UIViewController {
                 mainStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
                 mainStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
                 calendarCollectionView.heightAnchor.constraint(equalToConstant: 120),
-                calendarStackView.widthAnchor.constraint(equalTo: calendarCollectionView.widthAnchor)
+                calendarStackView.widthAnchor.constraint(equalTo: calendarCollectionView.safeAreaLayoutGuide.widthAnchor)
             ])
         }
 

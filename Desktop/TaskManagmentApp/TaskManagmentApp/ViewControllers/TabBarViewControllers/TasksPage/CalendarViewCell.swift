@@ -13,7 +13,7 @@ final class CalendarViewCell: UICollectionViewCell {
 
         private let weekLabel: UILabel = {
             let label = UILabel()
-            label.font = UIFont.systemFont(ofSize: 22, weight: .semibold)
+            label.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
             label.textColor = .white
             return label
         }()
@@ -27,7 +27,7 @@ final class CalendarViewCell: UICollectionViewCell {
 
         private let monthLabel: UILabel = {
             let label = UILabel()
-            label.font = UIFont.systemFont(ofSize: 20, weight: .regular)
+            label.font = UIFont.systemFont(ofSize: 15, weight: .regular)
             label.textColor = .white
             return label
         }()
