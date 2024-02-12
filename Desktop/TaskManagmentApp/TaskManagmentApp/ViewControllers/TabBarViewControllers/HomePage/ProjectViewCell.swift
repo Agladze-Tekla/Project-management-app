@@ -113,8 +113,6 @@ extension ProjectViewCell: ProjectCellViewModelDelegate {
     }
     
     func taskCountFetchingFailed(error: Error) {
-        AlertManager.showTasksFetchingError(on: HomeViewController(), error: error)
+        AlertManager.showTasksFetchingError(on: TabBarViewController(), error: error)
     }
-    
-    
 }
