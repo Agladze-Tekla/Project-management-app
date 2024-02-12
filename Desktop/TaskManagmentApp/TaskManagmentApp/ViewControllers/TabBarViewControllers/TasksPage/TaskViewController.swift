@@ -26,18 +26,15 @@ final class TaskViewController: UIViewController {
            return stackView
        }()
        
-       private let currentDateLabel: UILabel = {
-           let label = UILabel()
-           label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
-           label.textColor = .systemIndigo
-           return label
-       }()
+    private let currentDateLabel = CustomLabel(title: "Date", fontSize: .big)
        
        private let calendarStackView: UIStackView = {
            let stackView = UIStackView()
            stackView.axis = .vertical
            stackView.spacing = 20
            stackView.layer.cornerRadius = 20
+        stackView.isLayoutMarginsRelativeArrangement = true
+        stackView.layoutMargins = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
         stackView.backgroundColor = .secondarySystemBackground
            return stackView
        }()
@@ -168,6 +165,12 @@ final class TaskViewController: UIViewController {
            let daysInWeek = 7
            currentWeek = (0..<daysInWeek).compactMap { calendar.date(byAdding: .day, value: $0, to: startOfWeek) }
        }
+    
+    private func convertDateToString(_ date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM d, yyyy"
+        return dateFormatter.string(from: date)
+    }
         
         @objc private func didTapNewTask() {
             let vc = AddTaskViewController()
@@ -198,6 +201,7 @@ extension TaskViewController: UICollectionViewDataSource, UICollectionViewDelega
     //MARK: - UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         chosenDate = currentWeek[indexPath.item]
+        currentDateLabel.text = convertDateToString(currentWeek[indexPath.item])
         collectionView.reloadData()
          }
     
