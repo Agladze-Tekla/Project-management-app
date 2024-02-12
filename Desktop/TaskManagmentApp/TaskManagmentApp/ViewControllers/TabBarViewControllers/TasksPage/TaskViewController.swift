@@ -12,6 +12,8 @@ final class TaskViewController: UIViewController {
         private var tasks = [TaskModel]()
         
         private var viewModel = TaskViewModel()
+    
+    private var currentWeek: [Date] = []
         
         // MARK: - UI Components
        private let mainStackView: UIStackView = {
@@ -65,8 +67,8 @@ final class TaskViewController: UIViewController {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = 10
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
-        layout.itemSize = CGSize(width: 60, height: 90)
+        layout.sectionInset = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
+        layout.itemSize = CGSize(width: 90, height: 140)
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.showsHorizontalScrollIndicator = false
@@ -103,6 +105,7 @@ final class TaskViewController: UIViewController {
                addSubviews()
                setupConstraints()
                setupButtons()
+        getWeekDates()
                configureTasksTableView()
         setupCalendarCollectionView()
        }
@@ -143,6 +146,26 @@ final class TaskViewController: UIViewController {
             tasksTableView.register(TaskViewCell.self, forCellReuseIdentifier: TaskViewCell.identifier)
             tasksTableView.reloadData()
         }
+    
+    private func setupCalendarCollectionView() {
+            calendarCollectionView.delegate = self
+            calendarCollectionView.dataSource = self
+            calendarCollectionView.register(CalendarViewCell.self, forCellWithReuseIdentifier: CalendarViewCell.identifier)
+        }
+    
+    private func getWeekDates() {
+           let calendar = Calendar.current
+           guard let today = calendar.date(bySettingHour: 0, minute: 0, second: 0, of: Date()) else {
+               return
+           }
+
+           guard let startOfWeek = calendar.date(from: calendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: today)) else {
+               return
+           }
+
+           let daysInWeek = 7
+           currentWeek = (0..<daysInWeek).compactMap { calendar.date(byAdding: .day, value: $0, to: startOfWeek) }
+       }
         
         @objc private func didTapNewTask() {
             let vc = AddTaskViewController()
@@ -150,23 +173,19 @@ final class TaskViewController: UIViewController {
             self.navigationController?.pushViewController(vc, animated: true)
         }
     
-    private func setupCalendarCollectionView() {
-            calendarCollectionView.delegate = self
-            calendarCollectionView.dataSource = self
-            calendarCollectionView.register(CalendarViewCell.self, forCellWithReuseIdentifier: CalendarViewCell.identifier)
-        }
    }
 
 // MARK: - UICollectionViewDataSource
 extension TaskViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 7
+        return currentWeek.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CalendarViewCell.identifier, for: indexPath) as? CalendarViewCell else {
             fatalError("Unable to dequeue CalendarCell")
         }
+        cell.configure(with: currentWeek[indexPath.item])
         return cell
     }
     
@@ -175,8 +194,19 @@ extension TaskViewController: UICollectionViewDataSource, UICollectionViewDelega
     
     
     // MARK: - UICollectionViewDelegateFlowLayout
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = collectionView.frame.width / 7 - 5
+        let height = collectionView.frame.height
+        return CGSize(width: width, height: height)
+    }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 5.0
+    }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 5.0
+    }
 }
 
 
