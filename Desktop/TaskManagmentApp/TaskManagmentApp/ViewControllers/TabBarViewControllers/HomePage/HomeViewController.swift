@@ -140,6 +140,10 @@ final class HomeViewController: UIViewController {
     
     private let viewModel = HomeViewModel()
     
+    private var allTasks: Int?
+    
+    private var incompleteTasks: Int?
+    
     //MARK: - ViewLifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -163,6 +167,7 @@ final class HomeViewController: UIViewController {
         setupButtons()
         setupCollectionView()
         setupProjects()
+        setupTaskLabel()
     }
     
     private func setupBackground() {
@@ -218,6 +223,10 @@ final class HomeViewController: UIViewController {
         }
     }
     
+    private func setupTaskLabel() {
+        viewModel.fetchTaskCount()
+    }
+    
     private func setupProjects() {
         viewModel.checkForProjects() { isEmpty, error in
             if let error = error {
@@ -264,9 +273,7 @@ final class HomeViewController: UIViewController {
                 let logoutAction = UIAction(title: "Logout", image: UIImage(systemName: "arrow.left.square")) { _ in
                     self.didTapLogout()
                 }
-
                 let addMenu = UIMenu(title: "", children: [addTaskAction, addProjectAction, logoutAction])
-
         addButton.menu = addMenu
         
        }
@@ -324,12 +331,14 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
 
 //MARK: - Extensions
 extension HomeViewController: HomeViewModelDelegate {
-    func tasksCountFetched(_ count: Int) {
+    func taskCountFetched(allTasks: Int, incompleteTasks: Int) {
+        self.allTasks = allTasks
+        self.incompleteTasks = incompleteTasks
+        todaysTaskLabel.text = "You have \(incompleteTasks)/\(allTasks) tasks left for today"
     }
     
-    
-    func tasksCountFetchingFailed() {
-        //TODO: ADD TASKCOUNTFAILALERT
+    func taskCountFetchingFailed(error: Error) {
+        AlertManager.showTasksFetchingError(on: self, error: error)
     }
     
     func projectsFetched(_ projects: [ProjectModel]) {

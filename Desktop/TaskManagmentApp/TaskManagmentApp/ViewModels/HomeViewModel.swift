@@ -18,9 +18,8 @@ protocol HomeViewModelDelegate: AnyObject {
     func didLogoutSuccessfully()
     func didFailLogout(error: Error)
     func projectsFetched(_ projects: [ProjectModel])
-    func tasksCountFetched(_ count: Int)
-    func tasksCountFetchingFailed()
-    
+    func taskCountFetchingFailed(error: Error)
+    func taskCountFetched(allTasks: Int, incompleteTasks: Int)
 }
 
 final class HomeViewModel {
@@ -101,17 +100,87 @@ final class HomeViewModel {
     
     
     
-     func areDatesEqual(_ date1: Date, _ date2: Date) -> Bool {
-        let calendar = Calendar.current
+    func fetchProjectIDs(completion: @escaping ([String]) -> Void) {
+        guard let currentUserID = Auth.auth().currentUser?.uid else {
+            return
+        }
 
-        let components1 = calendar.dateComponents([.year, .month, .day], from: date1)
-        let components2 = calendar.dateComponents([.year, .month, .day], from: date2)
+        var fetchedProjectsId = [String]()
 
-        return components1.year == components2.year &&
-               components1.month == components2.month &&
-               components1.day == components2.day
+        db.collection("users").document(currentUserID).collection("projects").getDocuments { snapshot, error in
+            if let error = error {
+                print("Error fetching projects: \(error.localizedDescription)")
+                completion([])
+                return
+            }
+
+            for document in snapshot?.documents ?? [] {
+                do {
+                    if let projectData = try document.data(as: ProjectModel.self) {
+                        fetchedProjectsId.append(projectData.id)
+                    } else {
+                        print("Error: Project data is nil.")
+                    }
+                } catch {
+                    print("Error decoding project data: \(error.localizedDescription)")
+                }
+            }
+
+            completion(fetchedProjectsId)
+        }
+    }
+    
+    
+    func fetchTaskCount() {
+        guard let currentUserID = Auth.auth().currentUser?.uid else {
+            return
+        }
+        fetchProjectIDs { fetchedProjectsId in
+            var allTasks = [TaskModel]()
+
+            let dispatchGroup = DispatchGroup()
+
+            for project in fetchedProjectsId {
+                dispatchGroup.enter()
+
+                self.db.collection("users").document(currentUserID).collection("projects").document(project).collection("tasks").getDocuments { snapshot, error in
+                    defer {
+                        dispatchGroup.leave()
+                    }
+
+                    if let error = error {
+                        print("Error fetching tasks: \(error.localizedDescription)")
+                        return
+                    }
+
+                    for document in snapshot?.documents ?? [] {
+                        do {
+                            if let taskData = try document.data(as: TaskModel.self) {
+                                allTasks.append(taskData)
+                            } else {
+                                print("Error: Task data is nil.")
+                            }
+                        } catch {
+                            print("Error decoding task data: \(error.localizedDescription)")
+                        }
+                    }
+                }
+            }
+            dispatchGroup.notify(queue: .main) {
+                let todaysTasks = allTasks.filter { task in
+                    let calendar = Calendar.current
+                    let today = calendar.startOfDay(for: Date())
+                    return calendar.isDate(task.date, inSameDayAs: today)
+                }
+
+                let incompleteTasks = todaysTasks.filter { task in
+                    return !task.isCompleted
+                }
+                self.delegate?.taskCountFetched(allTasks: todaysTasks.count, incompleteTasks: incompleteTasks.count)
+            }
+        }
     }
 
-    
+
     
 }
