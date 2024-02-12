@@ -38,7 +38,6 @@ final class CalendarViewCell: UICollectionViewCell {
         stackView.alignment = .center
         stackView.distribution = .equalSpacing
         stackView.spacing = 4
-        stackView.backgroundColor = UIColor.systemIndigo.withAlphaComponent(0.7)
         stackView.isLayoutMarginsRelativeArrangement = true
         stackView.layoutMargins = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -71,7 +70,7 @@ final class CalendarViewCell: UICollectionViewCell {
         }
 
     //MARK: - Configure
-        func configure(with calendarDate: Date) {
+    func configure(calendarDate: Date, color: UIColor) {
             let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "EEE"
                 weekLabel.text = dateFormatter.string(from: calendarDate)
@@ -79,5 +78,6 @@ final class CalendarViewCell: UICollectionViewCell {
                 dateLabel.text = dateFormatter.string(from: calendarDate)
                 dateFormatter.dateFormat = "MMM"
                 monthLabel.text = dateFormatter.string(from: calendarDate)
+        contentView.backgroundColor = color
         }
 }

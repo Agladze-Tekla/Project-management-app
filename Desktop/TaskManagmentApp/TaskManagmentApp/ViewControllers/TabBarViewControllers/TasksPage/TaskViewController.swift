@@ -14,6 +14,8 @@ final class TaskViewController: UIViewController {
         private var viewModel = TaskViewModel()
     
     private var currentWeek: [Date] = []
+    
+    private var chosenDate: Date?
         
         // MARK: - UI Components
        private let mainStackView: UIStackView = {
@@ -185,13 +187,19 @@ extension TaskViewController: UICollectionViewDataSource, UICollectionViewDelega
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CalendarViewCell.identifier, for: indexPath) as? CalendarViewCell else {
             fatalError("Unable to dequeue CalendarCell")
         }
-        cell.configure(with: currentWeek[indexPath.item])
+        var cellColor = UIColor.systemIndigo.withAlphaComponent(0.7)
+               if currentWeek[indexPath.item] == chosenDate {
+                           cellColor = .systemIndigo
+                       }
+        cell.configure(calendarDate: currentWeek[indexPath.item], color: cellColor)
         return cell
     }
     
     //MARK: - UICollectionViewDelegate
-    
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        chosenDate = currentWeek[indexPath.item]
+        collectionView.reloadData()
+         }
     
     // MARK: - UICollectionViewDelegateFlowLayout
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
