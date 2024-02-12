@@ -18,8 +18,6 @@ final class TaskViewController: UIViewController {
            let stackView = UIStackView()
            stackView.axis = .vertical
            stackView.spacing = 20
-           stackView.isLayoutMarginsRelativeArrangement = true
-           stackView.layoutMargins = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
            stackView.translatesAutoresizingMaskIntoConstraints = false
            return stackView
        }()
@@ -36,7 +34,7 @@ final class TaskViewController: UIViewController {
            stackView.axis = .vertical
            stackView.spacing = 20
            stackView.layer.cornerRadius = 20
-           stackView.backgroundColor = UIColor.systemIndigo.withAlphaComponent(0.2)
+           stackView.backgroundColor = UIColor.systemIndigo.withAlphaComponent(0.1)
            return stackView
        }()
        
@@ -44,6 +42,8 @@ final class TaskViewController: UIViewController {
            let stackView = UIStackView()
            stackView.axis = .vertical
            stackView.spacing = 20
+        stackView.isLayoutMarginsRelativeArrangement = true
+        stackView.layoutMargins = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
            return stackView
        }()
        
@@ -60,12 +60,24 @@ final class TaskViewController: UIViewController {
            tableView.showsVerticalScrollIndicator = false
            return tableView
        }()
-       
+    
+    private let calendarCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        layout.minimumLineSpacing = 10
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
+        layout.itemSize = CGSize(width: 60, height: 90)
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.backgroundColor = .clear
+        return collectionView
+    }()
+
     private let taskLabel = CustomLabel(title: "Tasks", fontSize: .big)
     
     private let addTaskButton = CustomButton(title: "+ Add Task", hasBackground: false, fontSize: .small)
     
-
        // MARK: - View Lifecycle
        override func viewDidLoad() {
            super.viewDidLoad()
@@ -92,6 +104,7 @@ final class TaskViewController: UIViewController {
                setupConstraints()
                setupButtons()
                configureTasksTableView()
+        setupCalendarCollectionView()
        }
     
     private func setupBackground() {
@@ -102,12 +115,12 @@ final class TaskViewController: UIViewController {
             view.addSubview(mainStackView)
             mainStackView.addArrangedSubview(calendarStackView)
             mainStackView.addArrangedSubview(taskStackView)
-    calendarStackView.addArrangedSubview(currentDateLabel)
-    //calendarStackView.addArrangedSubview(calendarCollectionView)
-    taskStackView.addArrangedSubview(labelButtonStackView)
-    labelButtonStackView.addArrangedSubview(taskLabel)
-    labelButtonStackView.addArrangedSubview(addTaskButton)
-    taskStackView.addArrangedSubview(tasksTableView)
+            calendarStackView.addArrangedSubview(currentDateLabel)
+            calendarStackView.addArrangedSubview(calendarCollectionView)
+            taskStackView.addArrangedSubview(labelButtonStackView)
+            labelButtonStackView.addArrangedSubview(taskLabel)
+            labelButtonStackView.addArrangedSubview(addTaskButton)
+            taskStackView.addArrangedSubview(tasksTableView)
         }
 
         private func setupConstraints() {
@@ -115,7 +128,8 @@ final class TaskViewController: UIViewController {
                 mainStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
                 mainStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
                 mainStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-                mainStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+                mainStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+                calendarCollectionView.heightAnchor.constraint(equalToConstant: 90)
             ])
         }
 
@@ -124,11 +138,8 @@ final class TaskViewController: UIViewController {
         }
         
         private func configureTasksTableView() {
-            taskStackView.addArrangedSubview(tasksTableView)
-            
             tasksTableView.delegate = self
             tasksTableView.dataSource = self
-            
             tasksTableView.register(TaskViewCell.self, forCellReuseIdentifier: TaskViewCell.identifier)
             tasksTableView.backgroundColor = .clear
             tasksTableView.reloadData()
@@ -140,9 +151,34 @@ final class TaskViewController: UIViewController {
             self.navigationController?.pushViewController(vc, animated: true)
         }
     
-    
+    private func setupCalendarCollectionView() {
+            calendarCollectionView.delegate = self
+            calendarCollectionView.dataSource = self
+            calendarCollectionView.register(CalendarViewCell.self, forCellWithReuseIdentifier: CalendarViewCell.identifier)
+        }
    }
 
+// MARK: - UICollectionViewDataSource
+extension TaskViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 7
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CalendarViewCell.identifier, for: indexPath) as? CalendarViewCell else {
+            fatalError("Unable to dequeue CalendarCell")
+        }
+        return cell
+    }
+    
+    //MARK: - UICollectionViewDelegate
+    
+    
+    
+    // MARK: - UICollectionViewDelegateFlowLayout
+    
+    
+}
 
 
 //MARK: - TableView Extensions
@@ -157,7 +193,6 @@ extension TaskViewController: UITableViewDataSource, UITableViewDelegate {
         }
         let task = tasks[indexPath.row]
         cell.configure(task: task, projectId: task.project)
-
         return cell
     }
 
@@ -178,14 +213,16 @@ extension TaskViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        /*
-        let vc = TaskDetailViewController()
-        vc.configure(task: tasks[indexPath.row], projectTitle: project.title)
+        viewModel.getProjectName(projectID: tasks[indexPath.row].project) { projectName in
+            if let projectName = projectName {
+                let vc = TaskDetailViewController()
+                vc.configure(task: self.tasks[indexPath.row], projectTitle: projectName)
                 vc.modalPresentationStyle = .custom
                 vc.transitioningDelegate = self
                 self.present(vc, animated: true, completion: nil)
- */
-       }
+            }
+        }
+    }
 }
 
 //MARK: - Transition Extension
@@ -209,6 +246,4 @@ extension TaskViewController: TaskViewModelDelegate {
     func taskDeleteFailed(_ error: Error) {
         AlertManager.showTasksDeleteError(on: self, error: error)
     }
-    
-    
 }

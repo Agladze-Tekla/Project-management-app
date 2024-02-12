@@ -20,7 +20,39 @@ final class TaskViewModel {
 
     private let db = Firestore.firestore()
     
-    
+    func getProjectName(projectID: String, completion: @escaping (String?) -> Void) {
+        guard let currentUserID = Auth.auth().currentUser?.uid else {
+            completion(nil)
+            return
+        }
+
+        let projectRef = db.collection("users").document(currentUserID).collection("projects").document(projectID)
+
+        projectRef.getDocument { (document, error) in
+            if let error = error {
+                print("Error fetching project: \(error.localizedDescription)")
+                completion(nil)
+                return
+            }
+
+            if let document = document, document.exists {
+                do {
+                    if let projectData = try document.data(as: ProjectModel.self) {
+                        completion(projectData.title)
+                    } else {
+                        print("Error: Project data is nil.")
+                        completion(nil)
+                    }
+                } catch {
+                    print("Error decoding project data: \(error.localizedDescription)")
+                    completion(nil)
+                }
+            } else {
+                print("Project document does not exist for ID: \(projectID)")
+                completion(nil)
+            }
+        }
+    }
     
     
      func fetchProjectIDs(completion: @escaping ([String]) -> Void) {
