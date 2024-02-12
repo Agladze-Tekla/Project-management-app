@@ -84,19 +84,11 @@ final class TaskViewController: UIViewController {
            super.viewDidLoad()
            setupUI()
         viewModel.delegate = self
-        setupTaskView()
        }
 
        // MARK: - Private Methods
-    private func setupTaskView() {
-        let calendar = Calendar.current
-        var dateComponents = DateComponents()
-        dateComponents.year = 2024
-        dateComponents.month = 2
-        dateComponents.day = 19
-        if let specificDate = calendar.date(from: dateComponents) {
-            viewModel.fetchTasks(calendarDate: specificDate)
-        }
+    private func setupTaskView(date: Date) {
+            viewModel.fetchTasks(calendarDate: date)
     }
     
        private func setupUI() {
@@ -202,6 +194,7 @@ extension TaskViewController: UICollectionViewDataSource, UICollectionViewDelega
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         chosenDate = currentWeek[indexPath.item]
         currentDateLabel.text = convertDateToString(currentWeek[indexPath.item])
+        setupTaskView(date: currentWeek[indexPath.item])
         collectionView.reloadData()
          }
     
