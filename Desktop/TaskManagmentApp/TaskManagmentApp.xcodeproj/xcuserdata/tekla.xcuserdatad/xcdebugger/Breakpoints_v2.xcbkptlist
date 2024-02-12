@@ -511,9 +511,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "46"
-            endingLineNumber = "46"
-            landmarkName = "addTask(title:description:isCompleted:date:projectID:)"
-            landmarkType = "7">
+            endingLineNumber = "46">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -527,9 +525,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "53"
-            endingLineNumber = "53"
-            landmarkName = "addTask(title:description:isCompleted:date:projectID:)"
-            landmarkType = "7">
+            endingLineNumber = "53">
             <Locations>
                <Location
                   uuid = "93829824-7F5B-4AEF-9768-AE91FE0FDFC7 - 1722f8c2ac8cf97f"
@@ -575,9 +571,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "54"
-            endingLineNumber = "54"
-            landmarkName = "addTask(title:description:isCompleted:date:projectID:)"
-            landmarkType = "7">
+            endingLineNumber = "54">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

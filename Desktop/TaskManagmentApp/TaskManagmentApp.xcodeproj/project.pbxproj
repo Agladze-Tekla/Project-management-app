@@ -28,6 +28,7 @@
 		3E5778F32B6D938E009C5C1F /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5778F22B6D938E009C5C1F /* CustomLabel.swift */; };
 		3E5778F92B6DC35E009C5C1F /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5778F82B6DC35E009C5C1F /* AddTaskViewController.swift */; };
 		3E5778FD2B6FBCE1009C5C1F /* ProjectViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5778FC2B6FBCE1009C5C1F /* ProjectViewCell.swift */; };
+		3E57CF302B79AD8E006FAF38 /* TaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E57CF2F2B79AD8E006FAF38 /* TaskViewModel.swift */; };
 		3E5F16DC2B790F3400C8D286 /* TaskPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5F16DB2B790F3400C8D286 /* TaskPresentationController.swift */; };
 		3E5F16E22B79127B00C8D286 /* TaskDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5F16E12B79127B00C8D286 /* TaskDetailViewController.swift */; };
 		3E5F16E72B7926BB00C8D286 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5F16E62B7926BA00C8D286 /* CircularProgressView.swift */; };
@@ -80,6 +81,7 @@
 		3E5778F22B6D938E009C5C1F /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		3E5778F82B6DC35E009C5C1F /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
 		3E5778FC2B6FBCE1009C5C1F /* ProjectViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectViewCell.swift; sourceTree = "<group>"; };
+		3E57CF2F2B79AD8E006FAF38 /* TaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewModel.swift; sourceTree = "<group>"; };
 		3E5F16DB2B790F3400C8D286 /* TaskPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskPresentationController.swift; sourceTree = "<group>"; };
 		3E5F16E12B79127B00C8D286 /* TaskDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailViewController.swift; sourceTree = "<group>"; };
 		3E5F16E62B7926BA00C8D286 /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
@@ -288,6 +290,7 @@
 				3E63C59A2B77C99800E06ED5 /* EditProjectViewModel.swift */,
 				3E63C59D2B780F8F00E06ED5 /* TaskCellViewModel.swift */,
 				3E63C5A42B78F16D00E06ED5 /* ProjectCellViewModel.swift */,
+				3E57CF2F2B79AD8E006FAF38 /* TaskViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -464,6 +467,7 @@
 				3E5778C12B695711009C5C1F /* Validator.swift in Sources */,
 				3E5F2C362B6080700072006F /* PageView.swift in Sources */,
 				3E5778D62B6C3A56009C5C1F /* AddProjectViewModel.swift in Sources */,
+				3E57CF302B79AD8E006FAF38 /* TaskViewModel.swift in Sources */,
 				3E5778D32B6C3A0F009C5C1F /* SignupViewModel.swift in Sources */,
 				3E5778762B651317009C5C1F /* UserModel.swift in Sources */,
 				3E63C5A52B78F16D00E06ED5 /* ProjectCellViewModel.swift in Sources */,

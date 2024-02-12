@@ -8,14 +8,5 @@
 import UIKit
 
 final class TaskViewController: UIViewController {
-    //MARK: - UI Components
-
-    //MARK: - ViewLifeCycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-    }
-    
-    //MARK: - Private Methods
     
 }
