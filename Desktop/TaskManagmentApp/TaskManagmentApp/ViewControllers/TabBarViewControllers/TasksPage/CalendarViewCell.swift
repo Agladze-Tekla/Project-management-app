@@ -13,21 +13,21 @@ final class CalendarViewCell: UICollectionViewCell {
 
         private let weekLabel: UILabel = {
             let label = UILabel()
-            label.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
+            label.font = UIFont.systemFont(ofSize: 22, weight: .semibold)
             label.textColor = .white
             return label
         }()
 
         private let dateLabel: UILabel = {
             let label = UILabel()
-            label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+            label.font = UIFont.systemFont(ofSize: 22, weight: .bold)
             label.textColor = .white
             return label
         }()
 
         private let monthLabel: UILabel = {
             let label = UILabel()
-            label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+            label.font = UIFont.systemFont(ofSize: 20, weight: .regular)
             label.textColor = .white
             return label
         }()
@@ -36,10 +36,10 @@ final class CalendarViewCell: UICollectionViewCell {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.alignment = .center
-        stackView.distribution = .equalSpacing
+        stackView.distribution = .equalCentering
         stackView.spacing = 4
         stackView.isLayoutMarginsRelativeArrangement = true
-        stackView.layoutMargins = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+        stackView.layoutMargins = UIEdgeInsets(top: 10, left: 5, bottom: 10, right: 5)
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()

@@ -67,7 +67,6 @@ final class TaskViewController: UIViewController {
         layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = 10
         layout.sectionInset = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
-        layout.itemSize = CGSize(width: 90, height: 140)
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.showsHorizontalScrollIndicator = false
@@ -93,11 +92,11 @@ final class TaskViewController: UIViewController {
     
        private func setupUI() {
         setupBackground()
-               addSubviews()
-               setupConstraints()
-               setupButtons()
+        addSubviews()
+        setupConstraints()
+        setupButtons()
         getWeekDates()
-               configureTasksTableView()
+        configureTasksTableView()
         setupCalendarCollectionView()
        }
     
@@ -123,7 +122,8 @@ final class TaskViewController: UIViewController {
                 mainStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
                 mainStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
                 mainStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-                calendarCollectionView.heightAnchor.constraint(equalToConstant: 90)
+                calendarCollectionView.heightAnchor.constraint(equalToConstant: 120),
+                calendarStackView.widthAnchor.constraint(equalTo: calendarCollectionView.widthAnchor)
             ])
         }
 
@@ -149,11 +149,9 @@ final class TaskViewController: UIViewController {
            guard let today = calendar.date(bySettingHour: 0, minute: 0, second: 0, of: Date()) else {
                return
            }
-
            guard let startOfWeek = calendar.date(from: calendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: today)) else {
                return
            }
-
            let daysInWeek = 7
            currentWeek = (0..<daysInWeek).compactMap { calendar.date(byAdding: .day, value: $0, to: startOfWeek) }
        }
