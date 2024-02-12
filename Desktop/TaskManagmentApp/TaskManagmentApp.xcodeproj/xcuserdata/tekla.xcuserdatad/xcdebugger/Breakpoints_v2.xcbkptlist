@@ -510,8 +510,10 @@
             filePath = "TaskManagmentApp/ViewModels/TaskViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "46"
-            endingLineNumber = "46">
+            startingLineNumber = "79"
+            endingLineNumber = "79"
+            landmarkName = "fetchProjectIDs(completion:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -524,8 +526,10 @@
             filePath = "TaskManagmentApp/ViewModels/TaskViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53">
+            startingLineNumber = "86"
+            endingLineNumber = "86"
+            landmarkName = "fetchProjectIDs(completion:)"
+            landmarkType = "7">
             <Locations>
                <Location
                   uuid = "93829824-7F5B-4AEF-9768-AE91FE0FDFC7 - 1722f8c2ac8cf97f"
@@ -570,8 +574,10 @@
             filePath = "TaskManagmentApp/ViewModels/TaskViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54">
+            startingLineNumber = "87"
+            endingLineNumber = "87"
+            landmarkName = "fetchProjectIDs(completion:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
