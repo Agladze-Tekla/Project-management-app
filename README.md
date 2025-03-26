@@ -71,7 +71,7 @@ This project follows the **MVVM (Model-View-ViewModel)** pattern to improve main
  Clone the repository:
 
 ```sh
-git clone https://github.com/yourusername/project-management-app.git
+git clone https://github.com/Agladze-Tekla/Project-management-app.git
 ```
 
 ---
